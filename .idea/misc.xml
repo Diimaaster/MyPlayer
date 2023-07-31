@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/User/.gradle/caches/transforms-2/files-2.1/cd560ae3f5a4d1c2ba11db28d1fbb30c/exoplayer-ui-2.15.0/res/layout/exo_player_view.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/java/com/hellokhdev/sovary/rustv/yandexads/ads/YandexMobileAdsExample/app/src/main/res/drawable/ic_yandex_icon_24.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/java/com/hellokhdev/sovary/rustv/yandexads/ads/YandexMobileAdsExample/app/src/main/res/layout/activity_interstitial_ad.xml" value="0.8225806451612904" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/drawable/call_to_action_background.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/drawable/ic_adcolony_icon_24.xml" value="0.184" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/drawable/ic_admob_icon_24.xml" value="0.184" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/drawable/ic_applovin_icon_24.xml" value="0.184" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/drawable/ic_baseline_forward.xml" value="0.184" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/drawable/ic_baseline_fullscreen.xml" value="0.184" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/drawable/ic_baseline_fullscreen_exit.xml" value="0.184" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/drawable/ic_baseline_lock.xml" value="0.184" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/drawable/ic_outline_ad_units_24.xml" value="0.184" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/drawable/ic_outline_aspect_ratio_24.xml" value="0.184" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/drawable/roundedbutton.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/layout/activity_watch.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/layout/activity_watch_mult.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/layout/custom_controller.xml" value="0.22" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/layout/custom_controller_mult.xml" value="0.16193181818181818" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/layout/row.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/layout/settings.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/layout/splashscreen.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/layout/tv_prog.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyPlayer/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1315" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.16193181818181818" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,1132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#63000000">
+
+
+    <TextView
+        android:id="@+id/textfav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/hscroll_favorit"
+        android:layout_marginBottom="5dp"
+        android:text="Избранные:"
+        android:textColor="#B2EA8F"
+        android:textSize="16sp" />
+
+    <HorizontalScrollView
+        android:id="@+id/hscroll_favorit"
+        android:layout_width="wrap_content"
+        android:layout_above="@+id/sec_controlvid2"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <LinearLayout
+            android:id="@+id/ll_favorit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/exo_1_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/logoperviykanalhd"
+                android:theme="@style/ClickableView"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/exo_r1_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logorossiya1"
+                android:theme="@style/ClickableView"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/exo_r24_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logorossiya24"
+                android:theme="@style/ClickableView"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/exo_rusk_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/logorossiyak"
+                android:theme="@style/ClickableView"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/exo_5_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logopyatuyikanal"
+                android:theme="@style/ClickableView"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/exo_star_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logozvezda"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_mir_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logomirtv"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_iz_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/iz"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_ntv_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/ntv"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_match_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logomatchtv"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_sts_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logoctc"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_sts_love_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logostslove"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_ren_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/logorentv"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_vhs_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/vhs"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_vhs2_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/vhs"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_nikolodion_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/nickelodeon"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_red_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/redlogo23"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_black_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/black"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_pyatniza_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/pyztnica"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_muztv_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/muz_pic"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_tnt_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logotnt"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_tv1000_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logotv1000"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_tv1000rus_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logotv1000russkoekino"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_tv1000_act_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logotv1000action"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+
+            <ImageView
+                android:id="@+id/exo_tv3_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logotv3"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_solnze_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/solnze"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_mult_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/mult"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_U_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/u"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_Che_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logoche"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_Dom_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/domashniy"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+
+            <ImageView
+                android:id="@+id/exo_turist_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/turist"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_Start_world_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/startworld"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_Scifi_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/scifi"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_ViasNat_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/viasatnat"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_history_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/viasathistory"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_ViasExp_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/viasatexp"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_spas_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logospas"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/exo_tvc_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/tvc"
+                android:theme="@style/ClickableView"
+                android:visibility="gone" />
+
+
+            <ImageView
+                android:id="@+id/testfav"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                app:tint="@color/white" />
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <HorizontalScrollView
+        android:id="@+id/hscrollnews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/exo_return"
+        android:layout_marginTop="5dp"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <LinearLayout
+            android:id="@+id/news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/exo_1"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/logoperviykanalhd"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/exo_r1"
+                android:layout_width="48dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logorossiya1"
+                android:theme="@style/ClickableView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/exo_r24"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logorossiya24"
+                android:theme="@style/ClickableView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/exo_rusk"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/logorossiyak"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/exo_5"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logopyatuyikanal"
+                android:theme="@style/ClickableView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/exo_star"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logozvezda"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_mir"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logomirtv"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_iz"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/iz"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_tvc"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/tvc"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_ntv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/ntv"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_match"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logomatchtv"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_sts"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logoctc"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_sts_love"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logostslove"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_ren"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/logorentv"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_vhs"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/vhs"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_vhs2"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/vhs"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_nikolodion"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/nickelodeon"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_red"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/redlogo23"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_black"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/black"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_pyatniza"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/pyztnica"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_muztv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/muz_pic"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_tnt"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logotnt"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_tv1000"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logotv1000"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_tv1000rus"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logotv1000russkoekino"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_tv1000_act"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logotv1000action"
+                android:theme="@style/ClickableView" />
+
+
+            <ImageView
+                android:id="@+id/exo_tv3"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logotv3"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_solnze"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/solnze"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_mult"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/mult"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_U"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/u"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_Che"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logoche"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_Dom"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/domashniy"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_turist"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/turist"
+                android:theme="@style/ClickableView"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/exo_Start_world"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/startworld"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_Scifi"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/scifi"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_ViasNat"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/viasatnat"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_history"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/viasathistory"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_ViasExp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/viasatexp"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_spas"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logospas"
+                android:theme="@style/ClickableView" />
+
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <ImageView
+        android:id="@+id/exo_return"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:padding="10dp"
+        android:src="@drawable/back"
+        android:theme="@style/ClickableView"
+        app:tint="@color/white" />
+
+
+    <ImageView
+        android:id="@+id/bt_fullscreen"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="50dp"
+        android:src="@drawable/exo_controls_fullscreen_enter"
+        android:theme="@style/ClickableView" />
+
+    <ImageView
+        android:id="@+id/exo_add_fv"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="95dp"
+        android:src="@drawable/heart"
+        android:theme="@style/ClickableView"
+        app:tint="@color/white" />
+
+    <ImageView
+        android:id="@+id/exo_lock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:padding="10dp"
+        android:src="@drawable/ic_baseline_lock_open"
+        android:theme="@style/ClickableView" />
+
+
+    <LinearLayout
+        android:id="@+id/volum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hscrollnews"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="0dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/volumimg"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:src="@drawable/speaker"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/volum_plus"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:src="@drawable/plus"
+            android:theme="@style/ClickableView"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/volum_minus"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:src="@drawable/remove"
+            android:theme="@style/ClickableView"
+            app:tint="@color/white" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sec_controlvid1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/exo_play"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_play_arrow"
+            android:theme="@style/ClickableView" />
+
+        <ImageView
+            android:id="@+id/exo_pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_pause"
+            android:theme="@style/ClickableView" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/zoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hscrollnews"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/zoompng"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:src="@drawable/lupa"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/zoom1"
+            android:layout_width="34dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:src="@drawable/zoom1"
+            android:theme="@style/ClickableView"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/zoom2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/zoom2"
+            android:theme="@style/ClickableView"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/zoom3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/zoom3"
+            android:theme="@style/ClickableView"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/qual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textfav"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textqual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="Качество:"
+            android:textColor="#B2EA8F"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/qual_auto"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="10dp"
+            android:layout_marginTop="7dp"
+            android:src="@drawable/remove"
+            android:theme="@style/ClickableView"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/qual_HD"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="7dp"
+            android:padding="10dp"
+            android:src="@drawable/plus"
+            android:theme="@style/ClickableView"
+            app:tint="@color/white" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/sec_controlvid2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/exo_position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:text="/"
+                android:textColor="#CBCDC8" />
+
+            <TextView
+                android:id="@+id/exo_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#CBCDC8" />
+        </LinearLayout>
+
+        <com.google.android.exoplayer2.ui.DefaultTimeBar
+            android:id="@+id/exo_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="8dp"
+            app:buffered_color="#95989F"
+            app:played_color="#FF0000"
+            app:scrubber_color="#FF0000"
+            app:unplayed_color="#45424E"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="10dp"
+        android:text="Добавить в избранные   -->"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+</RelativeLayout>

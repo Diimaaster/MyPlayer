@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/fonapp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:foregroundGravity="center_vertical|clip_horizontal"
+        android:gravity="center_horizontal|center_vertical">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/apple"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/hello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:foregroundGravity="center_vertical|clip_horizontal"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="RusTV"
+        android:layout_marginTop="30dp"
+        android:textColor="#B2EA8F"
+        android:fontFamily="@font/audiowide"
+        android:textSize="50sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

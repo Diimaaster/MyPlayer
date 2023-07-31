@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#80000000">
+
+
+    <ScrollView
+        android:id="@+id/hscroll"
+        android:layout_width="match_parent"
+        android:layout_height="681dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/exo_1"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Сказка о солдате"
+                android:textColor="#CE00FF7A"
+                android:textSize="24sp"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/exo_2"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Дядя Степа - милиционер"
+                android:textColor="#CE00FF7A"
+                android:textSize="24sp"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/exo_3"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Опять двойка"
+                android:textColor="#CE00FF7A"
+                android:textSize="24sp"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/exo_4"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Федя Зайцев"
+                android:textColor="#CE00FF7A"
+                android:textSize="24sp"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/exo_5"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Храбрый заяц"
+                android:textColor="#CE00FF7A"
+                android:textSize="24sp"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/exo_6"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Василиса Микулишна"
+                android:textColor="#CE00FF7A"
+                android:textSize="24sp"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/exo_7"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Тараканище"
+                android:textColor="#CE00FF7A"
+                android:textSize="24sp"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/exo_8"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Кораблик"
+                android:textColor="#CE00FF7A"
+                android:textSize="24sp"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/exo_9"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Кот, который гулял сам по себе"
+                android:textColor="#CE00FF7A"
+                android:textSize="24sp"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/exo_10"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Молодильные яблоки"
+                android:textColor="#CE00FF7A"
+                android:textSize="24sp"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/exo_11"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Сказка про лень"
+                android:textColor="#CE00FF7A"
+                android:textSize="24sp"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/exo_12"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Царевна-Лягушка"
+                android:textColor="#CE00FF7A"
+                android:textSize="24sp"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/exo_13"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="38 попугаев"
+                android:textColor="#CE00FF7A"
+                android:textSize="24sp"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/exo_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Что такое хорошо и что такое плохо"
+                android:textColor="#CE00FF7A"
+                android:textSize="24sp"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/exo_15"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Как грибы с горохом воевали"
+                android:textColor="#CE00FF7A"
+                android:textSize="24sp"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/exo_16"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Лабиринт"
+                android:textColor="#CE00FF7A"
+                android:textSize="24sp"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/exo_17"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="А вы друзья как ни садитесь"
+                android:textColor="#CE00FF7A"
+                android:textSize="24sp"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/exo_return"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:padding="10dp"
+        android:src="@drawable/back"
+        android:theme="@style/ClickableView"
+        app:tint="@color/white" />
+
+    <ImageView
+        android:id="@+id/exo_lock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:padding="10dp"
+        android:src="@drawable/ic_baseline_lock_open"
+        android:theme="@style/ClickableView" />
+
+    <LinearLayout
+        android:id="@+id/sec_controlvid1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/exo_play"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_play_arrow"
+            android:theme="@style/ClickableView" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/exo_pause"
+            android:src="@drawable/ic_baseline_pause"
+            android:theme="@style/ClickableView"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sec_controlvid2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/exo_position"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/"
+                android:textColor="#CBCDC8"
+                android:layout_marginRight="4dp"
+                android:layout_marginEnd="4dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/exo_duration"
+                android:textColor="#CBCDC8"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/exo_controls_fullscreen_enter"
+                android:id="@+id/bt_fullscreen"
+                android:theme="@style/ClickableView"
+                />
+        </LinearLayout>
+
+        <com.google.android.exoplayer2.ui.DefaultTimeBar
+            android:id="@+id/exo_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="8dp"
+            app:buffered_color="#95989F"
+            app:played_color="#FF0000"
+            app:scrubber_color="#FF0000"
+            app:unplayed_color="#45424E"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+</RelativeLayout>
