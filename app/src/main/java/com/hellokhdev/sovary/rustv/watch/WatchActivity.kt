@@ -33,6 +33,9 @@ import com.yandex.mobile.ads.common.AdRequestError
 import com.yandex.mobile.ads.common.ImpressionData
 import com.yandex.mobile.ads.interstitial.InterstitialAd
 import com.yandex.mobile.ads.interstitial.InterstitialAdEventListener
+import com.yandex.mobile.ads.rewarded.Reward
+import com.yandex.mobile.ads.rewarded.RewardedAd
+import com.yandex.mobile.ads.rewarded.RewardedAdEventListener
 
 
 class WatchActivity : AppCompatActivity() {
@@ -45,9 +48,10 @@ class WatchActivity : AppCompatActivity() {
 
 
     private val eventLogger = InterstitialAdEventLogger()
+    private val eventLoggerRew = RewardedAdEventLogger()
 
     private val adUnitId = "demo-interstitial-yandex" //demo-interstitial-yandex    R-M-2278524-2
-
+    private var adUnitIdRew = "demo-rewarded-yandex"
 
     lateinit var handler: Handler
     lateinit var simpleExoPlayer: SimpleExoPlayer
@@ -55,12 +59,15 @@ class WatchActivity : AppCompatActivity() {
 
 
     private var mInterstitialAd: InterstitialAd? = null
+    private var rewardedAd: RewardedAd? = null
+
 
     lateinit var lastCh: SharedPreferences
     private val save_key: String = "last_ch"
     lateinit var videoSource: Uri
 
     lateinit var FvCh: SharedPreferences
+
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,7 +82,7 @@ class WatchActivity : AppCompatActivity() {
         mInterstitialAd = InterstitialAd(this);
         mInterstitialAd!!.setAdUnitId(adUnitId);
 
-        loadInterstitial()
+        //loadInterstitial()
 
         val playerView = findViewById<PlayerView>(R.id.player)
         val progressBar = findViewById<ProgressBar>(R.id.progress_bar)
@@ -167,7 +174,12 @@ class WatchActivity : AppCompatActivity() {
         val bt_StsLove = findViewById<ImageView>(R.id.exo_sts_love)     //36
         val bt_vhs2 = findViewById<ImageView>(R.id.exo_vhs2)     //37
         val bt_tvc = findViewById<ImageView>(R.id.exo_tvc)     //38
-        val bt_plus = findViewById<ImageView>(R.id.exo_plus)     //39
+
+
+        val bt_plus = findViewById<ImageView>(R.id.exo_plus)
+        val bt_p1 = findViewById<ImageView>(R.id.exo_plus1)
+        val bt_p2 = findViewById<ImageView>(R.id.exo_plus2)
+        val bt_p3 = findViewById<ImageView>(R.id.exo_plus3)
 
 
         val videoSourceTV3 = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/TV3_OTT_HD.m3u8")
@@ -211,6 +223,21 @@ class WatchActivity : AppCompatActivity() {
         val videoSourceStsLove = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/CTC_Love_OTT_2.m3u8?zi/")
         val videoSourceVhs2 = Uri.parse("https://autopilot.catcast.tv/content/38821/index.m3u8")
         val videoSourceTvc = Uri.parse("https://tvc-hls.cdnvideo.ru/tvc-res/smil:vd9221_2.smil/playlist.m3u8")
+        val videoSourcep1 = Uri.parse("http://92.245.103.126:1935/live/live.stream/playlist.m3u8")
+        //https://okkotv-live.cdnvideo.ru/channel/VIP_Comedy_HD.m3u8
+        //https://okkotv-live.cdnvideo.ru/channel/VIP_Serial_HD.m3u8
+        //https://okkotv-live.cdnvideo.ru/channel/VIP_Premiere_HD.m3u8
+        //https://okkotv-live.cdnvideo.ru/channel/VIP_Megahit_HD.m3u8
+        //https://sc.id-tv.kz/Rodnoe_kino.m3u8
+        //https://sc.id-tv.kz/Mujskoe_kino_hd.m3u8
+        //https://sc.id-tv.kz/Kinosemiya_hd.m3u8
+        //https://sc.id-tv.kz/Kinouzhas_hd.m3u8
+        //https://sc.id-tv.kz/Kinopremiera_hd.m3u8
+        //https://sc.id-tv.kz/Kinosvidanie_hd.m3u8
+        //https://sc.id-tv.kz/Kinomix_hd.m3u8
+        //https://sc.id-tv.kz/Kinokomediya_hd.m3u8
+        //https://sc.id-tv.kz/DomKino.m3u8   https://sc.id-tv.kz/domkino_hd.m3u8
+        //https://sc.id-tv.kz/QKinoHIT.m3u8
 
 
         bt_fullscreen.setOnClickListener {
@@ -763,6 +790,11 @@ class WatchActivity : AppCompatActivity() {
         }
 
 
+        bt_p1.setOnClickListener {
+            setChanel(videoSourcep1)
+        }
+
+
         bt_black_fv.setOnClickListener {
             setChanel(videoSourceblack)
             onSaveLast(videoSourceblack)
@@ -940,7 +972,6 @@ class WatchActivity : AppCompatActivity() {
             setChanel(videoSourceTvc)
             onSaveLast(videoSourceTvc)
         }
-
 
 
 
@@ -1170,18 +1201,16 @@ class WatchActivity : AppCompatActivity() {
 
 
 
-        val add_ch = findViewById<LinearLayout>(R.id.add_ch)
+
         bt_plus.setOnClickListener {
             val builder = AlertDialog.Builder(this)
-            //set title for alert dialog
             builder.setTitle("Внимание!")
-            //set message for alert dialog
             builder.setMessage("ФЫвшргфырвшзраывфргазыфщва")
-            builder.setIcon(android.R.drawable.ic_dialog_alert)
+           // builder.setIcon(android.R.drawable.ic_dialog_alert)
 
             builder.setPositiveButton("Да") { dialogInterface, which ->
                 Toast.makeText(applicationContext, "clicked yes", Toast.LENGTH_LONG).show()
-                add_ch.visibility = View.VISIBLE
+                loadRewarded()
             }
             builder.setNeutralButton("Отмена") { dialogInterface, which ->
                 Toast.makeText(
@@ -1195,7 +1224,6 @@ class WatchActivity : AppCompatActivity() {
             }
             val alertDialog: AlertDialog = builder.create()
 
-            // Set other dialog properties
             alertDialog.setCancelable(false)
             alertDialog.show()
         }
@@ -1232,6 +1260,59 @@ class WatchActivity : AppCompatActivity() {
 
     }
 
+    private fun loadRewarded() {
+            destroyRewarded()
+            createRewarded()
+        rewardedAd?.loadAd(AdRequest.Builder().build())
+    }
+
+    private fun createRewarded() {
+        rewardedAd = RewardedAd(this).apply {
+            setAdUnitId(adUnitIdRew)
+            setRewardedAdEventListener(eventLoggerRew)
+        }
+    }
+
+    private fun destroyRewarded() {
+        rewardedAd?.destroy()
+        rewardedAd = null
+    }
+
+
+    private inner class RewardedAdEventLogger : RewardedAdEventListener {
+
+        override fun onAdLoaded() {
+           rewardedAd?.show()
+        }
+
+        override fun onAdFailedToLoad(error: AdRequestError) {
+        }
+
+        override fun onAdShown() {
+        }
+
+        override fun onAdDismissed() {
+        }
+
+        override fun onRewarded(reward: Reward) {
+            val add_ch = findViewById<LinearLayout>(R.id.add_ch)
+            val bt_plus = findViewById<ImageView>(R.id.exo_plus)
+            add_ch.visibility = View.VISIBLE
+            bt_plus.visibility = View.GONE
+        }
+
+        override fun onAdClicked() {
+        }
+
+        override fun onLeftApplication() {
+        }
+
+        override fun onReturnedToApplication() {
+        }
+
+        override fun onImpression(data: ImpressionData?) {
+        }
+    }
 
     fun startHd() {
         simpleExoPlayer.stop()
@@ -1375,7 +1456,7 @@ class WatchActivity : AppCompatActivity() {
         videoSource = Uri.parse(
             lastCh.getString(
                 save_key,
-                "https://cdn10.1internet.tv/dash-live12/streams/1tv/1tvdash.mpd"
+                "https://edge4.1internet.tv/dash-live2/streams/1tv-dvr/1tvdash.mpd"
             )
         )      //https://cdn10.1internet.tv/dash-live12/streams/1tv/1tvdash.mpd
         setChanel(videoSource)
@@ -1395,6 +1476,7 @@ class WatchActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         destroyInterstitial()
+        destroyRewarded()
         super.onDestroy()
         simpleExoPlayer.release()
     }
