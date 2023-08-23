@@ -868,7 +868,56 @@
                 android:src="@drawable/logospas"
                 android:theme="@style/ClickableView" />
 
+            <ImageView
+                android:id="@+id/exo_plus"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logospas"
+                android:theme="@style/ClickableView" />
 
+
+        <LinearLayout
+            android:id="@+id/add_ch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/exo_plus1"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logospas"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_plus2"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logospas"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_plus3"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logospas"
+                android:theme="@style/ClickableView" />
+
+        </LinearLayout>
 
         </LinearLayout>
     </HorizontalScrollView>

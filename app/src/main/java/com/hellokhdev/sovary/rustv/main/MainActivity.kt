@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var mBannerAdView : BannerAdView
     private var bannerWidth = 0
     private var bannerHeight = 0
-    val AdUnitId = "R-M-2278524-1" //"R-M-2278524-1"      demo-banner-yandex
+    val AdUnitId = "demo-banner-yandex" //"R-M-2278524-1"      demo-banner-yandex
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

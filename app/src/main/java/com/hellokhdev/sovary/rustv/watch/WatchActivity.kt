@@ -3,6 +3,8 @@ package com.hellokhdev.sovary.rustv.watch
 
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
@@ -35,21 +37,20 @@ import com.yandex.mobile.ads.interstitial.InterstitialAdEventListener
 
 class WatchActivity : AppCompatActivity() {
 
-    companion object{
+    companion object {
         var isFullScreen = false
         var isLock = false
 
     }
 
 
-
     private val eventLogger = InterstitialAdEventLogger()
 
-    private val adUnitId = "R-M-2278524-2" //demo-interstitial-yandex    R-M-2278524-2
+    private val adUnitId = "demo-interstitial-yandex" //demo-interstitial-yandex    R-M-2278524-2
 
 
     lateinit var handler: Handler
-    lateinit var simpleExoPlayer:SimpleExoPlayer
+    lateinit var simpleExoPlayer: SimpleExoPlayer
     lateinit var bt_fullscreen: ImageView
 
 
@@ -74,14 +75,11 @@ class WatchActivity : AppCompatActivity() {
         mInterstitialAd = InterstitialAd(this);
         mInterstitialAd!!.setAdUnitId(adUnitId);
 
-       loadInterstitial()
+        loadInterstitial()
 
-
-        
-        
         val playerView = findViewById<PlayerView>(R.id.player)
         val progressBar = findViewById<ProgressBar>(R.id.progress_bar)
-        bt_fullscreen =  findViewById<ImageView>(R.id.bt_fullscreen)
+        bt_fullscreen = findViewById<ImageView>(R.id.bt_fullscreen)
         val bt_lockscreen = findViewById<ImageView>(R.id.exo_lock)
 
         val bt_back = findViewById<ImageView>(R.id.exo_return)
@@ -109,9 +107,9 @@ class WatchActivity : AppCompatActivity() {
         val bt_Match_fv = findViewById<ImageView>(R.id.exo_match_fv)
         val bt_NTV_fv = findViewById<ImageView>(R.id.exo_ntv_fv)
         val bt_TV3_fv = findViewById<ImageView>(R.id.exo_tv3_fv)
-        val bt_Spas_fv= findViewById<ImageView>(R.id.exo_spas_fv)
-        val bt_TNT_fv= findViewById<ImageView>(R.id.exo_tnt_fv)
-        val bt_IZ_fv= findViewById<ImageView>(R.id.exo_iz_fv)
+        val bt_Spas_fv = findViewById<ImageView>(R.id.exo_spas_fv)
+        val bt_TNT_fv = findViewById<ImageView>(R.id.exo_tnt_fv)
+        val bt_IZ_fv = findViewById<ImageView>(R.id.exo_iz_fv)
         val bt_pyatniza_fv = findViewById<ImageView>(R.id.exo_pyatniza_fv)
         val bt_MuzTv_fv = findViewById<ImageView>(R.id.exo_muztv_fv)
         val bt_vhs_fv = findViewById<ImageView>(R.id.exo_vhs_fv)
@@ -146,13 +144,13 @@ class WatchActivity : AppCompatActivity() {
         val bt_tv1000 = findViewById<ImageView>(R.id.exo_tv1000)    //13
         val bt_tv1000_rus = findViewById<ImageView>(R.id.exo_tv1000rus) //14
         val bt_Match = findViewById<ImageView>(R.id.exo_match)  //15
-        val bt_NTV= findViewById<ImageView>(R.id.exo_ntv)   //16
-        val bt_TV3= findViewById<ImageView>(R.id.exo_tv3)   //17
-        val bt_Spas= findViewById<ImageView>(R.id.exo_spas) //18
-        val bt_TNT= findViewById<ImageView>(R.id.exo_tnt)   //19
-        val bt_IZ= findViewById<ImageView>(R.id.exo_iz) //20
-        val bt_pyatniza= findViewById<ImageView>(R.id.exo_pyatniza)    //21
-        val bt_MuzTv= findViewById<ImageView>(R.id.exo_muztv)   //22
+        val bt_NTV = findViewById<ImageView>(R.id.exo_ntv)   //16
+        val bt_TV3 = findViewById<ImageView>(R.id.exo_tv3)   //17
+        val bt_Spas = findViewById<ImageView>(R.id.exo_spas) //18
+        val bt_TNT = findViewById<ImageView>(R.id.exo_tnt)   //19
+        val bt_IZ = findViewById<ImageView>(R.id.exo_iz) //20
+        val bt_pyatniza = findViewById<ImageView>(R.id.exo_pyatniza)    //21
+        val bt_MuzTv = findViewById<ImageView>(R.id.exo_muztv)   //22
         val bt_vhs = findViewById<ImageView>(R.id.exo_vhs)  //23
         val bt_nikolodion = findViewById<ImageView>(R.id.exo_nikolodion)    //24
         val bt_red = findViewById<ImageView>(R.id.exo_red)      //25
@@ -169,17 +167,21 @@ class WatchActivity : AppCompatActivity() {
         val bt_StsLove = findViewById<ImageView>(R.id.exo_sts_love)     //36
         val bt_vhs2 = findViewById<ImageView>(R.id.exo_vhs2)     //37
         val bt_tvc = findViewById<ImageView>(R.id.exo_tvc)     //38
+        val bt_plus = findViewById<ImageView>(R.id.exo_plus)     //39
 
 
         val videoSourceTV3 = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/TV3_OTT_HD.m3u8")
         val videoSourceSpas = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Spas.m3u8")
         val videoSourceTNT = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/TNT_OTT_HD.m3u8")
         val videoSourceIZ = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Izvestiya_HD_2.m3u8")
-        val videoSourcePyatniza = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Pyatnizza_OTT_HD.m3u8")
+        val videoSourcePyatniza =
+            Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Pyatnizza_OTT_HD.m3u8")
         val videoSourceMuztv = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/MuzTV.m3u8")
         val videoSourceNTV = Uri.parse("https://cdn.ntv.ru/ntv-msk_hd/tracks-v1a1/playlist.m3u8")
-        val videoSourceMatch = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Match_OTT_HD.m3u8")
-        val videoSourceTV1000Rus = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/TV1000_Rus_Kino_HD/1080p.m3u8")
+        val videoSourceMatch =
+            Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Match_OTT_HD.m3u8")
+        val videoSourceTV1000Rus =
+            Uri.parse("https://okkotv-live.cdnvideo.ru/channel/TV1000_Rus_Kino_HD/1080p.m3u8")
         val videoSourceTV1000 = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/TV1000_HD.m3u8")
         val videoSourceSolnze = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Disney.m3u8")
         val videoSourceREN = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Rentv_HD_OTT.m3u8")
@@ -191,8 +193,8 @@ class WatchActivity : AppCompatActivity() {
         val videoSourceRUSK = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Russia_K_SD.m3u8")
         val videoSourceStar = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Zvezda_SD.m3u8")
         val videoSourceTV1000ACT = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/TV1000_Action_HD/480p.m3u8")
-        val videoSource5Ch= Uri.parse("https://okkotv-live.cdnvideo.ru/channel/5_OTT.m3u8")
-        val videoSourceMult= Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Multilandia_HD.m3u8")
+        val videoSource5Ch = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/5_OTT.m3u8")
+        val videoSourceMult = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Multilandia_HD.m3u8")
         val videoSourcevhs = Uri.parse("https://autopilot.catcast.tv/content/37925/index.m3u8")
         val videoSourceNickolodion = Uri.parse("https://sc.id-tv.kz/Nickelodeon.m3u8")
         val videoSourcered = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Sony_ET/480p.m3u8")
@@ -215,7 +217,8 @@ class WatchActivity : AppCompatActivity() {
 
             getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            );
 
             if (Build.VERSION.SDK_INT >= 19) {
                 window.decorView.systemUiVisibility = (
@@ -223,34 +226,41 @@ class WatchActivity : AppCompatActivity() {
                                 or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
             }
 
-            if(!isFullScreen)
-            {
-                bt_fullscreen.setImageDrawable(ContextCompat.getDrawable(applicationContext,
-                    R.drawable.ic_baseline_fullscreen_exit
-                ))
+            if (!isFullScreen) {
+                bt_fullscreen.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        applicationContext,
+                        R.drawable.ic_baseline_fullscreen_exit
+                    )
+                )
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE)
-            }
-            else{
-                bt_fullscreen.setImageDrawable(ContextCompat.getDrawable(applicationContext,
-                    R.drawable.ic_baseline_fullscreen
-                ))
+            } else {
+                bt_fullscreen.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        applicationContext,
+                        R.drawable.ic_baseline_fullscreen
+                    )
+                )
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
             }
             isFullScreen = !isFullScreen
         }
 
         bt_lockscreen.setOnClickListener {
-            if(!isLock)
-            {
-                bt_lockscreen.setImageDrawable(ContextCompat.getDrawable(applicationContext,
-                    R.drawable.ic_baseline_lock
-                ))
-            }
-            else
-            {
-                bt_lockscreen.setImageDrawable(ContextCompat.getDrawable(applicationContext,
-                    R.drawable.ic_baseline_lock_open
-                ))
+            if (!isLock) {
+                bt_lockscreen.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        applicationContext,
+                        R.drawable.ic_baseline_lock
+                    )
+                )
+            } else {
+                bt_lockscreen.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        applicationContext,
+                        R.drawable.ic_baseline_lock_open
+                    )
+                )
             }
             isLock = !isLock
             lockScreen(isLock)
@@ -262,13 +272,13 @@ class WatchActivity : AppCompatActivity() {
         val zoom2 = findViewById<ImageView>(R.id.zoom2)
         val zoom3 = findViewById<ImageView>(R.id.zoom3)
 
-        zoom1.setOnClickListener{
+        zoom1.setOnClickListener {
             player.setResizeMode(RESIZE_MODE_FILL)
         }
-        zoom2.setOnClickListener{
+        zoom2.setOnClickListener {
             player.setResizeMode(RESIZE_MODE_ZOOM)
         }
-        zoom3.setOnClickListener{
+        zoom3.setOnClickListener {
             player.setResizeMode(RESIZE_MODE_FIT)
         }
 
@@ -278,13 +288,13 @@ class WatchActivity : AppCompatActivity() {
 
         val ll_fav = findViewById<LinearLayout>(R.id.ll_favorit)
 
-        text_fav.setOnClickListener{
-            if(visfav){
-               ll_fav.visibility = View.GONE
-                visfav=!visfav
-            }else{
+        text_fav.setOnClickListener {
+            if (visfav) {
+                ll_fav.visibility = View.GONE
+                visfav = !visfav
+            } else {
                 ll_fav.visibility = View.VISIBLE
-                visfav=!visfav
+                visfav = !visfav
             }
         }
 
@@ -300,37 +310,30 @@ class WatchActivity : AppCompatActivity() {
 
 
         bt_plus_volum.setOnClickListener {
-           val plus =  audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + 1
+            val plus = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + 1
             audioManager.setMediaVolume(plus)
         }
 
         bt_minus_volum.setOnClickListener {
-            val minus =  audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) - 1
+            val minus = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) - 1
             audioManager.setMediaVolume(minus)
         }
 
         bt_qual_HD.setOnClickListener {
-           startHd()
+            startHd()
             playerView.player = simpleExoPlayer
             playerView.keepScreenOn = true
-            simpleExoPlayer.addListener(object: Player.Listener{
-                override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int)
-                {
-                    if(playbackState == Player.STATE_BUFFERING)
-                    {
+            simpleExoPlayer.addListener(object : Player.Listener {
+                override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
+                    if (playbackState == Player.STATE_BUFFERING) {
                         progressBar.visibility = View.VISIBLE
-                    }
-                    else if(playbackState == Player.STATE_READY)
-                    {
+                    } else if (playbackState == Player.STATE_READY) {
                         progressBar.visibility = View.GONE
                     }
 
-                    if(!simpleExoPlayer.playWhenReady)
-                    {
+                    if (!simpleExoPlayer.playWhenReady) {
                         handler.removeCallbacks(updateProgressAction)
-                    }
-                    else
-                    {
+                    } else {
                         onProgress()
                     }
                 }
@@ -339,27 +342,20 @@ class WatchActivity : AppCompatActivity() {
         }
 
         bt_qual_auto.setOnClickListener {
-           startauto()
+            startauto()
             playerView.player = simpleExoPlayer
             playerView.keepScreenOn = true
-            simpleExoPlayer.addListener(object: Player.Listener{
-                override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int)
-                {
-                    if(playbackState == Player.STATE_BUFFERING)
-                    {
+            simpleExoPlayer.addListener(object : Player.Listener {
+                override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
+                    if (playbackState == Player.STATE_BUFFERING) {
                         progressBar.visibility = View.VISIBLE
-                    }
-                    else if(playbackState == Player.STATE_READY)
-                    {
+                    } else if (playbackState == Player.STATE_READY) {
                         progressBar.visibility = View.GONE
                     }
 
-                    if(!simpleExoPlayer.playWhenReady)
-                    {
+                    if (!simpleExoPlayer.playWhenReady) {
                         handler.removeCallbacks(updateProgressAction)
-                    }
-                    else
-                    {
+                    } else {
                         onProgress()
                     }
                 }
@@ -373,470 +369,394 @@ class WatchActivity : AppCompatActivity() {
 
         val editFv = FvCh.edit()
 
-        if(FvCh.getInt(1.toString(),0)==1)
-        {
+        if (FvCh.getInt(1.toString(), 0) == 1) {
             bt_ren_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_ren_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(2.toString(),0)==1)
-        {
+        if (FvCh.getInt(2.toString(), 0) == 1) {
             bt_1st_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_1st_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(3.toString(),0)==1)
-        {
+        if (FvCh.getInt(3.toString(), 0) == 1) {
             bt_r1_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_r1_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(4.toString(),0)==1)
-        {
+        if (FvCh.getInt(4.toString(), 0) == 1) {
             bt_r24_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_r24_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(5.toString(),0)==1)
-        {
+        if (FvCh.getInt(5.toString(), 0) == 1) {
             bt_sts_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_sts_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(6.toString(),0)==1)
-        {
+        if (FvCh.getInt(6.toString(), 0) == 1) {
             bt_mir_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_mir_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(7.toString(),0)==1)
-        {
+        if (FvCh.getInt(7.toString(), 0) == 1) {
             bt_mult_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_mult_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(8.toString(),0)==1)
-        {
+        if (FvCh.getInt(8.toString(), 0) == 1) {
             bt_5CH_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_5CH_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(9.toString(),0)==1)
-        {
+        if (FvCh.getInt(9.toString(), 0) == 1) {
             bt_rk_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_rk_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(10.toString(),0)==1)
-        {
+        if (FvCh.getInt(10.toString(), 0) == 1) {
             bt_star_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_star_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(11.toString(),0)==1)
-        {
+        if (FvCh.getInt(11.toString(), 0) == 1) {
             bt_solnze_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_solnze_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(12.toString(),0)==1)
-        {
+        if (FvCh.getInt(12.toString(), 0) == 1) {
             bt_tv1000_act_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_tv1000_act_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(13.toString(),0)==1)
-        {
+        if (FvCh.getInt(13.toString(), 0) == 1) {
             bt_tv1000_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_tv1000_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(14.toString(),0)==1)
-        {
+        if (FvCh.getInt(14.toString(), 0) == 1) {
             bt_tv1000_rus_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_tv1000_rus_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(15.toString(),0)==1)
-        {
+        if (FvCh.getInt(15.toString(), 0) == 1) {
             bt_Match_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_Match_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(16.toString(),0)==1)
-        {
+        if (FvCh.getInt(16.toString(), 0) == 1) {
             bt_NTV_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_NTV_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(17.toString(),0)==1)
-        {
+        if (FvCh.getInt(17.toString(), 0) == 1) {
             bt_TV3_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_TV3_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(18.toString(),0)==1)
-        {
+        if (FvCh.getInt(18.toString(), 0) == 1) {
             bt_Spas_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_Spas_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(19.toString(),0)==1)
-        {
+        if (FvCh.getInt(19.toString(), 0) == 1) {
             bt_TNT_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_TNT_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(20.toString(),0)==1)
-        {
+        if (FvCh.getInt(20.toString(), 0) == 1) {
             bt_IZ_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_IZ_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(21.toString(),0)==1)
-        {
+        if (FvCh.getInt(21.toString(), 0) == 1) {
             bt_pyatniza_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_pyatniza_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(22.toString(),0)==1)
-        {
+        if (FvCh.getInt(22.toString(), 0) == 1) {
             bt_MuzTv_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_MuzTv_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(23.toString(),0)==1)
-        {
+        if (FvCh.getInt(23.toString(), 0) == 1) {
             bt_vhs_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_vhs_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(24.toString(),0)==1)
-        {
+        if (FvCh.getInt(24.toString(), 0) == 1) {
             bt_nikolodion_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_nikolodion_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(25.toString(),0)==1)
-        {
+        if (FvCh.getInt(25.toString(), 0) == 1) {
             bt_red_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_red_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(26.toString(),0)==1)
-        {
+        if (FvCh.getInt(26.toString(), 0) == 1) {
             bt_black_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_black_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(27.toString(),0)==1)
-        {
+        if (FvCh.getInt(27.toString(), 0) == 1) {
             bt_history_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_history_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(28.toString(),0)==1)
-        {
+        if (FvCh.getInt(28.toString(), 0) == 1) {
             bt_U_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_U_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(29.toString(),0)==1)
-        {
+        if (FvCh.getInt(29.toString(), 0) == 1) {
             bt_Dom_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_Dom_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(30.toString(),0)==1)
-        {
+        if (FvCh.getInt(30.toString(), 0) == 1) {
             bt_turist_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_turist_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(31.toString(),0)==1)
-        {
+        if (FvCh.getInt(31.toString(), 0) == 1) {
             bt_ViasExp_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_ViasExp_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(32.toString(),0)==1)
-        {
+        if (FvCh.getInt(32.toString(), 0) == 1) {
             bt_ViasNat_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_ViasNat_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(33.toString(),0)==1)
-        {
+        if (FvCh.getInt(33.toString(), 0) == 1) {
             bt_Scifi_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_Scifi_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(34.toString(),0)==1)
-        {
+        if (FvCh.getInt(34.toString(), 0) == 1) {
             bt_Start_world_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_Start_world_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(35.toString(),0)==1)
-        {
+        if (FvCh.getInt(35.toString(), 0) == 1) {
             bt_Che_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_Che_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(36.toString(),0)==1)
-        {
+        if (FvCh.getInt(36.toString(), 0) == 1) {
             bt_StsLove_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_StsLove_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(37.toString(),0)==1)
-        {
+        if (FvCh.getInt(37.toString(), 0) == 1) {
             bt_vhs2_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_vhs2_fv.visibility = View.GONE
         }
-        if(FvCh.getInt(38.toString(),0)==1)
-        {
+        if (FvCh.getInt(38.toString(), 0) == 1) {
             bt_tvc_fv.visibility = View.VISIBLE
-        }else{
+        } else {
             bt_tvc_fv.visibility = View.GONE
         }
 
         bt_fav.setOnClickListener {
-            if(FvCh.getInt(setChanelChoose.toString(),0)==0) {
+            if (FvCh.getInt(setChanelChoose.toString(), 0) == 0) {
                 editFv.putInt(setChanelChoose.toString(), 1)
                 editFv.apply()
-            }else{
-                editFv.putInt(setChanelChoose.toString(),0)
+            } else {
+                editFv.putInt(setChanelChoose.toString(), 0)
                 editFv.apply()
             }
 
-            if(FvCh.getInt(1.toString(),0)==1)
-            {
+            if (FvCh.getInt(1.toString(), 0) == 1) {
                 bt_ren_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_ren_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(2.toString(),0)==1)
-            {
+            if (FvCh.getInt(2.toString(), 0) == 1) {
                 bt_1st_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_1st_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(3.toString(),0)==1)
-            {
+            if (FvCh.getInt(3.toString(), 0) == 1) {
                 bt_r1_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_r1_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(4.toString(),0)==1)
-            {
+            if (FvCh.getInt(4.toString(), 0) == 1) {
                 bt_r24_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_r24_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(5.toString(),0)==1)
-            {
+            if (FvCh.getInt(5.toString(), 0) == 1) {
                 bt_sts_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_sts_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(6.toString(),0)==1)
-            {
+            if (FvCh.getInt(6.toString(), 0) == 1) {
                 bt_mir_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_mir_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(7.toString(),0)==1)
-            {
+            if (FvCh.getInt(7.toString(), 0) == 1) {
                 bt_mult_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_mult_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(8.toString(),0)==1)
-            {
+            if (FvCh.getInt(8.toString(), 0) == 1) {
                 bt_5CH_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_5CH_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(9.toString(),0)==1)
-            {
+            if (FvCh.getInt(9.toString(), 0) == 1) {
                 bt_rk_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_rk_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(10.toString(),0)==1)
-            {
+            if (FvCh.getInt(10.toString(), 0) == 1) {
                 bt_star_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_star_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(11.toString(),0)==1)
-            {
+            if (FvCh.getInt(11.toString(), 0) == 1) {
                 bt_solnze_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_solnze_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(12.toString(),0)==1)
-            {
+            if (FvCh.getInt(12.toString(), 0) == 1) {
                 bt_tv1000_act_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_tv1000_act_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(13.toString(),0)==1)
-            {
+            if (FvCh.getInt(13.toString(), 0) == 1) {
                 bt_tv1000_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_tv1000_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(14.toString(),0)==1)
-            {
+            if (FvCh.getInt(14.toString(), 0) == 1) {
                 bt_tv1000_rus_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_tv1000_rus_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(15.toString(),0)==1)
-            {
+            if (FvCh.getInt(15.toString(), 0) == 1) {
                 bt_Match_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_Match_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(16.toString(),0)==1)
-            {
+            if (FvCh.getInt(16.toString(), 0) == 1) {
                 bt_NTV_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_NTV_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(17.toString(),0)==1)
-            {
+            if (FvCh.getInt(17.toString(), 0) == 1) {
                 bt_TV3_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_TV3_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(18.toString(),0)==1)
-            {
+            if (FvCh.getInt(18.toString(), 0) == 1) {
                 bt_Spas_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_Spas_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(19.toString(),0)==1)
-            {
+            if (FvCh.getInt(19.toString(), 0) == 1) {
                 bt_TNT_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_TNT_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(20.toString(),0)==1)
-            {
+            if (FvCh.getInt(20.toString(), 0) == 1) {
                 bt_IZ_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_IZ_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(21.toString(),0)==1)
-            {
+            if (FvCh.getInt(21.toString(), 0) == 1) {
                 bt_pyatniza_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_pyatniza_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(22.toString(),0)==1)
-            {
+            if (FvCh.getInt(22.toString(), 0) == 1) {
                 bt_MuzTv_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_MuzTv_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(23.toString(),0)==1)
-            {
+            if (FvCh.getInt(23.toString(), 0) == 1) {
                 bt_vhs_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_vhs_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(24.toString(),0)==1)
-            {
+            if (FvCh.getInt(24.toString(), 0) == 1) {
                 bt_nikolodion_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_nikolodion_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(25.toString(),0)==1)
-            {
+            if (FvCh.getInt(25.toString(), 0) == 1) {
                 bt_red_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_red_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(26.toString(),0)==1)
-            {
+            if (FvCh.getInt(26.toString(), 0) == 1) {
                 bt_black_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_black_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(27.toString(),0)==1)
-            {
+            if (FvCh.getInt(27.toString(), 0) == 1) {
                 bt_history_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_history_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(28.toString(),0)==1)
-            {
+            if (FvCh.getInt(28.toString(), 0) == 1) {
                 bt_U_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_U_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(29.toString(),0)==1)
-            {
+            if (FvCh.getInt(29.toString(), 0) == 1) {
                 bt_Dom_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_Dom_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(30.toString(),0)==1)
-            {
+            if (FvCh.getInt(30.toString(), 0) == 1) {
                 bt_turist_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_turist_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(31.toString(),0)==1)
-            {
+            if (FvCh.getInt(31.toString(), 0) == 1) {
                 bt_ViasExp_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_ViasExp_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(32.toString(),0)==1)
-            {
+            if (FvCh.getInt(32.toString(), 0) == 1) {
                 bt_ViasNat_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_ViasNat_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(33.toString(),0)==1)
-            {
+            if (FvCh.getInt(33.toString(), 0) == 1) {
                 bt_Scifi_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_Scifi_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(34.toString(),0)==1)
-            {
+            if (FvCh.getInt(34.toString(), 0) == 1) {
                 bt_Start_world_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_Start_world_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(35.toString(),0)==1)
-            {
+            if (FvCh.getInt(35.toString(), 0) == 1) {
                 bt_Che_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_Che_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(36.toString(),0)==1)
-            {
+            if (FvCh.getInt(36.toString(), 0) == 1) {
                 bt_StsLove_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_StsLove_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(37.toString(),0)==1)
-            {
+            if (FvCh.getInt(37.toString(), 0) == 1) {
                 bt_vhs2_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_vhs2_fv.visibility = View.GONE
             }
-            if(FvCh.getInt(38.toString(),0)==1)
-            {
+            if (FvCh.getInt(38.toString(), 0) == 1) {
                 bt_tvc_fv.visibility = View.VISIBLE
-            }else{
+            } else {
                 bt_tvc_fv.visibility = View.GONE
             }
 
@@ -1249,31 +1169,57 @@ class WatchActivity : AppCompatActivity() {
 
 
 
-        simpleExoPlayer= SimpleExoPlayer.Builder(this)
+
+        val add_ch = findViewById<LinearLayout>(R.id.add_ch)
+        bt_plus.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            //set title for alert dialog
+            builder.setTitle("Внимание!")
+            //set message for alert dialog
+            builder.setMessage("ФЫвшргфырвшзраывфргазыфщва")
+            builder.setIcon(android.R.drawable.ic_dialog_alert)
+
+            builder.setPositiveButton("Да") { dialogInterface, which ->
+                Toast.makeText(applicationContext, "clicked yes", Toast.LENGTH_LONG).show()
+                add_ch.visibility = View.VISIBLE
+            }
+            builder.setNeutralButton("Отмена") { dialogInterface, which ->
+                Toast.makeText(
+                    applicationContext,
+                    "clicked cancel\n operation cancel",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+            builder.setNegativeButton("Нет") { dialogInterface, which ->
+                Toast.makeText(applicationContext, "clicked No", Toast.LENGTH_LONG).show()
+            }
+            val alertDialog: AlertDialog = builder.create()
+
+            // Set other dialog properties
+            alertDialog.setCancelable(false)
+            alertDialog.show()
+        }
+
+
+
+        simpleExoPlayer = SimpleExoPlayer.Builder(this)
             .setSeekBackIncrementMs(5000)
             .setSeekForwardIncrementMs(5000)
             //.setTrackSelector(trackSelector)
             .build()
         playerView.player = simpleExoPlayer
         playerView.keepScreenOn = true
-        simpleExoPlayer.addListener(object: Player.Listener{
-            override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int)
-            {
-                if(playbackState == Player.STATE_BUFFERING)
-                {
+        simpleExoPlayer.addListener(object : Player.Listener {
+            override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
+                if (playbackState == Player.STATE_BUFFERING) {
                     progressBar.visibility = View.VISIBLE
-                }
-                else if(playbackState == Player.STATE_READY)
-                {
+                } else if (playbackState == Player.STATE_READY) {
                     progressBar.visibility = View.GONE
                 }
 
-                if(!simpleExoPlayer.playWhenReady)
-                {
+                if (!simpleExoPlayer.playWhenReady) {
                     handler.removeCallbacks(updateProgressAction)
-                }
-                else
-                {
+                } else {
                     onProgress()
                 }
             }
@@ -1284,15 +1230,12 @@ class WatchActivity : AppCompatActivity() {
         onGetLast()
 
 
-
-
     }
 
 
-
-    fun startHd(){
+    fun startHd() {
         simpleExoPlayer.stop()
-        simpleExoPlayer= SimpleExoPlayer.Builder(this)
+        simpleExoPlayer = SimpleExoPlayer.Builder(this)
             .setSeekBackIncrementMs(5000)
             .setSeekForwardIncrementMs(5000)
             //.setTrackSelector(trackSelector)
@@ -1300,11 +1243,11 @@ class WatchActivity : AppCompatActivity() {
 
     }
 
-    fun startauto(){
+    fun startauto() {
         val trackSelector = DefaultTrackSelector(this)
         trackSelector.setParameters(trackSelector.buildUponParameters().setMaxVideoSizeSd())
         simpleExoPlayer.stop()
-        simpleExoPlayer= SimpleExoPlayer.Builder(this)
+        simpleExoPlayer = SimpleExoPlayer.Builder(this)
             .setSeekBackIncrementMs(5000)
             .setSeekForwardIncrementMs(5000)
             .setTrackSelector(trackSelector)
@@ -1313,33 +1256,27 @@ class WatchActivity : AppCompatActivity() {
 
     val ad = 4000
     var check = false
-    fun onProgress()
-    {
-        val player= simpleExoPlayer
-        val position :Long =if(player == null) 0 else player.currentPosition
+    fun onProgress() {
+        val player = simpleExoPlayer
+        val position: Long = if (player == null) 0 else player.currentPosition
         handler.removeCallbacks(updateProgressAction)
-        val playbackState = if(player ==null) Player.STATE_IDLE else player.playbackState
-        if(playbackState != Player.STATE_IDLE && playbackState!= Player.STATE_ENDED)
-        {
-            var delayMs :Long
-            if(player.playWhenReady && playbackState == Player.STATE_READY)
-            {
-                delayMs  = 1000 - position % 1000
-                if(delayMs < 200)
-                {
-                    delayMs+=1000
+        val playbackState = if (player == null) Player.STATE_IDLE else player.playbackState
+        if (playbackState != Player.STATE_IDLE && playbackState != Player.STATE_ENDED) {
+            var delayMs: Long
+            if (player.playWhenReady && playbackState == Player.STATE_READY) {
+                delayMs = 1000 - position % 1000
+                if (delayMs < 200) {
+                    delayMs += 1000
                 }
-            }
-            else{
+            } else {
                 delayMs = 1000
             }
 
             //check to display ad
-            if((ad-3000 <= position && position<=ad) &&!check)
-            {
-                check =true
+            if ((ad - 3000 <= position && position <= ad) && !check) {
+                check = true
             }
-            handler.postDelayed(updateProgressAction,delayMs)
+            handler.postDelayed(updateProgressAction, delayMs)
         }
     }
 
@@ -1348,34 +1285,29 @@ class WatchActivity : AppCompatActivity() {
     private fun lockScreen(lock: Boolean) {
         val sec_mid = findViewById<LinearLayout>(R.id.sec_controlvid1)
         val sec_bottom = findViewById<LinearLayout>(R.id.sec_controlvid2)
-        if(lock)
-        {
+        if (lock) {
             sec_mid.visibility = View.INVISIBLE
             sec_bottom.visibility = View.INVISIBLE
-        }
-        else
-        {
+        } else {
             sec_mid.visibility = View.VISIBLE
             sec_bottom.visibility = View.VISIBLE
         }
     }
 
     override fun onBackPressed() {
-        if(isLock) return
-        if(resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
-        {
+        if (isLock) return
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             bt_fullscreen.performClick()
-        }
-        else super.onBackPressed()
+        } else super.onBackPressed()
 
     }
 
 
     private fun loadInterstitial() {
-            destroyInterstitial()
-            createInterstitial()
-            val adRequest =  AdRequest.Builder().build()
-            mInterstitialAd?.loadAd(adRequest)
+        destroyInterstitial()
+        createInterstitial()
+        val adRequest = AdRequest.Builder().build()
+        mInterstitialAd?.loadAd(adRequest)
     }
 
     private fun createInterstitial() {
@@ -1385,7 +1317,7 @@ class WatchActivity : AppCompatActivity() {
         }
     }
 
-    private  fun FullScreencall() {
+    private fun FullScreencall() {
         if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19) { // lower api
             val v = this.window.decorView
             v.systemUiVisibility = View.GONE
@@ -1402,7 +1334,6 @@ class WatchActivity : AppCompatActivity() {
         mInterstitialAd?.destroy()
         mInterstitialAd = null
     }
-
 
 
     private inner class InterstitialAdEventLogger : InterstitialAdEventListener {
@@ -1434,14 +1365,19 @@ class WatchActivity : AppCompatActivity() {
         }
     }
 
-    fun onSaveLast(Source: Uri){
+    fun onSaveLast(Source: Uri) {
         val edit = lastCh.edit()
         edit.putString(save_key, Source.toString())
         edit.apply()
     }
 
-    fun onGetLast(){
-        videoSource = Uri.parse(lastCh.getString(save_key,"https://cdn10.1internet.tv/dash-live12/streams/1tv/1tvdash.mpd"))      //https://cdn10.1internet.tv/dash-live12/streams/1tv/1tvdash.mpd
+    fun onGetLast() {
+        videoSource = Uri.parse(
+            lastCh.getString(
+                save_key,
+                "https://cdn10.1internet.tv/dash-live12/streams/1tv/1tvdash.mpd"
+            )
+        )      //https://cdn10.1internet.tv/dash-live12/streams/1tv/1tvdash.mpd
         setChanel(videoSource)
     }
 
@@ -1468,7 +1404,7 @@ class WatchActivity : AppCompatActivity() {
         simpleExoPlayer.pause()
     }
 
-    fun AudioManager.setMediaVolume(volumeIndex:Int) {
+    fun AudioManager.setMediaVolume(volumeIndex: Int) {
         // Set media volume level
         this.setStreamVolume(
             AudioManager.STREAM_MUSIC, // Stream type
@@ -1476,8 +1412,8 @@ class WatchActivity : AppCompatActivity() {
             AudioManager.FLAG_SHOW_UI// Flags
         )
     }
-}
 
+}
 
 
 
