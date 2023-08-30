@@ -135,6 +135,11 @@ class WatchActivity : AppCompatActivity() {
         val bt_StsLove_fv = findViewById<ImageView>(R.id.exo_sts_love_fv)
         val bt_vhs2_fv = findViewById<ImageView>(R.id.exo_vhs2_fv)
         val bt_tvc_fv = findViewById<ImageView>(R.id.exo_tvc_fv)
+        val bt_VIP_Comedy_fv = findViewById<ImageView>(R.id.exo_VIP_Comedy_fv)
+        val bt_VIP_Serial_fv = findViewById<ImageView>(R.id.exo_VIP_Serial_fv)
+        val bt_VIP_Premiere_fv = findViewById<ImageView>(R.id.exo_Premiere_fv)
+        val bt_VIP_Megahit_fv = findViewById<ImageView>(R.id.exo_Megahit_fv)
+        val bt_DomKino_fv = findViewById<ImageView>(R.id.exo_DomKino_fv)
 
         val bt_ren = findViewById<ImageView>(R.id.exo_ren)   //1
         val bt_1st = findViewById<ImageView>(R.id.exo_1)     //2
@@ -174,12 +179,15 @@ class WatchActivity : AppCompatActivity() {
         val bt_StsLove = findViewById<ImageView>(R.id.exo_sts_love)     //36
         val bt_vhs2 = findViewById<ImageView>(R.id.exo_vhs2)     //37
         val bt_tvc = findViewById<ImageView>(R.id.exo_tvc)     //38
+        val bt_VIP_Comedy = findViewById<ImageView>(R.id.exo_VIP_Comedy)     //39
+        val bt_VIP_Serial = findViewById<ImageView>(R.id.exo_VIP_Serial)     //40
+        val bt_VIP_Premiere = findViewById<ImageView>(R.id.exo_Premiere)     //41
+        val bt_VIP_Megahit = findViewById<ImageView>(R.id.exo_Megahit)     //42
+        val bt_DomKino = findViewById<ImageView>(R.id.exo_DomKino)     //43
 
 
         val bt_plus = findViewById<ImageView>(R.id.exo_plus)
         val bt_p1 = findViewById<ImageView>(R.id.exo_plus1)
-        val bt_p2 = findViewById<ImageView>(R.id.exo_plus2)
-        val bt_p3 = findViewById<ImageView>(R.id.exo_plus3)
 
 
         val videoSourceTV3 = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/TV3_OTT_HD.m3u8")
@@ -223,21 +231,21 @@ class WatchActivity : AppCompatActivity() {
         val videoSourceStsLove = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/CTC_Love_OTT_2.m3u8?zi/")
         val videoSourceVhs2 = Uri.parse("https://autopilot.catcast.tv/content/38821/index.m3u8")
         val videoSourceTvc = Uri.parse("https://tvc-hls.cdnvideo.ru/tvc-res/smil:vd9221_2.smil/playlist.m3u8")
-        val videoSourcep1 = Uri.parse("http://92.245.103.126:1935/live/live.stream/playlist.m3u8")
-        //https://okkotv-live.cdnvideo.ru/channel/VIP_Comedy_HD.m3u8
-        //https://okkotv-live.cdnvideo.ru/channel/VIP_Serial_HD.m3u8
-        //https://okkotv-live.cdnvideo.ru/channel/VIP_Premiere_HD.m3u8
-        //https://okkotv-live.cdnvideo.ru/channel/VIP_Megahit_HD.m3u8
-        //https://sc.id-tv.kz/Rodnoe_kino.m3u8
-        //https://sc.id-tv.kz/Mujskoe_kino_hd.m3u8
-        //https://sc.id-tv.kz/Kinosemiya_hd.m3u8
-        //https://sc.id-tv.kz/Kinouzhas_hd.m3u8
-        //https://sc.id-tv.kz/Kinopremiera_hd.m3u8
-        //https://sc.id-tv.kz/Kinosvidanie_hd.m3u8
-        //https://sc.id-tv.kz/Kinomix_hd.m3u8
-        //https://sc.id-tv.kz/Kinokomediya_hd.m3u8
-        //https://sc.id-tv.kz/DomKino.m3u8   https://sc.id-tv.kz/domkino_hd.m3u8
-        //https://sc.id-tv.kz/QKinoHIT.m3u8
+        val videoSourcep1 = Uri.parse("https://sc.id-tv.kz/Kinomix_hd.m3u8")
+        val videoSourceVIP_Comedy = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/VIP_Comedy_HD.m3u8")
+        val videoSourceVIP_Serial = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/VIP_Serial_HD.m3u8")
+        val videoSourceVIP_Premiere = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/VIP_Premiere_HD.m3u8")
+        val videoSourceVIP_Megahit = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/VIP_Megahit_HD.m3u8")
+        val videoSourceRodnoe_kino = Uri.parse("https://sc.id-tv.kz/Rodnoe_kino.m3u8")
+        val videoSourceMujskoe_kino = Uri.parse("https://sc.id-tv.kz/Mujskoe_kino_hd.m3u8")
+        val videoSourceKinosemiya = Uri.parse("https://sc.id-tv.kz/Kinosemiya_hd.m3u8")
+        val videoSourceKinouzhas = Uri.parse("https://sc.id-tv.kz/Kinouzhas_hd.m3u8")
+        val videoSourceKinopremiera = Uri.parse("https://sc.id-tv.kz/Kinopremiera_hd.m3u8")
+        val videoSourceKinosvidanie = Uri.parse("https://sc.id-tv.kz/Kinosvidanie_hd.m3u8")
+        val videoSourceKinomix = Uri.parse("https://sc.id-tv.kz/Kinomix_hd.m3u8")
+        val videoSourceKinokomediya = Uri.parse("https://sc.id-tv.kz/Kinokomediya_hd.m3u8")
+        val videoSourceDomKino = Uri.parse("https://sc.id-tv.kz/DomKino.m3u8")   //https://sc.id-tv.kz/domkino_hd.m3u8
+
 
 
         bt_fullscreen.setOnClickListener {
@@ -586,6 +594,31 @@ class WatchActivity : AppCompatActivity() {
         } else {
             bt_tvc_fv.visibility = View.GONE
         }
+        if (FvCh.getInt(39.toString(), 0) == 1) {
+            bt_VIP_Comedy_fv.visibility = View.VISIBLE
+        } else {
+            bt_VIP_Comedy_fv.visibility = View.GONE
+        }
+        if (FvCh.getInt(40.toString(), 0) == 1) {
+            bt_VIP_Serial_fv.visibility = View.VISIBLE
+        } else {
+            bt_VIP_Serial_fv.visibility = View.GONE
+        }
+        if (FvCh.getInt(41.toString(), 0) == 1) {
+            bt_VIP_Premiere_fv.visibility = View.VISIBLE
+        } else {
+            bt_VIP_Premiere_fv.visibility = View.GONE
+        }
+        if (FvCh.getInt(42.toString(), 0) == 1) {
+            bt_VIP_Megahit_fv.visibility = View.VISIBLE
+        } else {
+            bt_VIP_Megahit_fv.visibility = View.GONE
+        }
+        if (FvCh.getInt(43.toString(), 0) == 1) {
+            bt_DomKino_fv.visibility = View.VISIBLE
+        } else {
+            bt_DomKino_fv.visibility = View.GONE
+        }
 
         bt_fav.setOnClickListener {
             if (FvCh.getInt(setChanelChoose.toString(), 0) == 0) {
@@ -786,13 +819,36 @@ class WatchActivity : AppCompatActivity() {
             } else {
                 bt_tvc_fv.visibility = View.GONE
             }
+            if (FvCh.getInt(39.toString(), 0) == 1) {
+                bt_VIP_Comedy_fv.visibility = View.VISIBLE
+            } else {
+                bt_VIP_Comedy_fv.visibility = View.GONE
+            }
+            if (FvCh.getInt(40.toString(), 0) == 1) {
+                bt_VIP_Serial_fv.visibility = View.VISIBLE
+            } else {
+                bt_VIP_Serial_fv.visibility = View.GONE
+            }
+            if (FvCh.getInt(41.toString(), 0) == 1) {
+                bt_VIP_Premiere_fv.visibility = View.VISIBLE
+            } else {
+                bt_VIP_Premiere_fv.visibility = View.GONE
+            }
+            if (FvCh.getInt(42.toString(), 0) == 1) {
+                bt_VIP_Megahit_fv.visibility = View.VISIBLE
+            } else {
+                bt_VIP_Megahit_fv.visibility = View.GONE
+            }
+            if (FvCh.getInt(43.toString(), 0) == 1) {
+                bt_DomKino_fv.visibility = View.VISIBLE
+            } else {
+                bt_DomKino_fv.visibility = View.GONE
+            }
+
 
         }
 
 
-        bt_p1.setOnClickListener {
-            setChanel(videoSourcep1)
-        }
 
 
         bt_black_fv.setOnClickListener {
@@ -973,8 +1029,69 @@ class WatchActivity : AppCompatActivity() {
             onSaveLast(videoSourceTvc)
         }
 
+        bt_VIP_Premiere_fv.setOnClickListener {
+            setChanel(videoSourceVIP_Premiere)
+            onSaveLast(videoSourceVIP_Premiere)
+        }
+
+        bt_VIP_Megahit_fv.setOnClickListener {
+            setChanel(videoSourceVIP_Megahit)
+            onSaveLast(videoSourceVIP_Megahit)
+        }
+
+        bt_VIP_Serial_fv.setOnClickListener {
+            setChanel(videoSourceVIP_Serial)
+            onSaveLast(videoSourceVIP_Serial)
+        }
+
+        bt_VIP_Comedy_fv.setOnClickListener {
+            setChanel(videoSourceVIP_Comedy)
+            onSaveLast(videoSourceVIP_Comedy)
+        }
+
+        bt_DomKino_fv.setOnClickListener {
+            setChanel(videoSourceDomKino)
+            onSaveLast(videoSourceDomKino)
+        }
 
 
+
+
+        bt_p1.setOnClickListener {
+            setChanel(videoSourcep1)
+        }
+
+
+
+        bt_VIP_Premiere.setOnClickListener {
+            setChanel(videoSourceVIP_Premiere)
+            onSaveLast(videoSourceVIP_Premiere)
+            setChanelChoose = 41
+        }
+
+        bt_DomKino.setOnClickListener {
+            setChanel(videoSourceDomKino)
+            onSaveLast(videoSourceDomKino)
+            setChanelChoose = 43
+        }
+
+        bt_VIP_Megahit.setOnClickListener {
+            setChanel(videoSourceVIP_Megahit)
+            onSaveLast(videoSourceVIP_Megahit)
+            setChanelChoose = 42
+        }
+
+        bt_VIP_Serial.setOnClickListener {
+            setChanel(videoSourceVIP_Serial)
+            onSaveLast(videoSourceVIP_Serial)
+            setChanelChoose = 40
+        }
+
+        bt_VIP_Comedy.setOnClickListener {
+            setChanel(videoSourceVIP_Comedy)
+            onSaveLast(videoSourceVIP_Comedy)
+            setChanelChoose = 39
+        }
 
         bt_black.setOnClickListener {
             setChanel(videoSourceblack)

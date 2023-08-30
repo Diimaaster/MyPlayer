@@ -454,6 +454,62 @@
                 android:theme="@style/ClickableView"
                 android:visibility="gone" />
 
+            <ImageView
+                android:id="@+id/exo_VIP_Comedy_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/vip_comedy"
+                android:theme="@style/ClickableView"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/exo_VIP_Serial_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/vip_serial"
+                android:theme="@style/ClickableView"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/exo_Premiere_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/premiere"
+                android:theme="@style/ClickableView"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/exo_Megahit_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/vip_megahit"
+                android:theme="@style/ClickableView"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/exo_DomKino_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/domkino"
+                android:theme="@style/ClickableView"
+                android:visibility="gone"/>
+
+
 
             <ImageView
                 android:id="@+id/testfav"
@@ -866,6 +922,56 @@
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:src="@drawable/logospas"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_VIP_Comedy"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/vip_comedy"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_VIP_Serial"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/vip_serial"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_Premiere"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/premiere"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_Megahit"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/vip_megahit"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_DomKino"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/domkino"
                 android:theme="@style/ClickableView" />
 
             <ImageView
