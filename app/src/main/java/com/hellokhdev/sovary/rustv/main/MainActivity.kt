@@ -12,14 +12,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
-import com.hellokhdev.sovary.rustv.settings.Settings
 import com.hellokhdev.sovary.rustv.tvprogram.tvprogramm
 import com.hellokhdev.sovary.rustv.util.ScreenUtil.screenHeight
 import com.hellokhdev.sovary.rustv.util.ScreenUtil.screenWidth
 import com.hellokhdev.sovary.rustv.watch.WatchActivity
 import com.hellokhdev.sovary.rustv.watch.WatchMP4Activity
 import com.newdev.beta.rustv.R
-import com.yandex.mobile.ads.banner.AdSize
+import com.yandex.mobile.ads.banner.BannerAdSize
 import com.yandex.mobile.ads.banner.BannerAdView
 import com.yandex.mobile.ads.common.AdRequest
 import com.yandex.mobile.ads.common.InitializationListener
@@ -29,13 +28,11 @@ import kotlinx.coroutines.runBlocking
 
 
 class MainActivity : AppCompatActivity() {
-    private var setSecondThread: Thread? = null
-    private var runnable: Runnable? = null
     private val YANDEX_MOBILE_ADS_TAG = "YandexMobileAds"
     lateinit var mBannerAdView : BannerAdView
     private var bannerWidth = 0
     private var bannerHeight = 0
-    val AdUnitId = "demo-banner-yandex" //"R-M-2278524-1"      demo-banner-yandex
+    val AdUnitId = "R-M-2278524-1" //"R-M-2278524-1"      demo-banner-yandex
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         mBannerAdView.setAdUnitId(AdUnitId)
         bannerWidth = screenWidth
         bannerHeight = screenHeight / 5
-        mBannerAdView.setAdSize(AdSize.flexibleSize(bannerWidth, bannerHeight))
+        mBannerAdView.setAdSize(BannerAdSize.stickySize(this,bannerWidth))
         mBannerAdView.setBannerAdEventListener()
 
         val adViewLayoutParams = RelativeLayout.LayoutParams(
@@ -101,11 +98,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun init() {
-        runnable = Runnable {pause() }
-        setSecondThread = Thread(runnable)
-        setSecondThread!!.start()
-    }
     fun pause() = runBlocking {
         delay(15000L)
         exit()

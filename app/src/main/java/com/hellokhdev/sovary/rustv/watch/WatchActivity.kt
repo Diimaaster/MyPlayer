@@ -2,9 +2,9 @@ package com.hellokhdev.sovary.rustv.watch
 
 
 
+
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.app.Dialog
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
@@ -28,61 +28,68 @@ import com.google.android.exoplayer2.ui.AspectRatioFrameLayout.*
 import com.google.android.exoplayer2.ui.PlayerView
 import com.hellokhdev.sovary.rustv.main.MainActivity
 import com.newdev.beta.rustv.R
-import com.yandex.mobile.ads.common.AdRequest
+import com.yandex.mobile.ads.common.AdError
+import com.yandex.mobile.ads.common.AdRequestConfiguration
 import com.yandex.mobile.ads.common.AdRequestError
 import com.yandex.mobile.ads.common.ImpressionData
+import com.yandex.mobile.ads.common.MobileAds
 import com.yandex.mobile.ads.interstitial.InterstitialAd
 import com.yandex.mobile.ads.interstitial.InterstitialAdEventListener
+import com.yandex.mobile.ads.interstitial.InterstitialAdLoadListener
+import com.yandex.mobile.ads.interstitial.InterstitialAdLoader
 import com.yandex.mobile.ads.rewarded.Reward
 import com.yandex.mobile.ads.rewarded.RewardedAd
 import com.yandex.mobile.ads.rewarded.RewardedAdEventListener
+import com.yandex.mobile.ads.rewarded.RewardedAdLoadListener
+import com.yandex.mobile.ads.rewarded.RewardedAdLoader
 
 
-class WatchActivity : AppCompatActivity() {
+
+class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedAdLoadListener {
 
     companion object {
         var isFullScreen = false
         var isLock = false
-
     }
-
-
-    private val eventLogger = InterstitialAdEventLogger()
-    private val eventLoggerRew = RewardedAdEventLogger()
-
-    private val adUnitId = "demo-interstitial-yandex" //demo-interstitial-yandex    R-M-2278524-2
-    private var adUnitIdRew = "demo-rewarded-yandex"
-
     lateinit var handler: Handler
     lateinit var simpleExoPlayer: SimpleExoPlayer
     lateinit var bt_fullscreen: ImageView
 
+//-------
+    private val adUnitId = "demo-interstitial-yandex" //demo-interstitial-yandex    R-M-2278524-2
+    private val eventLogger = InterstitialAdEventLogger()
+    private var interstitialAdLoader: InterstitialAdLoader? = null
+    private var interstitialAd: InterstitialAd? = null
 
-    private var mInterstitialAd: InterstitialAd? = null
+//-------
     private var rewardedAd: RewardedAd? = null
+    private val eventLoggerRew = RewardedAdEventLogger()
+    private var adUnitIdRew = "demo-rewarded-yandex"
+    private var rewardedAdLoader: RewardedAdLoader? = null
 
-
+//-------
     lateinit var lastCh: SharedPreferences
     private val save_key: String = "last_ch"
     lateinit var videoSource: Uri
-
     lateinit var FvCh: SharedPreferences
-
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_watch)
+
         FullScreencall()
         handler = Handler(Looper.getMainLooper())
-
         lastCh = getSharedPreferences("LastChanel", MODE_PRIVATE)
         FvCh = getSharedPreferences("FvChanel", MODE_PRIVATE)
 
-        mInterstitialAd = InterstitialAd(this);
-        mInterstitialAd!!.setAdUnitId(adUnitId);
 
-        //loadInterstitial()
+        val loader = InterstitialAdLoader(this).apply {
+            setAdLoadListener(this@WatchActivity)
+        }
+        loader.loadAd(AdRequestConfiguration.Builder(adUnitId).build())
+        interstitialAd?.setAdEventListener(eventLogger)
+
 
         val playerView = findViewById<PlayerView>(R.id.player)
         val progressBar = findViewById<ProgressBar>(R.id.progress_bar)
@@ -187,7 +194,14 @@ class WatchActivity : AppCompatActivity() {
 
 
         val bt_plus = findViewById<ImageView>(R.id.exo_plus)
-        val bt_p1 = findViewById<ImageView>(R.id.exo_plus1)
+        val bt_kinomix = findViewById<ImageView>(R.id.exo_kinomix)
+        val bt_rodnoekino = findViewById<ImageView>(R.id.exo_rodnoekino)
+        val bt_muzskoekino = findViewById<ImageView>(R.id.exo_muzskoekino)
+        val bt_kinosemya = findViewById<ImageView>(R.id.exo_kinosemya)
+        val bt_kinouzas = findViewById<ImageView>(R.id.exo_kinouzas)
+        val bt_kinopremiera = findViewById<ImageView>(R.id.exo_kinopremiera)
+        val bt_kinosvidanie = findViewById<ImageView>(R.id.exo_kinosvedanie)
+        val bt_kinocomedy = findViewById<ImageView>(R.id.exo_kinocomedy)
 
 
         val videoSourceTV3 = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/TV3_OTT_HD.m3u8")
@@ -231,7 +245,6 @@ class WatchActivity : AppCompatActivity() {
         val videoSourceStsLove = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/CTC_Love_OTT_2.m3u8?zi/")
         val videoSourceVhs2 = Uri.parse("https://autopilot.catcast.tv/content/38821/index.m3u8")
         val videoSourceTvc = Uri.parse("https://tvc-hls.cdnvideo.ru/tvc-res/smil:vd9221_2.smil/playlist.m3u8")
-        val videoSourcep1 = Uri.parse("https://sc.id-tv.kz/Kinomix_hd.m3u8")
         val videoSourceVIP_Comedy = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/VIP_Comedy_HD.m3u8")
         val videoSourceVIP_Serial = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/VIP_Serial_HD.m3u8")
         val videoSourceVIP_Premiere = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/VIP_Premiere_HD.m3u8")
@@ -245,7 +258,7 @@ class WatchActivity : AppCompatActivity() {
         val videoSourceKinomix = Uri.parse("https://sc.id-tv.kz/Kinomix_hd.m3u8")
         val videoSourceKinokomediya = Uri.parse("https://sc.id-tv.kz/Kinokomediya_hd.m3u8")
         val videoSourceDomKino = Uri.parse("https://sc.id-tv.kz/DomKino.m3u8")   //https://sc.id-tv.kz/domkino_hd.m3u8
-
+        val videoSourcePobeda = Uri.parse("http://45.151.28.21:8000/play/a01a/index.m3u8")
 
 
         bt_fullscreen.setOnClickListener {
@@ -1057,8 +1070,29 @@ class WatchActivity : AppCompatActivity() {
 
 
 
-        bt_p1.setOnClickListener {
-            setChanel(videoSourcep1)
+        bt_kinomix.setOnClickListener {
+            setChanel(videoSourceKinomix)
+        }
+        bt_kinosemya.setOnClickListener {
+            setChanel(videoSourceKinosemiya)
+        }
+        bt_kinouzas.setOnClickListener {
+            setChanel(videoSourceKinouzhas)
+        }
+        bt_rodnoekino.setOnClickListener {
+            setChanel(videoSourceRodnoe_kino)
+        }
+        bt_muzskoekino.setOnClickListener {
+            setChanel(videoSourceMujskoe_kino)
+        }
+        bt_kinopremiera.setOnClickListener {
+            setChanel(videoSourceKinopremiera)
+        }
+        bt_kinosvidanie.setOnClickListener {
+            setChanel(videoSourceKinosvidanie)
+        }
+        bt_kinocomedy.setOnClickListener {
+            setChanel(videoSourceKinokomediya)
         }
 
 
@@ -1068,6 +1102,7 @@ class WatchActivity : AppCompatActivity() {
             onSaveLast(videoSourceVIP_Premiere)
             setChanelChoose = 41
         }
+
 
         bt_DomKino.setOnClickListener {
             setChanel(videoSourceDomKino)
@@ -1313,31 +1348,33 @@ class WatchActivity : AppCompatActivity() {
             setChanelChoose = 38
         }
 
-
-
-
-
+        
 
 
         bt_plus.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Внимание!")
-            builder.setMessage("ФЫвшргфырвшзраывфргазыфщва")
+            builder.setMessage("Сейчас будет показана реклама длительностью ~25 сек.\n" +
+                    "После ее просмотра , будут добавленны каналы:\n" +
+                    "МУЖСКОЕ КИНО\n" +
+                    "РОДНОЕ КИНО\n" +
+                    "КИНОМИКС\n" +
+                    "КИНОУЖАС\n" +
+                    "КИНОСЕМЬЯ\n" +
+                    "КИНОПРЕМЬЕРА\n" +
+                    "КИНОКОМЕДИЯ \n" +
+                    "КИНОСВИДАНИЕ")
            // builder.setIcon(android.R.drawable.ic_dialog_alert)
 
-            builder.setPositiveButton("Да") { dialogInterface, which ->
-                Toast.makeText(applicationContext, "clicked yes", Toast.LENGTH_LONG).show()
-                loadRewarded()
+            builder.setPositiveButton("Смотреть") { dialogInterface, which ->
+                rewardedAdLoader = RewardedAdLoader(this).apply {
+                    setAdLoadListener(this@WatchActivity)
+                }
+                rewardedAdLoader?.loadAd(AdRequestConfiguration.Builder(adUnitIdRew).build())
+
             }
             builder.setNeutralButton("Отмена") { dialogInterface, which ->
-                Toast.makeText(
-                    applicationContext,
-                    "clicked cancel\n operation cancel",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-            builder.setNegativeButton("Нет") { dialogInterface, which ->
-                Toast.makeText(applicationContext, "clicked No", Toast.LENGTH_LONG).show()
+
             }
             val alertDialog: AlertDialog = builder.create()
 
@@ -1377,40 +1414,23 @@ class WatchActivity : AppCompatActivity() {
 
     }
 
-    private fun loadRewarded() {
-            destroyRewarded()
-            createRewarded()
-        rewardedAd?.loadAd(AdRequest.Builder().build())
-    }
-
-    private fun createRewarded() {
-        rewardedAd = RewardedAd(this).apply {
-            setAdUnitId(adUnitIdRew)
-            setRewardedAdEventListener(eventLoggerRew)
-        }
-    }
-
-    private fun destroyRewarded() {
-        rewardedAd?.destroy()
-        rewardedAd = null
-    }
-
-
     private inner class RewardedAdEventLogger : RewardedAdEventListener {
-
-        override fun onAdLoaded() {
-           rewardedAd?.show()
-        }
-
-        override fun onAdFailedToLoad(error: AdRequestError) {
-        }
 
         override fun onAdShown() {
         }
 
-        override fun onAdDismissed() {
+        override fun onAdFailedToShow(adError: AdError) {
         }
 
+        override fun onAdDismissed() {
+            destroyRewardedAd()
+        }
+
+        override fun onAdClicked() {
+        }
+
+        override fun onAdImpression(data: ImpressionData?) {
+        }
         override fun onRewarded(reward: Reward) {
             val add_ch = findViewById<LinearLayout>(R.id.add_ch)
             val bt_plus = findViewById<ImageView>(R.id.exo_plus)
@@ -1418,18 +1438,98 @@ class WatchActivity : AppCompatActivity() {
             bt_plus.visibility = View.GONE
         }
 
+
+    }
+
+    private fun destroyInterstitial() {
+        interstitialAd?.setAdEventListener(null)
+        interstitialAd = null
+    }
+
+    override fun onAdLoaded(interstitialAd: InterstitialAd) {
+        interstitialAd?.show(this@WatchActivity)
+    }
+
+    override fun onAdLoaded(rewardedAd: RewardedAd) {
+        rewardedAd?.apply {
+            setAdEventListener(eventLoggerRew)
+            show(this@WatchActivity)
+        }
+    }
+
+    override fun onAdFailedToLoad(adRequestError: AdRequestError) {}
+
+    private inner class InterstitialAdEventLogger : InterstitialAdEventListener {
+
+        override fun onAdShown() {
+        }
+
+        override fun onAdFailedToShow(adError: AdError) {
+        }
+
+        override fun onAdDismissed() {
+        }
+
         override fun onAdClicked() {
         }
 
-        override fun onLeftApplication() {
-        }
-
-        override fun onReturnedToApplication() {
-        }
-
-        override fun onImpression(data: ImpressionData?) {
+        override fun onAdImpression(data: ImpressionData?) {
         }
     }
+
+//    private fun loadRewarded() {
+//            destroyRewarded()
+//            createRewarded()
+//        rewardedAd?.loadAd(AdRequest.Builder().build())
+//    }
+//
+//    private fun createRewarded() {
+//        rewardedAd = RewardedAd(this).apply {
+//            setAdUnitId(adUnitIdRew)
+//            setRewardedAdEventListener(eventLoggerRew)
+//        }
+//    }
+//
+//    private fun destroyRewarded() {
+//        rewardedAd?.destroy()
+//        rewardedAd = null
+//    }
+//
+//
+//    private inner class RewardedAdEventLogger : RewardedAdEventListener {
+//
+//        override fun onAdLoaded() {
+//           rewardedAd?.show()
+//        }
+//
+//        override fun onAdFailedToLoad(error: AdRequestError) {
+//        }
+//
+//        override fun onAdShown() {
+//        }
+//
+//        override fun onAdDismissed() {
+//        }
+//
+//        override fun onRewarded(reward: Reward) {
+//            val add_ch = findViewById<LinearLayout>(R.id.add_ch)
+//            val bt_plus = findViewById<ImageView>(R.id.exo_plus)
+//            add_ch.visibility = View.VISIBLE
+//            bt_plus.visibility = View.GONE
+//        }
+//
+//        override fun onAdClicked() {
+//        }
+//
+//        override fun onLeftApplication() {
+//        }
+//
+//        override fun onReturnedToApplication() {
+//        }
+//
+//        override fun onImpression(data: ImpressionData?) {
+//        }
+//    }
 
     fun startHd() {
         simpleExoPlayer.stop()
@@ -1452,8 +1552,6 @@ class WatchActivity : AppCompatActivity() {
             .build()
     }
 
-    val ad = 4000
-    var check = false
     fun onProgress() {
         val player = simpleExoPlayer
         val position: Long = if (player == null) 0 else player.currentPosition
@@ -1470,10 +1568,6 @@ class WatchActivity : AppCompatActivity() {
                 delayMs = 1000
             }
 
-            //check to display ad
-            if ((ad - 3000 <= position && position <= ad) && !check) {
-                check = true
-            }
             handler.postDelayed(updateProgressAction, delayMs)
         }
     }
@@ -1501,20 +1595,6 @@ class WatchActivity : AppCompatActivity() {
     }
 
 
-    private fun loadInterstitial() {
-        destroyInterstitial()
-        createInterstitial()
-        val adRequest = AdRequest.Builder().build()
-        mInterstitialAd?.loadAd(adRequest)
-    }
-
-    private fun createInterstitial() {
-        mInterstitialAd = InterstitialAd(this).apply {
-            setAdUnitId(adUnitId)
-            setInterstitialAdEventListener(eventLogger)
-        }
-    }
-
     private fun FullScreencall() {
         if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19) { // lower api
             val v = this.window.decorView
@@ -1528,40 +1608,6 @@ class WatchActivity : AppCompatActivity() {
         }
     }
 
-    private fun destroyInterstitial() {
-        mInterstitialAd?.destroy()
-        mInterstitialAd = null
-    }
-
-
-    private inner class InterstitialAdEventLogger : InterstitialAdEventListener {
-
-        override fun onAdLoaded() {
-            mInterstitialAd?.show()
-        }
-
-        override fun onAdFailedToLoad(error: AdRequestError) {
-
-        }
-
-        override fun onAdShown() {
-        }
-
-        override fun onAdDismissed() {
-        }
-
-        override fun onAdClicked() {
-        }
-
-        override fun onLeftApplication() {
-        }
-
-        override fun onReturnedToApplication() {
-        }
-
-        override fun onImpression(data: ImpressionData?) {
-        }
-    }
 
     fun onSaveLast(Source: Uri) {
         val edit = lastCh.edit()
@@ -1580,6 +1626,7 @@ class WatchActivity : AppCompatActivity() {
     }
 
     fun setChanel(Source: Uri) {
+        simpleExoPlayer.removeMediaItem(1)
         val mediaItem = MediaItem.fromUri(Source)
         simpleExoPlayer.setMediaItem(mediaItem)
         simpleExoPlayer.prepare()
@@ -1590,10 +1637,19 @@ class WatchActivity : AppCompatActivity() {
         super.onStop()
         simpleExoPlayer.stop()
     }
-
+    private fun destroyRewardedAd() {
+        // don't forget to clean up event listener to null?
+        rewardedAd?.setAdEventListener(null)
+        rewardedAd = null
+    }
     override fun onDestroy() {
+        rewardedAdLoader?.setAdLoadListener(null)
+        rewardedAdLoader = null
+        destroyRewardedAd()
+        interstitialAdLoader?.setAdLoadListener(null)
+        interstitialAdLoader = null
         destroyInterstitial()
-        destroyRewarded()
+        //destroyRewarded()
         super.onDestroy()
         simpleExoPlayer.release()
     }
@@ -1612,13 +1668,7 @@ class WatchActivity : AppCompatActivity() {
         )
     }
 
+
 }
-
-
-
-
-
-
-
 
 

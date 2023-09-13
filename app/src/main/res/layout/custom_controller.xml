@@ -965,14 +965,15 @@
                 android:theme="@style/ClickableView" />
 
             <ImageView
-                android:id="@+id/exo_DomKino"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:src="@drawable/domkino"
-                android:theme="@style/ClickableView" />
+            android:id="@+id/exo_DomKino"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:src="@drawable/domkino"
+            android:theme="@style/ClickableView" />
+
 
             <ImageView
                 android:id="@+id/exo_plus"
@@ -992,37 +993,88 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:orientation="horizontal"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <ImageView
-                android:id="@+id/exo_plus1"
+                android:id="@+id/exo_kinomix"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:src="@drawable/logospas"
+                android:src="@drawable/kinomix"
                 android:theme="@style/ClickableView" />
 
             <ImageView
-                android:id="@+id/exo_plus2"
+                android:id="@+id/exo_rodnoekino"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:src="@drawable/logospas"
+                android:src="@drawable/rodnoe_kino"
                 android:theme="@style/ClickableView" />
 
             <ImageView
-                android:id="@+id/exo_plus3"
+                android:id="@+id/exo_muzskoekino"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:src="@drawable/logospas"
+                android:src="@drawable/muzhskoe_kino"
                 android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_kinouzas"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/kinouzhas"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_kinosemya"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/semya"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_kinopremiera"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/premiera"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_kinocomedy"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/kinokomediya"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_kinosvedanie"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/kinosvidanie"
+                android:theme="@style/ClickableView" />
+
 
         </LinearLayout>
 
