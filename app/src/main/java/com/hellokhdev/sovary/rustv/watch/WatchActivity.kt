@@ -56,7 +56,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
     lateinit var bt_fullscreen: ImageView
 
 //-------
-    private val adUnitId = "demo-interstitial-yandex" //demo-interstitial-yandex    R-M-2278524-2
+    private val adUnitId = "R-M-2278524-2" //demo-interstitial-yandex    R-M-2278524-2
     private val eventLogger = InterstitialAdEventLogger()
     private var interstitialAdLoader: InterstitialAdLoader? = null
     private var interstitialAd: InterstitialAd? = null
@@ -64,7 +64,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
 //-------
     private var rewardedAd: RewardedAd? = null
     private val eventLoggerRew = RewardedAdEventLogger()
-    private var adUnitIdRew = "demo-rewarded-yandex"
+    private var adUnitIdRew = "R-M-2278524-3"  //R-M-2278524-3    demo-rewarded-yandex
     private var rewardedAdLoader: RewardedAdLoader? = null
 
 //-------
