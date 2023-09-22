@@ -12,8 +12,8 @@ android {
         applicationId "com.hellokhdev.sovary.myplayer"
         minSdkVersion 21
         targetSdkVersion 33
-        versionCode 21
-        versionName "1.2"
+        versionCode 22
+        versionName "1.2.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

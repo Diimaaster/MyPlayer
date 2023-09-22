@@ -79,6 +79,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         setContentView(R.layout.activity_watch)
 
         FullScreencall()
+
         handler = Handler(Looper.getMainLooper())
         lastCh = getSharedPreferences("LastChanel", MODE_PRIVATE)
         FvCh = getSharedPreferences("FvChanel", MODE_PRIVATE)
@@ -102,7 +103,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             startActivity(intent)
         }
 
-        FullScreencall()
+        val bt_test_chanel = findViewById<ImageView>(R.id.exo_test)
 
         val bt_ren_fv = findViewById<ImageView>(R.id.exo_ren_fv)
         val bt_1st_fv = findViewById<ImageView>(R.id.exo_1_fv)
@@ -147,6 +148,8 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val bt_VIP_Premiere_fv = findViewById<ImageView>(R.id.exo_Premiere_fv)
         val bt_VIP_Megahit_fv = findViewById<ImageView>(R.id.exo_Megahit_fv)
         val bt_DomKino_fv = findViewById<ImageView>(R.id.exo_DomKino_fv)
+        val bt_sarafan_fv = findViewById<ImageView>(R.id.exo_sarafan_fv)
+        val bt_pobeda_fv = findViewById<ImageView>(R.id.exo_pobeda_fv)
 
         val bt_ren = findViewById<ImageView>(R.id.exo_ren)   //1
         val bt_1st = findViewById<ImageView>(R.id.exo_1)     //2
@@ -191,6 +194,8 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val bt_VIP_Premiere = findViewById<ImageView>(R.id.exo_Premiere)     //41
         val bt_VIP_Megahit = findViewById<ImageView>(R.id.exo_Megahit)     //42
         val bt_DomKino = findViewById<ImageView>(R.id.exo_DomKino)     //43
+        val bt_sarafan = findViewById<ImageView>(R.id.exo_sarafan)     //44
+        val bt_pobeda = findViewById<ImageView>(R.id.exo_pobeda)     //45
 
 
         val bt_plus = findViewById<ImageView>(R.id.exo_plus)
@@ -258,7 +263,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val videoSourceKinomix = Uri.parse("https://sc.id-tv.kz/Kinomix_hd.m3u8")
         val videoSourceKinokomediya = Uri.parse("https://sc.id-tv.kz/Kinokomediya_hd.m3u8")
         val videoSourceDomKino = Uri.parse("https://sc.id-tv.kz/DomKino.m3u8")   //https://sc.id-tv.kz/domkino_hd.m3u8
-        val videoSourcePobeda = Uri.parse("http://45.151.28.21:8000/play/a01a/index.m3u8")
+        val videoSourceSarafan = Uri.parse("https://cdn-cache01.voka.tv/live/84-req_offset_28000000-req_window_0-2k_v5.m3u8")
+        val videoSourcePobeda = Uri.parse("https://stream02.vnet.am/NatGeoWild/tracks-a1/mono.m3u8")
+        val videoSourcetest = Uri.parse("https://cdn-cache01.voka.tv/live/84-req_offset_28000000-req_window_0-2k_v5.m3u8")
 
 
         bt_fullscreen.setOnClickListener {
@@ -857,12 +864,34 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             } else {
                 bt_DomKino_fv.visibility = View.GONE
             }
-
+            if (FvCh.getInt(44.toString(), 0) == 1) {
+                bt_sarafan_fv.visibility = View.VISIBLE
+            } else {
+                bt_sarafan_fv.visibility = View.GONE
+            }
+            if (FvCh.getInt(45.toString(), 0) == 1) {
+                bt_pobeda_fv.visibility = View.VISIBLE
+            } else {
+                bt_pobeda_fv.visibility = View.GONE
+            }
 
         }
 
 
+        bt_test_chanel.setOnClickListener {
+            setChanel(videoSourcetest)
+            onSaveLast(videoSourcetest)
+        }
 
+        bt_sarafan_fv.setOnClickListener {
+            setChanel(videoSourceSarafan)
+            onSaveLast(videoSourceSarafan)
+        }
+
+        bt_pobeda_fv.setOnClickListener {
+            setChanel(videoSourcePobeda)
+            onSaveLast(videoSourcePobeda)
+        }
 
         bt_black_fv.setOnClickListener {
             setChanel(videoSourceblack)
@@ -1070,6 +1099,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
 
 
 
+
         bt_kinomix.setOnClickListener {
             setChanel(videoSourceKinomix)
         }
@@ -1096,6 +1126,19 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         }
 
 
+
+
+        bt_pobeda.setOnClickListener {
+            setChanel(videoSourcePobeda)
+            onSaveLast(videoSourcePobeda)
+            setChanelChoose = 45
+        }
+
+        bt_sarafan.setOnClickListener {
+            setChanel(videoSourceSarafan)
+            onSaveLast(videoSourceSarafan)
+            setChanelChoose = 44
+        }
 
         bt_VIP_Premiere.setOnClickListener {
             setChanel(videoSourceVIP_Premiere)
@@ -1596,15 +1639,15 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
 
 
     private fun FullScreencall() {
-        if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19) { // lower api
-            val v = this.window.decorView
-            v.systemUiVisibility = View.GONE
-        } else if (Build.VERSION.SDK_INT >= 19) {
-            //for new api versions.
-            val decorView = window.decorView
-            val uiOptions =
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-            decorView.systemUiVisibility = uiOptions
+        getWindow().setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        );
+
+        if (Build.VERSION.SDK_INT >= 19) {
+            window.decorView.systemUiVisibility = (
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
         }
     }
 
