@@ -521,16 +521,26 @@
                 android:theme="@style/ClickableView" />
 
             <ImageView
-                android:id="@+id/exo_pobeda_fv"
+                android:id="@+id/exo_hollywood_fv"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:src="@drawable/pobeda"
+                android:src="@drawable/hollywood"
                 android:visibility="gone"
                 android:theme="@style/ClickableView" />
 
+            <ImageView
+                android:id="@+id/exo_myplanet_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/myplanet"
+                android:visibility="gone"
+                android:theme="@style/ClickableView" />
 
 
             <ImageView
@@ -623,17 +633,6 @@
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:src="@drawable/logozvezda"
-                android:theme="@style/ClickableView" />
-
-            <ImageView
-                android:id="@+id/exo_pobeda"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:visibility="gone"
-                android:src="@drawable/pobeda"
                 android:theme="@style/ClickableView" />
 
             <ImageView
@@ -1016,6 +1015,28 @@
                 android:layout_weight="1"
                 android:src="@drawable/sarafan"
                 android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_hollywood"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/hollywood"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_myplanet"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/myplanet"
+                android:theme="@style/ClickableView" />
+
+
 
             <ImageView
                 android:id="@+id/exo_test"
