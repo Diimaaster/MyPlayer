@@ -11,9 +11,9 @@ android {
     defaultConfig {
         applicationId "com.hellokhdev.sovary.myplayer"
         minSdkVersion 21
-        targetSdkVersion 33
-        versionCode 22
-        versionName "1.2.0.1"
+        targetSdkVersion 32
+        versionCode 25
+        versionName "1.2.0.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -43,7 +43,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.+'
-    implementation 'com.yandex.android:mobileads:6.0.0'
+    implementation 'com.yandex.android:mobileads:6.1.0'
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
     implementation 'org.jsoup:jsoup:1.15.4'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

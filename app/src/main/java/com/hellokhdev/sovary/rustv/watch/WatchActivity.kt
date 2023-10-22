@@ -128,7 +128,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val bt_pyatniza_fv = findViewById<ImageView>(R.id.exo_pyatniza_fv)
         val bt_MuzTv_fv = findViewById<ImageView>(R.id.exo_muztv_fv)
         val bt_vhs_fv = findViewById<ImageView>(R.id.exo_vhs_fv)
-        val bt_nikolodion_fv = findViewById<ImageView>(R.id.exo_nikolodion_fv)
+        val bt_pobeda_fv = findViewById<ImageView>(R.id.exo_pobeda_fv)
         val bt_red_fv = findViewById<ImageView>(R.id.exo_red_fv)
         val bt_black_fv = findViewById<ImageView>(R.id.exo_black_fv)
         val bt_history_fv = findViewById<ImageView>(R.id.exo_history_fv)
@@ -141,16 +141,17 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val bt_Start_world_fv = findViewById<ImageView>(R.id.exo_Start_world_fv)
         val bt_Che_fv = findViewById<ImageView>(R.id.exo_Che_fv)
         val bt_StsLove_fv = findViewById<ImageView>(R.id.exo_sts_love_fv)
-        val bt_vhs2_fv = findViewById<ImageView>(R.id.exo_vhs2_fv)
+        val bt_oruzie_fv = findViewById<ImageView>(R.id.exo_oruzie_fv)
         val bt_tvc_fv = findViewById<ImageView>(R.id.exo_tvc_fv)
         val bt_VIP_Comedy_fv = findViewById<ImageView>(R.id.exo_VIP_Comedy_fv)
         val bt_VIP_Serial_fv = findViewById<ImageView>(R.id.exo_VIP_Serial_fv)
         val bt_VIP_Premiere_fv = findViewById<ImageView>(R.id.exo_Premiere_fv)
         val bt_VIP_Megahit_fv = findViewById<ImageView>(R.id.exo_Megahit_fv)
         val bt_DomKino_fv = findViewById<ImageView>(R.id.exo_DomKino_fv)
-        val bt_sarafan_fv = findViewById<ImageView>(R.id.exo_sarafan_fv)
+        val bt_zolcol_fv = findViewById<ImageView>(R.id.exo_zolcol_fv)
         val bt_hollywood_fv = findViewById<ImageView>(R.id.exo_hollywood_fv)
         val bt_myplanet_fv = findViewById<ImageView>(R.id.exo_myplanet_fv)
+        val bt_dompremium_fv = findViewById<ImageView>(R.id.exo_dompremium_fv)
 
         val bt_ren = findViewById<ImageView>(R.id.exo_ren)   //1
         val bt_1st = findViewById<ImageView>(R.id.exo_1)     //2
@@ -175,7 +176,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val bt_pyatniza = findViewById<ImageView>(R.id.exo_pyatniza)    //21
         val bt_MuzTv = findViewById<ImageView>(R.id.exo_muztv)   //22
         val bt_vhs = findViewById<ImageView>(R.id.exo_vhs)  //23
-        val bt_nikolodion = findViewById<ImageView>(R.id.exo_nikolodion)    //24
+        val bt_pobeda = findViewById<ImageView>(R.id.exo_pobeda)    //24
         val bt_red = findViewById<ImageView>(R.id.exo_red)      //25
         val bt_black = findViewById<ImageView>(R.id.exo_black)      //26
         val bt_history = findViewById<ImageView>(R.id.exo_history)      //27
@@ -188,16 +189,17 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val bt_Start_world = findViewById<ImageView>(R.id.exo_Start_world)      //34
         val bt_Che = findViewById<ImageView>(R.id.exo_Che)      //35
         val bt_StsLove = findViewById<ImageView>(R.id.exo_sts_love)     //36
-        val bt_vhs2 = findViewById<ImageView>(R.id.exo_vhs2)     //37
+        val bt_oruzie = findViewById<ImageView>(R.id.exo_oruzie)     //37
         val bt_tvc = findViewById<ImageView>(R.id.exo_tvc)     //38
         val bt_VIP_Comedy = findViewById<ImageView>(R.id.exo_VIP_Comedy)     //39
         val bt_VIP_Serial = findViewById<ImageView>(R.id.exo_VIP_Serial)     //40
         val bt_VIP_Premiere = findViewById<ImageView>(R.id.exo_Premiere)     //41
         val bt_VIP_Megahit = findViewById<ImageView>(R.id.exo_Megahit)     //42
         val bt_DomKino = findViewById<ImageView>(R.id.exo_DomKino)     //43
-        val bt_sarafan = findViewById<ImageView>(R.id.exo_sarafan)     //44
+        val bt_zolcol = findViewById<ImageView>(R.id.exo_zolcol)     //44
         val bt_hollywood = findViewById<ImageView>(R.id.exo_hollywood)     //45
         val bt_myplanet = findViewById<ImageView>(R.id.exo_myplanet)     //46
+        val bt_domkinopremium = findViewById<ImageView>(R.id.exo_dompremium)     //47
 
         val bt_plus = findViewById<ImageView>(R.id.exo_plus)
         val bt_kinomix = findViewById<ImageView>(R.id.exo_kinomix)
@@ -236,7 +238,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val videoSource5Ch = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/5_OTT.m3u8")
         val videoSourceMult = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Multilandia_HD.m3u8")
         val videoSourcevhs = Uri.parse("https://autopilot.catcast.tv/content/37925/index.m3u8")
-        val videoSourceNickolodion = Uri.parse("https://sc.id-tv.kz/Nickelodeon.m3u8")
+        val videoSourcePobeda = Uri.parse("https://edge04-alm.beetv.kz/bpk-token/2an@geswrcf3i0gkusqha4e0qendf0brunuigunwkuba/btv/SWM/Pobeda/Pobeda_576p_2000kbps.m3u8")
         val videoSourcered = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Sony_ET/480p.m3u8")
         val videoSourceblack = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Sony_Turbo/480p.m3u8")
         val videoSourcehistory = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Viasat_History_ad_HD/1080p.m3u8")
@@ -249,7 +251,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val videoSourceturist = Uri.parse("https://livetv.mylifeisgood.ml/channels/glazamiturista")
         val videoSourceChe = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Che_OTT_2.m3u8?zi/")
         val videoSourceStsLove = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/CTC_Love_OTT_2.m3u8?zi/")
-        val videoSourceVhs2 = Uri.parse("https://autopilot.catcast.tv/content/38821/index.m3u8")
+        val videoSourceOruzie = Uri.parse("https://tbs01-edge11.itdc.ge/oruzhie/tracks-v1a1/mono.m3u8")
         val videoSourceTvc = Uri.parse("https://tvc-hls.cdnvideo.ru/tvc-res/smil:vd9221_2.smil/playlist.m3u8")
         val videoSourceVIP_Comedy = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/VIP_Comedy_HD.m3u8")
         val videoSourceVIP_Serial = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/VIP_Serial_HD.m3u8")
@@ -263,11 +265,12 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val videoSourceKinosvidanie = Uri.parse("https://sc.id-tv.kz/Kinosvidanie_hd.m3u8")
         val videoSourceKinomix = Uri.parse("https://sc.id-tv.kz/Kinomix_hd.m3u8")
         val videoSourceKinokomediya = Uri.parse("https://sc.id-tv.kz/Kinokomediya_hd.m3u8")
-        val videoSourceDomKino = Uri.parse("https://tbs01-edge11.itdc.ge/domkino/tracks-v1a1/mono.m3u8")   //https://sc.id-tv.kz/domkino_hd.m3u8
-        val videoSourceSarafan = Uri.parse("https://cdn-cache01.voka.tv/live/84-req_offset_28000000-req_window_0-2k_v5.m3u8")
-        val videoSourceHollywood = Uri.parse("https://tbs01-edge11.itdc.ge/hollywoodhd/tracks-v1a1/mono.m3u8")
-        val videoSourceMyPlanet = Uri.parse("https://tbs01-edge11.itdc.ge/myplanet/tracks-v1a1/mono.m3u8")
-        val videoSourcetest = Uri.parse("https://tbs01-edge11.itdc.ge/myplanet/tracks-v1a1/mono.m3u8")
+        val videoSourceDomKino = Uri.parse("https://edge02-alm.beetv.kz/bpk-token/2an@ntjksdb4gjjoud4uzpem4tuehc1mss2inr0rfzba/btv/SWM/Dom_Kino/Dom_Kino_576p_2000kbps.m3u8")   //https://sc.id-tv.kz/domkino_hd.m3u8
+        val videoSourceZolCol = Uri.parse("https://edge03-alm.beetv.kz/bpk-token/2an@m44iqa2w1dbcarbmh4voe3rabatxhceamefilwaa/btv/SWM/mosfilm/mosfilm_576p_2000kbps.m3u8")
+        val videoSourceHollywood = Uri.parse("https://edge04-alm.beetv.kz/bpk-token/2an@cofusovvvqk0ve2bu5csekif30qlbvulc40ujyba/btv/SWM/Hollywood/Hollywood_576p_2000kbps.m3u8")
+        val videoSourceMyPlanet = Uri.parse("https://edge02-alm.beetv.kz/bpk-token/2an@zbgicdpryajm2qxsehef1mqeggoqbsyyzdvtvzda/btv/SWM/PlanetaHD/PlanetaHD.m3u8")
+        val videoSourceDomPremium = Uri.parse("https://edge02-alm.beetv.kz/bpk-token/2an@zrmhggbas3yyush54vge1zommcoe1rrjzt52r2ba/btv/SWM/Dom_kino_Prem/Dom_kino_Prem_1080p_5000kbps.m3u8")
+        val videoSourcetest = Uri.parse("https://tbs01-edge11.itdc.ge/oruzhie/tracks-v1a1/mono.m3u8") //TEST///////TEST////////TEST///////TEST///
 
 
         bt_fullscreen.setOnClickListener {
@@ -542,9 +545,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             bt_vhs_fv.visibility = View.GONE
         }
         if (FvCh.getInt(24.toString(), 0) == 1) {
-            bt_nikolodion_fv.visibility = View.VISIBLE
+            bt_pobeda_fv.visibility = View.VISIBLE
         } else {
-            bt_nikolodion_fv.visibility = View.GONE
+            bt_pobeda_fv.visibility = View.GONE
         }
         if (FvCh.getInt(25.toString(), 0) == 1) {
             bt_red_fv.visibility = View.VISIBLE
@@ -607,9 +610,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             bt_StsLove_fv.visibility = View.GONE
         }
         if (FvCh.getInt(37.toString(), 0) == 1) {
-            bt_vhs2_fv.visibility = View.VISIBLE
+            bt_oruzie_fv.visibility = View.VISIBLE
         } else {
-            bt_vhs2_fv.visibility = View.GONE
+            bt_oruzie_fv.visibility = View.GONE
         }
         if (FvCh.getInt(38.toString(), 0) == 1) {
             bt_tvc_fv.visibility = View.VISIBLE
@@ -642,9 +645,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             bt_DomKino_fv.visibility = View.GONE
         }
         if (FvCh.getInt(44.toString(), 0) == 1) {
-            bt_sarafan_fv.visibility = View.VISIBLE
+            bt_zolcol_fv.visibility = View.VISIBLE
         } else {
-            bt_sarafan_fv.visibility = View.GONE
+            bt_zolcol_fv.visibility = View.GONE
         }
         if (FvCh.getInt(45.toString(), 0) == 1) {
             bt_hollywood_fv.visibility = View.VISIBLE
@@ -655,6 +658,11 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             bt_myplanet_fv.visibility = View.VISIBLE
         } else {
             bt_myplanet_fv.visibility = View.GONE
+        }
+        if (FvCh.getInt(47.toString(), 0) == 1) {
+            bt_dompremium_fv.visibility = View.VISIBLE
+        } else {
+            bt_dompremium_fv.visibility = View.GONE
         }
 
         bt_fav.setOnClickListener {
@@ -782,9 +790,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
                 bt_vhs_fv.visibility = View.GONE
             }
             if (FvCh.getInt(24.toString(), 0) == 1) {
-                bt_nikolodion_fv.visibility = View.VISIBLE
+                bt_pobeda_fv.visibility = View.VISIBLE
             } else {
-                bt_nikolodion_fv.visibility = View.GONE
+                bt_pobeda_fv.visibility = View.GONE
             }
             if (FvCh.getInt(25.toString(), 0) == 1) {
                 bt_red_fv.visibility = View.VISIBLE
@@ -847,9 +855,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
                 bt_StsLove_fv.visibility = View.GONE
             }
             if (FvCh.getInt(37.toString(), 0) == 1) {
-                bt_vhs2_fv.visibility = View.VISIBLE
+                bt_oruzie_fv.visibility = View.VISIBLE
             } else {
-                bt_vhs2_fv.visibility = View.GONE
+                bt_oruzie_fv.visibility = View.GONE
             }
             if (FvCh.getInt(38.toString(), 0) == 1) {
                 bt_tvc_fv.visibility = View.VISIBLE
@@ -882,9 +890,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
                 bt_DomKino_fv.visibility = View.GONE
             }
             if (FvCh.getInt(44.toString(), 0) == 1) {
-                bt_sarafan_fv.visibility = View.VISIBLE
+                bt_zolcol_fv.visibility = View.VISIBLE
             } else {
-                bt_sarafan_fv.visibility = View.GONE
+                bt_zolcol_fv.visibility = View.GONE
             }
             if (FvCh.getInt(45.toString(), 0) == 1) {
                 bt_hollywood_fv.visibility = View.VISIBLE
@@ -895,6 +903,11 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
                 bt_myplanet_fv.visibility = View.VISIBLE
             } else {
                 bt_myplanet_fv.visibility = View.GONE
+            }
+            if (FvCh.getInt(47.toString(), 0) == 1) {
+                bt_dompremium_fv.visibility = View.VISIBLE
+            } else {
+                bt_dompremium_fv.visibility = View.GONE
             }
 
         }
@@ -910,9 +923,14 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             onSaveLast(videoSourceMyPlanet)
         }
 
-        bt_sarafan_fv.setOnClickListener {
-            setChanel(videoSourceSarafan)
-            onSaveLast(videoSourceSarafan)
+        bt_dompremium_fv.setOnClickListener {
+            setChanel(videoSourceDomPremium)
+            onSaveLast(videoSourceDomPremium)
+        }
+
+        bt_zolcol_fv.setOnClickListener {
+            setChanel(videoSourceZolCol)
+            onSaveLast(videoSourceZolCol)
         }
 
         bt_hollywood_fv.setOnClickListener {
@@ -962,9 +980,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             setChanel(videoSourcered)
             onSaveLast(videoSourcered)
         }
-        bt_nikolodion_fv.setOnClickListener {
-            setChanel(videoSourceNickolodion)
-            onSaveLast(videoSourceNickolodion)
+        bt_pobeda_fv.setOnClickListener {
+            setChanel(videoSourcePobeda)
+            onSaveLast(videoSourcePobeda)
         }
         bt_U_fv.setOnClickListener {
             setChanel(videoSourceU)
@@ -1089,9 +1107,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             setChanel(videoSourceFirst)
             onSaveLast(videoSourceFirst)
         }
-        bt_vhs2_fv.setOnClickListener {
-            setChanel(videoSourceVhs2)
-            onSaveLast(videoSourceVhs2)
+        bt_oruzie_fv.setOnClickListener {
+            setChanel(videoSourceOruzie)
+            onSaveLast(videoSourceOruzie)
         }
         bt_tvc_fv.setOnClickListener {
             setChanel(videoSourceTvc)
@@ -1167,9 +1185,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             setChanelChoose = 45
         }
 
-        bt_sarafan.setOnClickListener {
-            setChanel(videoSourceSarafan)
-            onSaveLast(videoSourceSarafan)
+        bt_zolcol.setOnClickListener {
+            setChanel(videoSourceZolCol)
+            onSaveLast(videoSourceZolCol)
             setChanelChoose = 44
         }
 
@@ -1256,9 +1274,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             onSaveLast(videoSourcered)
             setChanelChoose = 25
         }
-        bt_nikolodion.setOnClickListener {
-            setChanel(videoSourceNickolodion)
-            onSaveLast(videoSourceNickolodion)
+        bt_pobeda.setOnClickListener {
+            setChanel(videoSourcePobeda)
+            onSaveLast(videoSourcePobeda)
             setChanelChoose = 24
         }
         bt_U.setOnClickListener {
@@ -1345,6 +1363,12 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             setChanelChoose = 8
         }
 
+        bt_domkinopremium.setOnClickListener {
+            setChanel(videoSourceDomPremium)
+            onSaveLast(videoSourceDomPremium)
+            setChanelChoose = 47
+        }
+
         bt_mult.setOnClickListener {
             setChanel(videoSourceMult)
             onSaveLast(videoSourceMult)
@@ -1412,9 +1436,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             setChanelChoose = 2
         }
 
-        bt_vhs2.setOnClickListener {
-            setChanel(videoSourceVhs2)
-            onSaveLast(videoSourceVhs2)
+        bt_oruzie.setOnClickListener {
+            setChanel(videoSourceOruzie)
+            onSaveLast(videoSourceOruzie)
             setChanelChoose = 37
         }
 

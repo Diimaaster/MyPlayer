@@ -189,24 +189,24 @@
                 android:visibility="gone" />
 
             <ImageView
-                android:id="@+id/exo_vhs2_fv"
+                android:id="@+id/exo_oruzie_fv"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:src="@drawable/vhs"
+                android:src="@drawable/oruzie"
                 android:theme="@style/ClickableView"
                 android:visibility="gone" />
 
             <ImageView
-                android:id="@+id/exo_nikolodion_fv"
+                android:id="@+id/exo_pobeda_fv"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:src="@drawable/nickelodeon"
+                android:src="@drawable/pobeda"
                 android:theme="@style/ClickableView"
                 android:visibility="gone" />
 
@@ -510,13 +510,13 @@
                 android:visibility="gone"/>
 
             <ImageView
-                android:id="@+id/exo_sarafan_fv"
+                android:id="@+id/exo_zolcol_fv"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:src="@drawable/sarafan"
+                android:src="@drawable/zolcol"
                 android:visibility="gone"
                 android:theme="@style/ClickableView" />
 
@@ -528,6 +528,17 @@
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:src="@drawable/hollywood"
+                android:visibility="gone"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_dompremium_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/domprem"
                 android:visibility="gone"
                 android:theme="@style/ClickableView" />
 
@@ -725,23 +736,24 @@
                 android:theme="@style/ClickableView" />
 
             <ImageView
-                android:id="@+id/exo_vhs2"
+                android:id="@+id/exo_oruzie"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:src="@drawable/vhs"
+                android:src="@drawable/oruzie"
                 android:theme="@style/ClickableView" />
 
             <ImageView
-                android:id="@+id/exo_nikolodion"
+                android:id="@+id/exo_pobeda"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:src="@drawable/nickelodeon"
+                android:visibility="gone"
+                android:src="@drawable/pobeda"
                 android:theme="@style/ClickableView" />
 
             <ImageView
@@ -997,23 +1009,36 @@
                 android:theme="@style/ClickableView" />
 
             <ImageView
-            android:id="@+id/exo_DomKino"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
-            android:src="@drawable/domkino"
-            android:theme="@style/ClickableView" />
-
-            <ImageView
-                android:id="@+id/exo_sarafan"
+                android:id="@+id/exo_DomKino"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:src="@drawable/sarafan"
+                android:visibility="gone"
+                android:src="@drawable/domkino"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_dompremium"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:src="@drawable/domprem"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_zolcol"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/zolcol"
+                android:visibility="gone"
                 android:theme="@style/ClickableView" />
 
             <ImageView
@@ -1023,6 +1048,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
+                android:visibility="gone"
                 android:src="@drawable/hollywood"
                 android:theme="@style/ClickableView" />
 
@@ -1033,6 +1059,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
+                android:visibility="gone"
                 android:src="@drawable/myplanet"
                 android:theme="@style/ClickableView" />
 

@@ -4,13 +4,15 @@ package com.hellokhdev.sovary.rustv.main
 
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.hellokhdev.sovary.rustv.tvprogram.tvprogramm
@@ -58,6 +60,12 @@ class MainActivity : AppCompatActivity() {
 
         val adRequest: AdRequest = AdRequest.Builder().build()
         mBannerAdView.loadAd(adRequest)
+
+        val ll_btn = findViewById<LinearLayout>(R.id.liner_bt)
+
+        val rotate: Animation = AnimationUtils.loadAnimation(this, R.anim.rotate)
+        val anim: Animation = AnimationUtils.loadAnimation(this, R.anim.translate)
+        ll_btn.startAnimation(rotate)
 
         val tv_prog = findViewById<Button>(R.id.tv_prog)
         tv_prog.setOnClickListener {
