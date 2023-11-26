@@ -255,6 +255,39 @@
                 android:visibility="gone" />
 
             <ImageView
+                android:id="@+id/exo_test1_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:src="@drawable/domkino"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_test2_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:src="@drawable/domkino"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_test3_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:src="@drawable/domkino"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
                 android:id="@+id/exo_tnt_fv"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
@@ -555,13 +588,46 @@
 
 
             <ImageView
+                android:id="@+id/exo_terra_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:src="@drawable/terra"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_auto24_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone"
+                android:layout_weight="1"
+                android:src="@drawable/auto24"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_autoplus_fv"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:src="@drawable/autoplus"
+                android:theme="@style/ClickableView" />
+
+
+            <ImageView
                 android:id="@+id/testfav"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 app:tint="@color/white" />
-
 
         </LinearLayout>
     </HorizontalScrollView>
@@ -1063,6 +1129,35 @@
                 android:src="@drawable/myplanet"
                 android:theme="@style/ClickableView" />
 
+            <ImageView
+                android:id="@+id/exo_terra"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/terra"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_auto24"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/auto24"
+                android:theme="@style/ClickableView" />
+
+            <ImageView
+                android:id="@+id/exo_autoplus"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/autoplus"
+                android:theme="@style/ClickableView" />
 
 
             <ImageView

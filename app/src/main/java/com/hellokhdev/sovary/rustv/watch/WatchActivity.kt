@@ -152,6 +152,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val bt_hollywood_fv = findViewById<ImageView>(R.id.exo_hollywood_fv)
         val bt_myplanet_fv = findViewById<ImageView>(R.id.exo_myplanet_fv)
         val bt_dompremium_fv = findViewById<ImageView>(R.id.exo_dompremium_fv)
+        val bt_Terra_fv = findViewById<ImageView>(R.id.exo_terra_fv)
+        val bt_Auto24_fv = findViewById<ImageView>(R.id.exo_auto24_fv)
+        val bt_Autoplus_fv = findViewById<ImageView>(R.id.exo_autoplus_fv)
 
         val bt_ren = findViewById<ImageView>(R.id.exo_ren)   //1
         val bt_1st = findViewById<ImageView>(R.id.exo_1)     //2
@@ -200,6 +203,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val bt_hollywood = findViewById<ImageView>(R.id.exo_hollywood)     //45
         val bt_myplanet = findViewById<ImageView>(R.id.exo_myplanet)     //46
         val bt_domkinopremium = findViewById<ImageView>(R.id.exo_dompremium)     //47
+        val bt_terra = findViewById<ImageView>(R.id.exo_terra)     //48
+        val bt_auto24 = findViewById<ImageView>(R.id.exo_auto24)     //49
+        val bt_autoplus = findViewById<ImageView>(R.id.exo_autoplus)     //50
 
         val bt_plus = findViewById<ImageView>(R.id.exo_plus)
         val bt_kinomix = findViewById<ImageView>(R.id.exo_kinomix)
@@ -270,8 +276,10 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val videoSourceHollywood = Uri.parse("https://edge04-alm.beetv.kz/bpk-token/2an@cofusovvvqk0ve2bu5csekif30qlbvulc40ujyba/btv/SWM/Hollywood/Hollywood_576p_2000kbps.m3u8")
         val videoSourceMyPlanet = Uri.parse("https://edge02-alm.beetv.kz/bpk-token/2an@zbgicdpryajm2qxsehef1mqeggoqbsyyzdvtvzda/btv/SWM/PlanetaHD/PlanetaHD.m3u8")
         val videoSourceDomPremium = Uri.parse("https://edge02-alm.beetv.kz/bpk-token/2an@zrmhggbas3yyush54vge1zommcoe1rrjzt52r2ba/btv/SWM/Dom_kino_Prem/Dom_kino_Prem_1080p_5000kbps.m3u8")
-        val videoSourcetest = Uri.parse("https://tbs01-edge11.itdc.ge/oruzhie/tracks-v1a1/mono.m3u8") //TEST///////TEST////////TEST///////TEST///
-
+        val videoSourcetest = Uri.parse("https://edge04-alm.beetv.kz/bpk-token/2an@gs2dvquospucc13t31d12zhkbzre5ifegcddogaa/btv/SWM/FoxLife/FoxLife_1080p_5000kbps.m3u8") //TEST///////TEST////////TEST///////TEST///
+        val videoSourceAutoplus = Uri.parse("https://tbs01-edge11.itdc.ge/autoplus/tracks-v1a1/mono.m3u8")  //  АВТО ПЛЮС
+        val videoSourceAuto24 = Uri.parse("https://tbs01-edge11.itdc.ge/auto24/tracks-v1a1/mono.m3u8") //    АВТО 24
+        val videoSourceTerra = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/NGC_HD/1080p.m3u8") // Terra
 
         bt_fullscreen.setOnClickListener {
 
@@ -664,6 +672,21 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         } else {
             bt_dompremium_fv.visibility = View.GONE
         }
+        if (FvCh.getInt(48.toString(), 0) == 1) {
+            bt_Terra_fv.visibility = View.VISIBLE
+        } else {
+            bt_Terra_fv.visibility = View.GONE
+        }
+        if (FvCh.getInt(49.toString(), 0) == 1) {
+            bt_Auto24_fv.visibility = View.VISIBLE
+        } else {
+            bt_Auto24_fv.visibility = View.GONE
+        }
+        if (FvCh.getInt(50.toString(), 0) == 1) {
+            bt_Autoplus_fv.visibility = View.VISIBLE
+        } else {
+            bt_Autoplus_fv.visibility = View.GONE
+        }
 
         bt_fav.setOnClickListener {
             if (FvCh.getInt(setChanelChoose.toString(), 0) == 0) {
@@ -909,6 +932,21 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             } else {
                 bt_dompremium_fv.visibility = View.GONE
             }
+            if (FvCh.getInt(48.toString(), 0) == 1) {
+                bt_Terra_fv.visibility = View.VISIBLE
+            } else {
+                bt_Terra_fv.visibility = View.GONE
+            }
+            if (FvCh.getInt(49.toString(), 0) == 1) {
+                bt_Auto24_fv.visibility = View.VISIBLE
+            } else {
+                bt_Auto24_fv.visibility = View.GONE
+            }
+            if (FvCh.getInt(50.toString(), 0) == 1) {
+                bt_Autoplus_fv.visibility = View.VISIBLE
+            } else {
+                bt_Autoplus_fv.visibility = View.GONE
+            }
 
         }
 
@@ -926,6 +964,21 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         bt_dompremium_fv.setOnClickListener {
             setChanel(videoSourceDomPremium)
             onSaveLast(videoSourceDomPremium)
+        }
+
+        bt_Terra_fv.setOnClickListener {
+            setChanel(videoSourceTerra)
+            onSaveLast(videoSourceTerra)
+        }
+
+        bt_Auto24_fv.setOnClickListener {
+            setChanel(videoSourceAuto24)
+            onSaveLast(videoSourceAuto24)
+        }
+
+        bt_Autoplus_fv.setOnClickListener {
+            setChanel(videoSourceAutoplus)
+            onSaveLast(videoSourceAutoplus)
         }
 
         bt_zolcol_fv.setOnClickListener {
@@ -1172,6 +1225,24 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
 
 
 
+
+        bt_terra.setOnClickListener {
+            setChanel(videoSourceTerra)
+            onSaveLast(videoSourceTerra)
+            setChanelChoose = 48
+        }
+
+        bt_auto24.setOnClickListener {
+            setChanel(videoSourceAuto24)
+            onSaveLast(videoSourceAuto24)
+            setChanelChoose = 49
+        }
+
+        bt_autoplus.setOnClickListener {
+            setChanel(videoSourceAutoplus)
+            onSaveLast(videoSourceAutoplus)
+            setChanelChoose = 50
+        }
 
         bt_myplanet.setOnClickListener {
             setChanel(videoSourceMyPlanet)
