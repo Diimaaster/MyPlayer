@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -12,8 +13,8 @@ android {
         applicationId "com.hellokhdev.sovary.myplayer"
         minSdkVersion 21
         targetSdkVersion 32
-        versionCode 26
-        versionName "1.2.0.5"
+        versionCode 3
+        versionName "1.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -42,8 +43,9 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.firebase:firebase-database:20.3.0'
     testImplementation 'junit:junit:4.+'
-    implementation 'com.yandex.android:mobileads:6.2.0'
+    implementation 'com.yandex.android:mobileads:6.3.0'
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
     implementation 'org.jsoup:jsoup:1.15.4'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
@@ -51,5 +53,5 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer:2.19.1'
     implementation 'androidx.recyclerview:recyclerview:1.3.2'
     implementation "androidx.cardview:cardview:1.0.0"
-    implementation 'com.google.android.gms:play-services-ads:22.5.0'
+    implementation 'com.google.android.gms:play-services-ads:22.6.0'
 }

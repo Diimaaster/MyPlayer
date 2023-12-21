@@ -20,19 +20,25 @@ import android.view.WindowManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout.*
 import com.google.android.exoplayer2.ui.PlayerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.hellokhdev.sovary.rustv.DB.DB
 import com.hellokhdev.sovary.rustv.main.MainActivity
 import com.newdev.beta.rustv.R
 import com.yandex.mobile.ads.common.AdError
 import com.yandex.mobile.ads.common.AdRequestConfiguration
 import com.yandex.mobile.ads.common.AdRequestError
 import com.yandex.mobile.ads.common.ImpressionData
-import com.yandex.mobile.ads.common.MobileAds
 import com.yandex.mobile.ads.interstitial.InterstitialAd
 import com.yandex.mobile.ads.interstitial.InterstitialAdEventListener
 import com.yandex.mobile.ads.interstitial.InterstitialAdLoadListener
@@ -42,7 +48,6 @@ import com.yandex.mobile.ads.rewarded.RewardedAd
 import com.yandex.mobile.ads.rewarded.RewardedAdEventListener
 import com.yandex.mobile.ads.rewarded.RewardedAdLoadListener
 import com.yandex.mobile.ads.rewarded.RewardedAdLoader
-
 
 
 class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedAdLoadListener {
@@ -73,12 +78,16 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
     lateinit var videoSource: Uri
     lateinit var FvCh: SharedPreferences
 
+    private var mDataBase: DatabaseReference? = null
+    private val USER_KEY = "Uri"
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_watch)
 
         FullScreencall()
+        mDataBase = FirebaseDatabase.getInstance().getReference(USER_KEY);
 
         handler = Handler(Looper.getMainLooper())
         lastCh = getSharedPreferences("LastChanel", MODE_PRIVATE)
@@ -88,6 +97,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val loader = InterstitialAdLoader(this).apply {
             setAdLoadListener(this@WatchActivity)
         }
+
         loader.loadAd(AdRequestConfiguration.Builder(adUnitId).build())
         interstitialAd?.setAdEventListener(eventLogger)
 
@@ -151,7 +161,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val bt_zolcol_fv = findViewById<ImageView>(R.id.exo_zolcol_fv)
         val bt_hollywood_fv = findViewById<ImageView>(R.id.exo_hollywood_fv)
         val bt_myplanet_fv = findViewById<ImageView>(R.id.exo_myplanet_fv)
-        val bt_dompremium_fv = findViewById<ImageView>(R.id.exo_dompremium_fv)
+        val bt_solov_fv = findViewById<ImageView>(R.id.exo_solov_fv)
         val bt_Terra_fv = findViewById<ImageView>(R.id.exo_terra_fv)
         val bt_Auto24_fv = findViewById<ImageView>(R.id.exo_auto24_fv)
         val bt_Autoplus_fv = findViewById<ImageView>(R.id.exo_autoplus_fv)
@@ -202,7 +212,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val bt_zolcol = findViewById<ImageView>(R.id.exo_zolcol)     //44
         val bt_hollywood = findViewById<ImageView>(R.id.exo_hollywood)     //45
         val bt_myplanet = findViewById<ImageView>(R.id.exo_myplanet)     //46
-        val bt_domkinopremium = findViewById<ImageView>(R.id.exo_dompremium)     //47
+        val bt_solov = findViewById<ImageView>(R.id.exo_solov)     //47
         val bt_terra = findViewById<ImageView>(R.id.exo_terra)     //48
         val bt_auto24 = findViewById<ImageView>(R.id.exo_auto24)     //49
         val bt_autoplus = findViewById<ImageView>(R.id.exo_autoplus)     //50
@@ -218,51 +228,48 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val bt_kinocomedy = findViewById<ImageView>(R.id.exo_kinocomedy)
 
 
-        val videoSourceTV3 = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/TV3_OTT_HD.m3u8")
-        val videoSourceSpas = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Spas.m3u8")
-        val videoSourceTNT = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/TNT_OTT_HD.m3u8")
-        val videoSourceIZ = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Izvestiya_HD_2.m3u8")
-        val videoSourcePyatniza =
-            Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Pyatnizza_OTT_HD.m3u8")
-        val videoSourceMuztv = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/MuzTV.m3u8")
+        val videoSourceTV3 = Uri.parse("https://s16.federal.tv:8082/fed/tvtri-hq.stream/playlist.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/TV3_OTT_HD.m3u8")
+        val videoSourceSpas = Uri.parse("https://spas.mediacdn.ru/cdn/spas/playlist.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/Spas.m3u8")
+        val videoSourceTNT = Uri.parse("https://ok.ru/video/854539312735")//("https://okkotv-live.cdnvideo.ru/channel/TNT_OTT_HD.m3u8")
+        val videoSourceIZ = Uri.parse("https://igi-hls.cdnvideo.ru/igi/igi_tcode/tracks-v1a1/mono.m3u8?hls_proxy_host=f4eb0d287702d48f6bbf6e6f56891e63")//("https://okkotv-live.cdnvideo.ru/channel/Izvestiya_HD_2.m3u8")
+        val videoSourcePyatniza = Uri.parse("https://s16.federal.tv:8082/fed/pyatnicatv-hq.stream/playlist.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/Pyatnizza_OTT_HD.m3u8")
+        val videoSourceMuztv = Uri.parse("https://s17.federal.tv:8082/fed/muztvtv.stream/playlist.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/MuzTV.m3u8")
         val videoSourceNTV = Uri.parse("https://cdn.ntv.ru/ntv-msk_hd/tracks-v1a1/playlist.m3u8")
-        val videoSourceMatch =
-            Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Match_OTT_HD.m3u8")
-        val videoSourceTV1000Rus =
-            Uri.parse("https://okkotv-live.cdnvideo.ru/channel/TV1000_Rus_Kino_HD/1080p.m3u8")
-        val videoSourceTV1000 = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/TV1000_HD.m3u8")
-        val videoSourceSolnze = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Disney.m3u8")
-        val videoSourceREN = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Rentv_HD_OTT.m3u8")
-        val videoSourceMIR = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Mir_OTT.m3u8")
-        val videoSourceSTS = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/CTC_HD_OTT.m3u8")
-        val videoSourceRUS24 = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Russia24.m3u8")
-        val videoSourceRUS1 = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Russia1HD.m3u8")
+        val videoSourceMatch = Uri.parse("https://s16.federal.tv:8082/fed/matchtv-hq.stream/chunks.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/Match_OTT_HD.m3u8")
+        val videoSourceTV1000Rus = Uri.parse("https://tbs01-edge11.Itdc.ge/tv1000rukino/tracks-v1a1/mono.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/TV1000_Rus_Kino_HD/1080p.m3u8")
+        val videoSourceTV1000 = Uri.parse("https://bl.uma.media/live/485542/HLS/4614144_3/2/1/playlist.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/TV1000_HD.m3u8")
+        val videoSourceSolnze = Uri.parse("https://mobdrm.mediavitrina.ru/hls-livef2/solntse/tracks-v3a1/mono.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/Disney.m3u8")
+        val videoSourceREN = Uri.parse("https://tbs01-edge11.itdc.ge/rentv/tracks-v1a1/mono.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/Rentv_HD_OTT.m3u8")
+        val videoSourceMIR = Uri.parse("https://hls-mirtv.cdnvideo.ru/mirtv-parampublish/mirtv2_2500/playlist.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/Mir_OTT.m3u8")
+        val videoSourceSTS = Uri.parse("https://edge03-alm.beetv.kz/bpk-token/2an@utkdodeyknynqkt2lqwq5vg2ga3u0q1aujrdvvaa/btv/icon/CTC_International/CTC_International.m3u8")//("https://edge03-alm.beetv.kz/bpk-token/2an@5b5cntqu2lunc0ak5q4g14f0gzpyxi1e51ecwfaa/btv/icon/CTC_International/CTC_International.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/CTC_HD_OTT.m3u8")
+        val videoSourceRUS24 = Uri.parse("https://zabava-htlive.cdn.ngenix.net/hls/CH_RUSSIA24/variant.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/Russia24.m3u8")
+        val videoSourceRUS1 = Uri.parse("https://zabava-htlive.cdn.ngenix.net/hls/CH_RUSSIA1/variant.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/Russia1HD.m3u8")
         val videoSourceFirst = Uri.parse("https://edge4.1internet.tv/dash-live2/streams/1tv-dvr/1tvdash.mpd") // ПЕРВЫЙ КАНАЛ      https://edge4.1internet.tv/dash-live2/streams/1tv-dvr/1tvdash.mpd
-        val videoSourceRUSK = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Russia_K_SD.m3u8")
-        val videoSourceStar = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Zvezda_SD.m3u8")
-        val videoSourceTV1000ACT = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/TV1000_Action_HD/480p.m3u8")
-        val videoSource5Ch = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/5_OTT.m3u8")
+        val videoSourceRUSK = Uri.parse("https://s17.federal.tv:8082/fed/rossiyak.stream/chunks.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/Russia_K_SD.m3u8")
+        val videoSourceStar = Uri.parse("https://tvchannelstream1.tvzvezda.ru/cdn/tvzvezda/playlist_sdhigh.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/Zvezda_SD.m3u8")
+        val videoSourceTV1000ACT = Uri.parse("http://dmitry-tv.ml/hls/CH_TV1000ACTIONHD.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/TV1000_Action_HD/480p.m3u8")
+        val videoSource5Ch = Uri.parse("https://edge01-alm.beetv.kz/bpk-token/2an@kt3by42ewha1tbt5grwm41dq3r0mpawhk3r0peaa/btv/SWM/SWM_5kanal/SWM_5kanal.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/5_OTT.m3u8")
         val videoSourceMult = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Multilandia_HD.m3u8")
-        val videoSourcevhs = Uri.parse("https://autopilot.catcast.tv/content/37925/index.m3u8")
+        val videoSourcevhs = Uri.parse("https://s17.federal.tv:8082/fed/kkino.stream/chunks.m3u8")
         val videoSourcePobeda = Uri.parse("https://edge04-alm.beetv.kz/bpk-token/2an@geswrcf3i0gkusqha4e0qendf0brunuigunwkuba/btv/SWM/Pobeda/Pobeda_576p_2000kbps.m3u8")
-        val videoSourcered = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Sony_ET/480p.m3u8")
-        val videoSourceblack = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Sony_Turbo/480p.m3u8")
-        val videoSourcehistory = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Viasat_History_ad_HD/1080p.m3u8")
-        val videoSourceU = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Yu_OTT.m3u8?zi/")
+        val videoSourcered = Uri.parse("https://cdn01.poster-abh.ru/red/tracks-v1a1/mono.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/Sony_ET/480p.m3u8")
+        val videoSourceblack = Uri.parse("https://cdn01.poster-abh.ru/black/tracks-v1a1/mono.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/Sony_Turbo/480p.m3u8")
+        val videoSourcehistory = Uri.parse("https://tbs01-edge11.Itdc.ge/viasathist/tracks-v1a1/mono.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/Viasat_History_ad_HD/1080p.m3u8")
+        val videoSourceU = Uri.parse("https://link2.rbtrack.ru/http://31.148.48.15:80/U/tracks-v1a1/mono.m3u8?&token=test")//("https://okkotv-live.cdnvideo.ru/channel/Yu_OTT.m3u8?zi/")
         val videoSourceDom = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Dom_HD_OTT.m3u8?zi/")
-        val videoSourceStart_world = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/START_World_HD.m3u8?zi/")
-        val videoSourceScifi = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Sony_SciFi.m3u8?zi/")
-        val videoSourceViasNat = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Viasat_Nature_ad_HD.m3u8?zi/")
-        val videoSourceViasExp = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Viasat_Explore_HD.m3u8?zi/")
+        val videoSourceStart_world = Uri.parse("https://cdn.ru03.spr24.net:4443/5771/tracks-v1a1/mono.m3u8?token=Ti8qDtheX2PUkt")//("https://edge01-alm.beetv.kz/bpk-token/2an@ld33l2okuxprlwt5cdzp401xy30ip5cxlnrg2gca/btv/SWM/start_world_hd/start_world_hd.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/START_World_HD.m3u8?zi/")
+        val videoSourceScifi = Uri.parse("https://cdn01.poster-abh.ru/sci-fi/tracks-v1a1/mono.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/Sony_SciFi.m3u8?zi/")
+        val videoSourceViasNat = Uri.parse("")//("https://okkotv-live.cdnvideo.ru/channel/Viasat_Nature_ad_HD.m3u8?zi/")
+        val videoSourceViasExp = Uri.parse("https://tbs01-edge11.Itdc.ge/viasatexp/tracks-v1a1/mono.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/Viasat_Explore_HD.m3u8?zi/")
         val videoSourceturist = Uri.parse("https://livetv.mylifeisgood.ml/channels/glazamiturista")
-        val videoSourceChe = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/Che_OTT_2.m3u8?zi/")
-        val videoSourceStsLove = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/CTC_Love_OTT_2.m3u8?zi/")
+        val videoSourceChe = Uri.parse("https://link2.rbtrack.ru/http://31.148.48.15/Che/tracks-v1a1/mono.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/Che_OTT_2.m3u8?zi/")
+        val videoSourceStsLove = Uri.parse("https://link2.rbtrack.ru/http://31.148.48.15:80/STS_Love/tracks-v1a1/mono.m3u8?&token=test")//("https://okkotv-live.cdnvideo.ru/channel/CTC_Love_OTT_2.m3u8?zi/")
         val videoSourceOruzie = Uri.parse("https://tbs01-edge11.itdc.ge/oruzhie/tracks-v1a1/mono.m3u8")
         val videoSourceTvc = Uri.parse("https://tvc-hls.cdnvideo.ru/tvc-res/smil:vd9221_2.smil/playlist.m3u8")
         val videoSourceVIP_Comedy = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/VIP_Comedy_HD.m3u8")
         val videoSourceVIP_Serial = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/VIP_Serial_HD.m3u8")
-        val videoSourceVIP_Premiere = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/VIP_Premiere_HD.m3u8")
-        val videoSourceVIP_Megahit = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/VIP_Megahit_HD.m3u8")
+        val videoSourceVIP_Premiere = Uri.parse("http://myott.top/stream/202.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/VIP_Premiere_HD.m3u8")
+        val videoSourceVIP_Megahit = Uri.parse("https://bl.uma.media/live/485537/HLS/4614144_3/2/1/playlist.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/VIP_Megahit_HD.m3u8")
         val videoSourceRodnoe_kino = Uri.parse("https://sc.id-tv.kz/Rodnoe_kino.m3u8")
         val videoSourceMujskoe_kino = Uri.parse("https://sc.id-tv.kz/Mujskoe_kino_hd.m3u8")
         val videoSourceKinosemiya = Uri.parse("https://sc.id-tv.kz/Kinosemiya_hd.m3u8")
@@ -272,14 +279,14 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val videoSourceKinomix = Uri.parse("https://sc.id-tv.kz/Kinomix_hd.m3u8")
         val videoSourceKinokomediya = Uri.parse("https://sc.id-tv.kz/Kinokomediya_hd.m3u8")
         val videoSourceDomKino = Uri.parse("https://edge02-alm.beetv.kz/bpk-token/2an@ntjksdb4gjjoud4uzpem4tuehc1mss2inr0rfzba/btv/SWM/Dom_Kino/Dom_Kino_576p_2000kbps.m3u8")   //https://sc.id-tv.kz/domkino_hd.m3u8
-        val videoSourceZolCol = Uri.parse("https://edge03-alm.beetv.kz/bpk-token/2an@m44iqa2w1dbcarbmh4voe3rabatxhceamefilwaa/btv/SWM/mosfilm/mosfilm_576p_2000kbps.m3u8")
+        val videoSourceZolCol = Uri.parse("https://s17.federal.tv:8082/fed/sovkinotv.stream/playlist.m3u8")
         val videoSourceHollywood = Uri.parse("https://edge04-alm.beetv.kz/bpk-token/2an@cofusovvvqk0ve2bu5csekif30qlbvulc40ujyba/btv/SWM/Hollywood/Hollywood_576p_2000kbps.m3u8")
         val videoSourceMyPlanet = Uri.parse("https://edge02-alm.beetv.kz/bpk-token/2an@zbgicdpryajm2qxsehef1mqeggoqbsyyzdvtvzda/btv/SWM/PlanetaHD/PlanetaHD.m3u8")
         val videoSourceDomPremium = Uri.parse("https://edge02-alm.beetv.kz/bpk-token/2an@zrmhggbas3yyush54vge1zommcoe1rrjzt52r2ba/btv/SWM/Dom_kino_Prem/Dom_kino_Prem_1080p_5000kbps.m3u8")
         val videoSourcetest = Uri.parse("https://edge04-alm.beetv.kz/bpk-token/2an@gs2dvquospucc13t31d12zhkbzre5ifegcddogaa/btv/SWM/FoxLife/FoxLife_1080p_5000kbps.m3u8") //TEST///////TEST////////TEST///////TEST///
         val videoSourceAutoplus = Uri.parse("https://tbs01-edge11.itdc.ge/autoplus/tracks-v1a1/mono.m3u8")  //  АВТО ПЛЮС
         val videoSourceAuto24 = Uri.parse("https://tbs01-edge11.itdc.ge/auto24/tracks-v1a1/mono.m3u8") //    АВТО 24
-        val videoSourceTerra = Uri.parse("https://okkotv-live.cdnvideo.ru/channel/NGC_HD/1080p.m3u8") // Terra
+        val videoSourceTerra = Uri.parse("http://kino-1.catcast.tv/content/38617/index.m3u8")//("https://okkotv-live.cdnvideo.ru/channel/NGC_HD/1080p.m3u8") // Terra
 
         bt_fullscreen.setOnClickListener {
 
@@ -313,6 +320,8 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             }
             isFullScreen = !isFullScreen
         }
+
+        getDataFromDB()
 
         bt_lockscreen.setOnClickListener {
             if (!isLock) {
@@ -668,9 +677,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             bt_myplanet_fv.visibility = View.GONE
         }
         if (FvCh.getInt(47.toString(), 0) == 1) {
-            bt_dompremium_fv.visibility = View.VISIBLE
+            bt_solov_fv.visibility = View.VISIBLE
         } else {
-            bt_dompremium_fv.visibility = View.GONE
+            bt_solov_fv.visibility = View.GONE
         }
         if (FvCh.getInt(48.toString(), 0) == 1) {
             bt_Terra_fv.visibility = View.VISIBLE
@@ -928,9 +937,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
                 bt_myplanet_fv.visibility = View.GONE
             }
             if (FvCh.getInt(47.toString(), 0) == 1) {
-                bt_dompremium_fv.visibility = View.VISIBLE
+                bt_solov_fv.visibility = View.VISIBLE
             } else {
-                bt_dompremium_fv.visibility = View.GONE
+                bt_solov_fv.visibility = View.GONE
             }
             if (FvCh.getInt(48.toString(), 0) == 1) {
                 bt_Terra_fv.visibility = View.VISIBLE
@@ -961,9 +970,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             onSaveLast(videoSourceMyPlanet)
         }
 
-        bt_dompremium_fv.setOnClickListener {
-            setChanel(videoSourceDomPremium)
-            onSaveLast(videoSourceDomPremium)
+        bt_solov_fv.setOnClickListener {
+            setChanel(listUri[32].toUri())
+            onSaveLast(listUri[32].toUri())
         }
 
         bt_Terra_fv.setOnClickListener {
@@ -972,18 +981,18 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         }
 
         bt_Auto24_fv.setOnClickListener {
-            setChanel(videoSourceAuto24)
-            onSaveLast(videoSourceAuto24)
+            setChanel(listUri[29].toUri())
+            onSaveLast(listUri[29].toUri())
         }
 
         bt_Autoplus_fv.setOnClickListener {
-            setChanel(videoSourceAutoplus)
-            onSaveLast(videoSourceAutoplus)
+            setChanel(listUri[30].toUri())
+            onSaveLast(listUri[30].toUri())
         }
 
         bt_zolcol_fv.setOnClickListener {
-            setChanel(videoSourceZolCol)
-            onSaveLast(videoSourceZolCol)
+            setChanel(listUri[28].toUri())
+            onSaveLast(listUri[28].toUri())
         }
 
         bt_hollywood_fv.setOnClickListener {
@@ -992,13 +1001,13 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         }
 
         bt_black_fv.setOnClickListener {
-            setChanel(videoSourceblack)
-            onSaveLast(videoSourceblack)
+            setChanel(listUri[16].toUri())
+            onSaveLast(listUri[16].toUri())
         }
 
         bt_Che_fv.setOnClickListener {
-            setChanel(videoSourceChe)
-            onSaveLast(videoSourceChe)
+            setChanel(listUri[23].toUri())
+            onSaveLast(listUri[23].toUri())
         }
 
         bt_Start_world_fv.setOnClickListener {
@@ -1006,20 +1015,20 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             onSaveLast(videoSourceStart_world)
         }
         bt_StsLove_fv.setOnClickListener {
-            setChanel(videoSourceStsLove)
-            onSaveLast(videoSourceStsLove)
+            setChanel(listUri[11].toUri())
+            onSaveLast(listUri[11].toUri())
         }
         bt_ViasNat_fv.setOnClickListener {
             setChanel(videoSourceViasNat)
             onSaveLast(videoSourceViasNat)
         }
         bt_ViasExp_fv.setOnClickListener {
-            setChanel(videoSourceViasExp)
-            onSaveLast(videoSourceViasExp)
+            setChanel(listUri[26].toUri())
+            onSaveLast(listUri[26].toUri())
         }
         bt_Scifi_fv.setOnClickListener {
-            setChanel(videoSourceScifi)
-            onSaveLast(videoSourceScifi)
+            setChanel(listUri[24].toUri())
+            onSaveLast(listUri[24].toUri())
         }
         bt_turist_fv.setOnClickListener {
             setChanel(videoSourceturist)
@@ -1030,55 +1039,55 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             onSaveLast(videoSourceDom)
         }
         bt_red_fv.setOnClickListener {
-            setChanel(videoSourcered)
-            onSaveLast(videoSourcered)
+            setChanel(listUri[15].toUri())
+            onSaveLast(listUri[15].toUri())
         }
         bt_pobeda_fv.setOnClickListener {
             setChanel(videoSourcePobeda)
             onSaveLast(videoSourcePobeda)
         }
         bt_U_fv.setOnClickListener {
-            setChanel(videoSourceU)
-            onSaveLast(videoSourceU)
+            setChanel(listUri[22].toUri())
+            onSaveLast(listUri[22].toUri())
         }
         bt_history_fv.setOnClickListener {
-            setChanel(videoSourcehistory)
-            onSaveLast(videoSourcehistory)
+            setChanel(listUri[25].toUri())
+            onSaveLast(listUri[25].toUri())
         }
 
         bt_pyatniza_fv.setOnClickListener {
-            setChanel(videoSourcePyatniza)
-            onSaveLast(videoSourcePyatniza)
+            setChanel(listUri[17].toUri())
+            onSaveLast(listUri[17].toUri())
         }
 
         bt_MuzTv_fv.setOnClickListener {
-            setChanel(videoSourceMuztv)
-            onSaveLast(videoSourceMuztv)
+            setChanel(listUri[18].toUri())
+            onSaveLast(listUri[18].toUri())
         }
 
         bt_IZ_fv.setOnClickListener {
-            setChanel(videoSourceIZ)
-            onSaveLast(videoSourceIZ)
+            setChanel(listUri[7].toUri())
+            onSaveLast(listUri[7].toUri())
         }
 
         bt_TNT_fv.setOnClickListener {
-            setChanel(videoSourceTNT)
-            onSaveLast(videoSourceTNT)
+            setChanel(listUri[19].toUri())
+            onSaveLast(listUri[19].toUri())
         }
 
         bt_Spas_fv.setOnClickListener {
-            setChanel(videoSourceSpas)
-            onSaveLast(videoSourceSpas)
+            setChanel(listUri[27].toUri())
+            onSaveLast(listUri[27].toUri())
         }
 
         bt_TV3_fv.setOnClickListener {
-            setChanel(videoSourceTV3)
-            onSaveLast(videoSourceTV3)
+            setChanel(listUri[21].toUri())
+            onSaveLast(listUri[21].toUri())
         }
 
         bt_NTV_fv.setOnClickListener {
-            setChanel(videoSourceNTV)
-            onSaveLast(videoSourceNTV)
+            setChanel(listUri[9].toUri())
+            onSaveLast(listUri[9].toUri())
         }
 
         bt_tv1000_fv.setOnClickListener {
@@ -1087,18 +1096,18 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         }
 
         bt_Match_fv.setOnClickListener {
-            setChanel(videoSourceMatch)
-            onSaveLast(videoSourceMatch)
+            setChanel(listUri[10].toUri())
+            onSaveLast(listUri[10].toUri())
         }
 
         bt_tv1000_rus_fv.setOnClickListener {
-            setChanel(videoSourceTV1000Rus)
-            onSaveLast(videoSourceTV1000Rus)
+            setChanel(listUri[20].toUri())
+            onSaveLast(listUri[20].toUri())
         }
 
         bt_solnze_fv.setOnClickListener {
-            setChanel(videoSourceSolnze)
-            onSaveLast(videoSourceSolnze)
+            setChanel(listUri[31].toUri())
+            onSaveLast(listUri[31].toUri())
         }
 
         bt_5CH_fv.setOnClickListener {
@@ -1112,18 +1121,18 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         }
 
         bt_rk_fv.setOnClickListener {
-            setChanel(videoSourceRUSK)
-            onSaveLast(videoSourceRUSK)
+            setChanel(listUri[4].toUri())
+            onSaveLast(listUri[4].toUri())
         }
 
         bt_star_fv.setOnClickListener {
-            setChanel(videoSourceStar)
-            onSaveLast(videoSourceStar)
+            setChanel(listUri[5].toUri())
+            onSaveLast(listUri[5].toUri())
         }
 
         bt_vhs_fv.setOnClickListener {
-            setChanel(videoSourcevhs)
-            onSaveLast(videoSourcevhs)
+            setChanel(listUri[13].toUri())
+            onSaveLast(listUri[13].toUri())
         }
 
         bt_tv1000_act_fv.setOnClickListener {
@@ -1132,23 +1141,23 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         }
 
         bt_mir_fv.setOnClickListener {
-            setChanel(videoSourceMIR)
-            onSaveLast(videoSourceMIR)
+            setChanel(listUri[6].toUri())
+            onSaveLast(listUri[6].toUri())
         }
 
         bt_ren_fv.setOnClickListener {
-            setChanel(videoSourceREN)
-            onSaveLast(videoSourceREN)
+            setChanel(listUri[12].toUri())
+            onSaveLast(listUri[12].toUri())
         }
 
         bt_r1_fv.setOnClickListener {
-            setChanel(videoSourceRUS1)
-            onSaveLast(videoSourceRUS1)
+            setChanel(listUri[2].toUri())
+            onSaveLast(listUri[2].toUri())
         }
 
         bt_r24_fv.setOnClickListener {
-            setChanel(videoSourceRUS24)
-            onSaveLast(videoSourceRUS24)
+            setChanel(listUri[3].toUri())
+            onSaveLast(listUri[3].toUri())
         }
 
         bt_sts_fv.setOnClickListener {
@@ -1157,16 +1166,16 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         }
 
         bt_1st_fv.setOnClickListener {
-            setChanel(videoSourceFirst)
-            onSaveLast(videoSourceFirst)
+            setChanel(listUri[1].toUri())
+            onSaveLast(listUri[1].toUri())
         }
         bt_oruzie_fv.setOnClickListener {
-            setChanel(videoSourceOruzie)
-            onSaveLast(videoSourceOruzie)
+            setChanel(listUri[14].toUri())
+            onSaveLast(listUri[14].toUri())
         }
         bt_tvc_fv.setOnClickListener {
-            setChanel(videoSourceTvc)
-            onSaveLast(videoSourceTvc)
+            setChanel(listUri[8].toUri())
+            onSaveLast(listUri[8].toUri())
         }
 
         bt_VIP_Premiere_fv.setOnClickListener {
@@ -1233,14 +1242,14 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         }
 
         bt_auto24.setOnClickListener {
-            setChanel(videoSourceAuto24)
-            onSaveLast(videoSourceAuto24)
+            setChanel(listUri[29].toUri())
+            onSaveLast(listUri[29].toUri())
             setChanelChoose = 49
         }
 
         bt_autoplus.setOnClickListener {
-            setChanel(videoSourceAutoplus)
-            onSaveLast(videoSourceAutoplus)
+            setChanel(listUri[30].toUri())
+            onSaveLast(listUri[30].toUri())
             setChanelChoose = 50
         }
 
@@ -1257,8 +1266,8 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         }
 
         bt_zolcol.setOnClickListener {
-            setChanel(videoSourceZolCol)
-            onSaveLast(videoSourceZolCol)
+            setChanel(listUri[28].toUri())
+            onSaveLast(listUri[28].toUri())
             setChanelChoose = 44
         }
 
@@ -1294,14 +1303,14 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         }
 
         bt_black.setOnClickListener {
-            setChanel(videoSourceblack)
-            onSaveLast(videoSourceblack)
+            setChanel(listUri[16].toUri())
+            onSaveLast(listUri[16].toUri())
             setChanelChoose = 26
         }
 
         bt_Che.setOnClickListener {
-            setChanel(videoSourceChe)
-            onSaveLast(videoSourceChe)
+            setChanel(listUri[23].toUri())
+            onSaveLast(listUri[23].toUri())
             setChanelChoose = 35
         }
 
@@ -1311,8 +1320,8 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             setChanelChoose = 34
         }
         bt_StsLove.setOnClickListener {
-            setChanel(videoSourceStsLove)
-            onSaveLast(videoSourceStsLove)
+            setChanel(listUri[11].toUri())
+            onSaveLast(listUri[11].toUri())
             setChanelChoose = 36
         }
         bt_ViasNat.setOnClickListener {
@@ -1321,13 +1330,13 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             setChanelChoose = 32
         }
         bt_ViasExp.setOnClickListener {
-            setChanel(videoSourceViasExp)
-            onSaveLast(videoSourceViasExp)
+            setChanel(listUri[26].toUri())
+            onSaveLast(listUri[26].toUri())
             setChanelChoose = 31
         }
         bt_Scifi.setOnClickListener {
-            setChanel(videoSourceScifi)
-            onSaveLast(videoSourceScifi)
+            setChanel(listUri[24].toUri())
+            onSaveLast(listUri[24].toUri())
             setChanelChoose = 33
         }
         bt_turist.setOnClickListener {
@@ -1341,8 +1350,8 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             setChanelChoose = 29
         }
         bt_red.setOnClickListener {
-            setChanel(videoSourcered)
-            onSaveLast(videoSourcered)
+            setChanel(listUri[15].toUri())
+            onSaveLast(listUri[15].toUri())
             setChanelChoose = 25
         }
         bt_pobeda.setOnClickListener {
@@ -1351,55 +1360,55 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             setChanelChoose = 24
         }
         bt_U.setOnClickListener {
-            setChanel(videoSourceU)
-            onSaveLast(videoSourceU)
+            setChanel(listUri[22].toUri())
+            onSaveLast(listUri[22].toUri())
             setChanelChoose = 28
         }
         bt_history.setOnClickListener {
-            setChanel(videoSourcehistory)
-            onSaveLast(videoSourcehistory)
+            setChanel(listUri[25].toUri())
+            onSaveLast(listUri[25].toUri())
             setChanelChoose = 27
         }
 
         bt_pyatniza.setOnClickListener {
-            setChanel(videoSourcePyatniza)
-            onSaveLast(videoSourcePyatniza)
+            setChanel(listUri[17].toUri())
+            onSaveLast(listUri[17].toUri())
             setChanelChoose = 21
         }
 
         bt_MuzTv.setOnClickListener {
-            setChanel(videoSourceMuztv)
-            onSaveLast(videoSourceMuztv)
+            setChanel(listUri[18].toUri())
+            onSaveLast(listUri[18].toUri())
             setChanelChoose = 22
         }
 
         bt_IZ.setOnClickListener {
-            setChanel(videoSourceIZ)
-            onSaveLast(videoSourceIZ)
+            setChanel(listUri[7].toUri())
+            onSaveLast(listUri[7].toUri())
             setChanelChoose = 20
         }
 
         bt_TNT.setOnClickListener {
-            setChanel(videoSourceTNT)
-            onSaveLast(videoSourceTNT)
+            setChanel(listUri[19].toUri())
+            onSaveLast(listUri[19].toUri())
             setChanelChoose = 19
         }
 
         bt_Spas.setOnClickListener {
-            setChanel(videoSourceSpas)
-            onSaveLast(videoSourceSpas)
+            setChanel(listUri[27].toUri())
+            onSaveLast(listUri[27].toUri())
             setChanelChoose = 18
         }
 
         bt_TV3.setOnClickListener {
-            setChanel(videoSourceTV3)
-            onSaveLast(videoSourceTV3)
+            setChanel(listUri[21].toUri())
+            onSaveLast(listUri[21].toUri())
             setChanelChoose = 17
         }
 
         bt_NTV.setOnClickListener {
-            setChanel(videoSourceNTV)
-            onSaveLast(videoSourceNTV)
+            setChanel(listUri[9].toUri())
+            onSaveLast(listUri[9].toUri())
             setChanelChoose = 16
         }
 
@@ -1410,20 +1419,20 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         }
 
         bt_Match.setOnClickListener {
-            setChanel(videoSourceMatch)
-            onSaveLast(videoSourceMatch)
+            setChanel(listUri[10].toUri())
+            onSaveLast(listUri[10].toUri())
             setChanelChoose = 15
         }
 
         bt_tv1000_rus.setOnClickListener {
-            setChanel(videoSourceTV1000Rus)
-            onSaveLast(videoSourceTV1000Rus)
+            setChanel(listUri[20].toUri())
+            onSaveLast(listUri[20].toUri())
             setChanelChoose = 14
         }
 
         bt_solnze.setOnClickListener {
-            setChanel(videoSourceSolnze)
-            onSaveLast(videoSourceSolnze)
+            setChanel(listUri[31].toUri())
+            onSaveLast(listUri[31].toUri())
             setChanelChoose = 11
 
         }
@@ -1434,9 +1443,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             setChanelChoose = 8
         }
 
-        bt_domkinopremium.setOnClickListener {
-            setChanel(videoSourceDomPremium)
-            onSaveLast(videoSourceDomPremium)
+        bt_solov.setOnClickListener {
+            setChanel(listUri[32].toUri())
+            onSaveLast(listUri[32].toUri())
             setChanelChoose = 47
         }
 
@@ -1448,20 +1457,20 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         }
 
         bt_rk.setOnClickListener {
-            setChanel(videoSourceRUSK)
-            onSaveLast(videoSourceRUSK)
+            setChanel(listUri[4].toUri())
+            onSaveLast(listUri[4].toUri())
             setChanelChoose = 9
         }
 
         bt_star.setOnClickListener {
-            setChanel(videoSourceStar)
-            onSaveLast(videoSourceStar)
+            setChanel(listUri[5].toUri())
+            onSaveLast(listUri[5].toUri())
             setChanelChoose = 10
         }
 
         bt_vhs.setOnClickListener {
-            setChanel(videoSourcevhs)
-            onSaveLast(videoSourcevhs)
+            setChanel(listUri[13].toUri())
+            onSaveLast(listUri[13].toUri())
             setChanelChoose = 23
         }
 
@@ -1472,26 +1481,26 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         }
 
         bt_mir.setOnClickListener {
-            setChanel(videoSourceMIR)
-            onSaveLast(videoSourceMIR)
+            setChanel(listUri[6].toUri())
+            onSaveLast(listUri[6].toUri())
             setChanelChoose = 6
         }
 
         bt_ren.setOnClickListener {
-            setChanel(videoSourceREN)
-            onSaveLast(videoSourceREN)
+            setChanel(listUri[12].toUri())
+            onSaveLast(listUri[12].toUri())
             setChanelChoose = 1
         }
 
         bt_r1.setOnClickListener {
-            setChanel(videoSourceRUS1)
-            onSaveLast(videoSourceRUS1)
+            setChanel(listUri[2].toUri())
+            onSaveLast(listUri[2].toUri())
             setChanelChoose = 3
         }
 
         bt_r24.setOnClickListener {
-            setChanel(videoSourceRUS24)
-            onSaveLast(videoSourceRUS24)
+            setChanel(listUri[3].toUri())
+            onSaveLast(listUri[3].toUri())
             setChanelChoose = 4
         }
 
@@ -1502,20 +1511,22 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         }
 
         bt_1st.setOnClickListener {
-            setChanel(videoSourceFirst)
-            onSaveLast(videoSourceFirst)
+            //onClickSave()
+            //getDataFromDB()
+            setChanel(listUri[1].toUri())
+            onSaveLast(listUri[1].toUri())
             setChanelChoose = 2
         }
 
         bt_oruzie.setOnClickListener {
-            setChanel(videoSourceOruzie)
-            onSaveLast(videoSourceOruzie)
+            setChanel(listUri[14].toUri())
+            onSaveLast(listUri[14].toUri())
             setChanelChoose = 37
         }
 
         bt_tvc.setOnClickListener {
-            setChanel(videoSourceTvc)
-            onSaveLast(videoSourceTvc)
+            setChanel(listUri[8].toUri())
+            onSaveLast(listUri[8].toUri())
             setChanelChoose = 38
         }
 
@@ -1584,6 +1595,38 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
 
 
     }
+
+
+    fun onClickSave() {
+        val uriString = "https://edge4.1internet.tv/dash-live2/streams/1tv-dvr/1tvdash.mpd"
+        val id = "Россия 1"
+        val newUser = DB(id,uriString)
+        mDataBase!!.push().setValue(newUser)
+        Toast("Сохранено")
+    }
+
+    fun Toast(massege:String){
+        Toast.makeText(this, massege, Toast.LENGTH_SHORT).show()
+    }
+    val listUri = mutableListOf("")
+    fun getDataFromDB() {
+        listUri.clear()
+        listUri.add("")
+        val vListener: ValueEventListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (ds in dataSnapshot.children) {
+                    val user: DB = ds.getValue(DB::class.java)!!
+                    listUri.add(user.uriString.toString())
+                }
+//                val first = listUri[1]
+//                setChanel(first.toUri())
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {}
+        }
+        mDataBase!!.addValueEventListener(vListener)
+    }
+
 
     private inner class RewardedAdEventLogger : RewardedAdEventListener {
 
@@ -1841,5 +1884,3 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
 
 
 }
-
-

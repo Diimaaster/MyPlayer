@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "534283366781",
+    "firebase_url": "https://rustv-8b94b-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "rustv-8b94b",
+    "storage_bucket": "rustv-8b94b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534283366781:android:cbefe117d8ba91b7241c14",
+        "android_client_info": {
+          "package_name": "com.hellokhdev.sovary.myplayer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4O5WBFSEo986dgYptvFfvyKZB-T4l1mw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534283366781:android:400fceaf7f8f5a99241c14",
+        "android_client_info": {
+          "package_name": "com.hellokhdev.sovary.rustv"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4O5WBFSEo986dgYptvFfvyKZB-T4l1mw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
