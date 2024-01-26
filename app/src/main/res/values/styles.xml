@@ -2,7 +2,7 @@
 <resources>
 
     <style name="ClickableView">
-        <item name="colorControlHighlight">@android:color/darker_gray</item>
+        <item name="colorControlHighlight">@android:color/holo_blue_light</item>
         <item name="android:background">?selectableItemBackgroundBorderless</item>
     </style>
 </resources>

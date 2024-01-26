@@ -31,6 +31,7 @@
                 android:backgroundTint="#79CA0101"
                 android:fontFamily="@font/audiowide"
                 android:text="EXIT"
+                android:contentDescription="Выход"
                 android:textColor="#B2EA8F"
                 android:textSize="20sp" />
 
@@ -44,6 +45,7 @@
                 android:background="@drawable/roundedbutton"
                 android:backgroundTint="#79CA0101"
                 android:text="@string/tv_prog"
+                android:contentDescription="Телепрограмма"
                 android:textColor="#B2EA8F"
                 android:textSize="20sp" />
 
@@ -66,6 +68,7 @@
             android:layout_height="150dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
+            android:contentDescription="Смотреть ТВ"
             android:layout_marginEnd="10dp"
             android:background="@drawable/roundedbutton"
             android:backgroundTint="#79CA0101"
@@ -79,6 +82,7 @@
             style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
             android:layout_height="150dp"
+            android:contentDescription="Смотреть мультики"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"

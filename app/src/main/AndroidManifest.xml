@@ -21,32 +21,28 @@
         <activity android:name="com.hellokhdev.sovary.rustv.splash_screen.SplashScreen"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"></action>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"></category>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <activity
             android:name="com.hellokhdev.sovary.rustv.watch.WatchMP4Activity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
-            android:configChanges="orientation|screenSize|screenLayout"
-            ></activity>
+            android:configChanges="orientation|screenSize|screenLayout" />
         <activity
             android:name="com.hellokhdev.sovary.rustv.settings.Settings"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
-            android:configChanges="orientation|screenSize|screenLayout"
-            ></activity>
+            android:configChanges="orientation|screenSize|screenLayout" />
         <activity
             android:name="com.hellokhdev.sovary.rustv.watch.WatchActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
-            android:configChanges="orientation|screenSize|screenLayout"
-            ></activity>
+            android:configChanges="orientation|screenSize|screenLayout" />
         <activity
             android:name="com.hellokhdev.sovary.rustv.tvprogram.tvprogramm"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
-            android:configChanges="orientation|screenSize|screenLayout"
-            ></activity>
+            android:configChanges="orientation|screenSize|screenLayout" />
         <activity android:name="com.hellokhdev.sovary.rustv.main.MainActivity"
             android:exported="true">
             <intent-filter>
