@@ -573,6 +573,7 @@
                 android:contentDescription="Динамический канал 1"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
+                android:visibility="gone"
                 android:src="@drawable/scifi"
                 android:theme="@style/ClickableView" />
 
@@ -583,6 +584,7 @@
                 android:layout_marginStart="5dp"
                 android:contentDescription="Динамический канал 2"
                 android:layout_marginTop="5dp"
+                android:visibility="gone"
                 android:layout_weight="1"
                 android:src="@drawable/scifi"
                 android:theme="@style/ClickableView" />
@@ -595,6 +597,7 @@
                 android:layout_marginTop="5dp"
                 android:contentDescription="Динамический канал 3"
                 android:layout_weight="1"
+                android:visibility="gone"
                 android:src="@drawable/scifi"
                 android:theme="@style/ClickableView" />
 
@@ -605,6 +608,7 @@
                 android:layout_marginStart="5dp"
                 android:contentDescription="Динамический канал 4"
                 android:layout_marginTop="5dp"
+                android:visibility="gone"
                 android:layout_weight="1"
                 android:src="@drawable/scifi"
                 android:theme="@style/ClickableView" />
@@ -614,6 +618,7 @@
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="5dp"
+                android:visibility="gone"
                 android:layout_marginTop="5dp"
                 android:contentDescription="Динамический канал 5"
                 android:layout_weight="1"
@@ -623,6 +628,7 @@
             <ImageView
                 android:id="@+id/exo_new6"
                 android:layout_width="55dp"
+                android:visibility="gone"
                 android:layout_height="55dp"
                 android:contentDescription="Динамический канал 6"
                 android:layout_marginStart="5dp"
@@ -634,6 +640,7 @@
             <ImageView
                 android:id="@+id/exo_new7"
                 android:layout_width="55dp"
+                android:visibility="gone"
                 android:layout_height="55dp"
                 android:contentDescription="Динамический канал 7"
                 android:layout_marginStart="5dp"
@@ -646,6 +653,7 @@
                 android:id="@+id/exo_new8"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
+                android:visibility="gone"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:contentDescription="Динамический канал 8"
@@ -657,6 +665,7 @@
                 android:id="@+id/exo_new9"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
+                android:visibility="gone"
                 android:layout_marginStart="5dp"
                 android:contentDescription="Динамический канал 9"
                 android:layout_marginTop="5dp"
@@ -668,6 +677,7 @@
                 android:id="@+id/exo_new10"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
+                android:visibility="gone"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:contentDescription="Динамический канал 10"

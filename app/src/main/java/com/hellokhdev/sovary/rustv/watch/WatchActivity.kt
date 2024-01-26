@@ -73,6 +73,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
     var str_data = ""
     var str_Uri = mutableListOf("")
     var str_logo = mutableListOf("")
+    var str_stat = mutableListOf("")
     val apiSample = "https://pomogu1c.ru/index.php/user/list?limit=20"
 
 //-------
@@ -1351,7 +1352,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
     fun getUri() {
         str_Uri.clear()
         str_logo.clear()
+        str_stat.clear()
         str_Uri.add("")
+        str_stat.add("")
         str_logo.add("")
         val reqQueue: RequestQueue = Volley.newRequestQueue(this)
         val request = JsonArrayRequest(Request.Method.GET,apiSample, null, { res ->
@@ -1361,8 +1364,10 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
                 val name = respObj.getString("username")
                 val URL = respObj.getString("user_email")
                 val logo = respObj.getString("user_status")
+                val stat = respObj.getString("status_view")
                 str_data = str_data + "$id) $name ccылка: $URL логотип:$logo\n"
                 str_Uri.add(URL)
+                str_stat.add(stat)
                 str_logo.add(logo)
             }
             setLogo()
@@ -1396,6 +1401,37 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         Picasso.get().load(str_logo[30]).into(bt_new8)
         Picasso.get().load(str_logo[31]).into(bt_new9)
         Picasso.get().load(str_logo[32]).into(bt_new10)
+
+        if (str_stat[23].toInt() == 1){
+            bt_new1.visibility = View.VISIBLE
+        }
+        if (str_stat[24].toInt() == 1){
+            bt_new2.visibility = View.VISIBLE
+        }
+        if (str_stat[25].toInt() == 1){
+            bt_new3.visibility = View.VISIBLE
+        }
+        if (str_stat[26].toInt() == 1){
+            bt_new4.visibility = View.VISIBLE
+        }
+        if (str_stat[27].toInt() == 1){
+            bt_new5.visibility = View.VISIBLE
+        }
+        if (str_stat[28].toInt() == 1){
+            bt_new6.visibility = View.VISIBLE
+        }
+        if (str_stat[29].toInt() == 1){
+            bt_new7.visibility = View.VISIBLE
+        }
+        if (str_stat[30].toInt() == 1){
+            bt_new8.visibility = View.VISIBLE
+        }
+        if (str_stat[31].toInt() == 1){
+            bt_new9.visibility = View.VISIBLE
+        }
+        if (str_stat[32].toInt() == 1){
+            bt_new10.visibility = View.VISIBLE
+        }
 
         val videoSourceFirst = Uri.parse("https://edge4.1internet.tv/dash-live2/streams/1tv-dvr/1tvdash.mpd") // ПЕРВЫЙ КАНАЛ
 
