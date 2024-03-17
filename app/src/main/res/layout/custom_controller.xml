@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/hscroll_favorit"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="6dp"
         android:text="     Избранные:"
         android:textColor="#DEB887"
         android:textSize="16sp" />
@@ -998,6 +998,6 @@
         android:layout_marginTop="10dp"
         android:text="Добавить в избранные   -->"
         android:textColor="#DEB887"
-        android:textSize="14sp" />
+        android:textSize="11sp" />
 
 </RelativeLayout>

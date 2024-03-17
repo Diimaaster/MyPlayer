@@ -360,123 +360,66 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
 
         if (FvCh.getInt(1.toString(), 0) == 1) {
             bt_ren_fv.visibility = View.VISIBLE
-        } else {
-            bt_ren_fv.visibility = View.GONE
         }
         if (FvCh.getInt(2.toString(), 0) == 1) {
             bt_1st_fv.visibility = View.VISIBLE
-        } else {
-            bt_1st_fv.visibility = View.GONE
         }
         if (FvCh.getInt(3.toString(), 0) == 1) {
             bt_r1_fv.visibility = View.VISIBLE
-        } else {
-            bt_r1_fv.visibility = View.GONE
         }
         if (FvCh.getInt(4.toString(), 0) == 1) {
             bt_r24_fv.visibility = View.VISIBLE
-        } else {
-            bt_r24_fv.visibility = View.GONE
         }
         if (FvCh.getInt(5.toString(), 0) == 1) {
             bt_sts_fv.visibility = View.VISIBLE
-        } else {
-            bt_sts_fv.visibility = View.GONE
         }
         if (FvCh.getInt(6.toString(), 0) == 1) {
             bt_mir_fv.visibility = View.VISIBLE
-        } else {
-            bt_mir_fv.visibility = View.GONE
         }
         if (FvCh.getInt(7.toString(), 0) == 1) {
             bt_mult_fv.visibility = View.VISIBLE
-        } else {
-            bt_mult_fv.visibility = View.GONE
         }
         if (FvCh.getInt(8.toString(), 0) == 1) {
             bt_5CH_fv.visibility = View.VISIBLE
-        } else {
-            bt_5CH_fv.visibility = View.GONE
         }
         if (FvCh.getInt(9.toString(), 0) == 1) {
             bt_rk_fv.visibility = View.VISIBLE
-        } else {
-            bt_rk_fv.visibility = View.GONE
         }
         if (FvCh.getInt(10.toString(), 0) == 1) {
             bt_star_fv.visibility = View.VISIBLE
-        } else {
-            bt_star_fv.visibility = View.GONE
-        }
-        if (FvCh.getInt(11.toString(), 0) == 1) {
-            bt_solnze_fv.visibility = View.VISIBLE
-        } else {
-            bt_solnze_fv.visibility = View.GONE
-        }
-        if (FvCh.getInt(15.toString(), 0) == 1) {
-            bt_Match_fv.visibility = View.VISIBLE
-        } else {
-            bt_Match_fv.visibility = View.GONE
         }
         if (FvCh.getInt(16.toString(), 0) == 1) {
             bt_NTV_fv.visibility = View.VISIBLE
-        } else {
-            bt_NTV_fv.visibility = View.GONE
         }
         if (FvCh.getInt(17.toString(), 0) == 1) {
             bt_TV3_fv.visibility = View.VISIBLE
-        } else {
-            bt_TV3_fv.visibility = View.GONE
         }
         if (FvCh.getInt(18.toString(), 0) == 1) {
             bt_Spas_fv.visibility = View.VISIBLE
-        } else {
-            bt_Spas_fv.visibility = View.GONE
         }
         if (FvCh.getInt(19.toString(), 0) == 1) {
             bt_TNT_fv.visibility = View.VISIBLE
-        } else {
-            bt_TNT_fv.visibility = View.GONE
         }
         if (FvCh.getInt(20.toString(), 0) == 1) {
             bt_IZ_fv.visibility = View.VISIBLE
-        } else {
-            bt_IZ_fv.visibility = View.GONE
         }
         if (FvCh.getInt(21.toString(), 0) == 1) {
             bt_pyatniza_fv.visibility = View.VISIBLE
-        } else {
-            bt_pyatniza_fv.visibility = View.GONE
         }
         if (FvCh.getInt(23.toString(), 0) == 1) {
             bt_vhs_fv.visibility = View.VISIBLE
-        } else {
-            bt_vhs_fv.visibility = View.GONE
-        }
-        if (FvCh.getInt(28.toString(), 0) == 1) {
-            bt_U_fv.visibility = View.VISIBLE
-        } else {
-            bt_U_fv.visibility = View.GONE
         }
         if (FvCh.getInt(29.toString(), 0) == 1) {
             bt_Dom_fv.visibility = View.VISIBLE
-        } else {
-            bt_Dom_fv.visibility = View.GONE
         }
         if (FvCh.getInt(35.toString(), 0) == 1) {
             bt_Che_fv.visibility = View.VISIBLE
-        } else {
-            bt_Che_fv.visibility = View.GONE
         }
         if (FvCh.getInt(36.toString(), 0) == 1) {
             bt_StsLove_fv.visibility = View.VISIBLE
-        } else {
-            bt_StsLove_fv.visibility = View.GONE
         }
         if (FvCh.getInt(38.toString(), 0) == 1) {
             bt_tvc_fv.visibility = View.VISIBLE
-        } else {
-            bt_tvc_fv.visibility = View.GONE
         }
 
         bt_fav.setOnClickListener {
@@ -538,16 +481,6 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             } else {
                 bt_star_fv.visibility = View.GONE
             }
-            if (FvCh.getInt(11.toString(), 0) == 1) {
-                bt_solnze_fv.visibility = View.VISIBLE
-            } else {
-                bt_solnze_fv.visibility = View.GONE
-            }
-            if (FvCh.getInt(15.toString(), 0) == 1) {
-                bt_Match_fv.visibility = View.VISIBLE
-            } else {
-                bt_Match_fv.visibility = View.GONE
-            }
             if (FvCh.getInt(16.toString(), 0) == 1) {
                 bt_NTV_fv.visibility = View.VISIBLE
             } else {
@@ -582,11 +515,6 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
                 bt_vhs_fv.visibility = View.VISIBLE
             } else {
                 bt_vhs_fv.visibility = View.GONE
-            }
-            if (FvCh.getInt(28.toString(), 0) == 1) {
-                bt_U_fv.visibility = View.VISIBLE
-            } else {
-                bt_U_fv.visibility = View.GONE
             }
             if (FvCh.getInt(29.toString(), 0) == 1) {
                 bt_Dom_fv.visibility = View.VISIBLE

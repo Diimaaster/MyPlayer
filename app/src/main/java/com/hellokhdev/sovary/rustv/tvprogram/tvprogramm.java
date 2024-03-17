@@ -42,7 +42,7 @@ public class tvprogramm extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
 
 
-        for (int j = 0;j<25;j++) {
+        for (int j = 0;j<24;j++) {
             init(j);
         }
 
@@ -75,7 +75,7 @@ public class tvprogramm extends AppCompatActivity {
             doc = Jsoup.connect(url).get();
             Elements selections = doc.getElementsByClass("channel");
             Element selection = selections.get(i);
-            Element Chanel = selection.getElementsByClass("title").first();
+            Elements Chanel = selection.getElementsByClass("bTitle");
             Elements eventtime = selection.getElementsByClass("proTime");
             Elements eventname = selection.getElementsByClass("proTitle");
             Events = "";

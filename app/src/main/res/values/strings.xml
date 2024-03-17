@@ -50,4 +50,6 @@
     <string name="native_ad_warning_text">We strongly recommend avoiding this type of website and not clicking the Ignore this warning button!</string>
     <string name="native_ad_call_to_action_text">Install</string>
     <string name="native_appinstall_price_text">Free</string>
+    <!-- __________________________________  -->
+    <string name="ver">ver.: 1.4.35</string>
 </resources>
