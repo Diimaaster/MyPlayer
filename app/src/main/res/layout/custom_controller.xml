@@ -4,18 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main"
     android:background="#63000000">
 
 
-    <TextView
-        android:id="@+id/textfav"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/hscroll_favorit"
-        android:layout_marginBottom="6dp"
-        android:text="     Избранные:"
-        android:textColor="#DEB887"
-        android:textSize="16sp" />
+        android:orientation="vertical"
+        android:layout_above="@+id/hscroll_favorit">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/exo_visible_volume"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="5dp"
+                android:contentDescription="Видимость каналов"
+                android:src="@drawable/invis"
+                android:theme="@style/ClickableView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/volume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Громкость"
+                android:text="  Громкость:   "
+                android:textColor="#DEB887"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar"
+            android:progressDrawable="@drawable/seek_bar"
+            android:thumb="@drawable/seek_thumb"
+            android:padding="3dp"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/textfav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Избранные каналы"
+            android:layout_marginBottom="6dp"
+            android:text="     Избранные:"
+            android:textColor="#DEB887"
+            android:textSize="16sp" />
+    </LinearLayout>
 
     <HorizontalScrollView
         android:id="@+id/hscroll_favorit"
@@ -306,10 +350,32 @@
     <HorizontalScrollView
         android:id="@+id/hscrollnews"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_below="@+id/exo_return"
         android:layout_marginTop="5dp"
         tools:ignore="SpeakableTextPresentCheck">
+
+
+        <LinearLayout
+            android:id="@+id/all_chanels"
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
+            android:gravity="center"
+            android:layout_marginStart="5dp"
+            android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/exo_visible"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:contentDescription="Видимость каналов"
+            android:src="@drawable/invis"
+            android:theme="@style/ClickableView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:id="@+id/news"
@@ -803,7 +869,7 @@
 
 
         </LinearLayout>
-
+        </LinearLayout>
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -859,9 +925,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/hscrollnews"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="0dp"
+        android:gravity="end"
         android:orientation="vertical">
 
         <ImageView
@@ -893,7 +961,6 @@
             android:src="@drawable/remove"
             android:theme="@style/ClickableView"
             app:tint="@color/white" />
-
 
     </LinearLayout>
 

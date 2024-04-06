@@ -3,6 +3,12 @@ package com.hellokhdev.sovary.rustv.watch
 
 
 
+//import com.google.firebase.database.DataSnapshot
+//import com.google.firebase.database.DatabaseError
+//import com.google.firebase.database.DatabaseReference
+//import com.google.firebase.database.FirebaseDatabase
+//import com.google.firebase.database.ValueEventListener
+
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
@@ -19,6 +25,7 @@ import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.*
+import android.widget.SeekBar.OnSeekBarChangeListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
@@ -29,15 +36,8 @@ import com.android.volley.toolbox.Volley
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
-import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout.*
 import com.google.android.exoplayer2.ui.PlayerView
-//import com.google.firebase.database.DataSnapshot
-//import com.google.firebase.database.DatabaseError
-//import com.google.firebase.database.DatabaseReference
-//import com.google.firebase.database.FirebaseDatabase
-//import com.google.firebase.database.ValueEventListener
-import com.hellokhdev.sovary.rustv.DB.DB
 import com.hellokhdev.sovary.rustv.main.MainActivity
 import com.newdev.beta.rustv.R
 import com.squareup.picasso.Picasso
@@ -54,11 +54,6 @@ import com.yandex.mobile.ads.rewarded.RewardedAd
 import com.yandex.mobile.ads.rewarded.RewardedAdEventListener
 import com.yandex.mobile.ads.rewarded.RewardedAdLoadListener
 import com.yandex.mobile.ads.rewarded.RewardedAdLoader
-import org.json.JSONArray
-import org.json.JSONException
-import org.json.JSONObject
-import java.io.IOException
-
 
 class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedAdLoadListener {
 
@@ -78,6 +73,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
 
 //-------
     private val adUnitId = "R-M-2278524-2" //demo-interstitial-yandex    R-M-2278524-2
+    private val adUnitId_chanell = "R-M-2278524-4"
     private val eventLogger = InterstitialAdEventLogger()
     private var interstitialAdLoader: InterstitialAdLoader? = null
     private var interstitialAd: InterstitialAd? = null
@@ -93,6 +89,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
     private val save_key: String = "last_ch"
     lateinit var videoSource: Uri
     lateinit var FvCh: SharedPreferences
+    lateinit var VolVis: SharedPreferences
 
     //private var mDataBase: DatabaseReference? = null
     private val USER_KEY = "Uri"
@@ -107,6 +104,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         handler = Handler(Looper.getMainLooper())
         lastCh = getSharedPreferences("LastChanel", MODE_PRIVATE)
         FvCh = getSharedPreferences("FvChanel", MODE_PRIVATE)
+        VolVis = getSharedPreferences("VolVis", MODE_PRIVATE)
 
 
         val loader = InterstitialAdLoader(this).apply {
@@ -177,18 +175,18 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val bt_Che = findViewById<ImageView>(R.id.exo_Che)      //35
         val bt_StsLove = findViewById<ImageView>(R.id.exo_sts_love)     //36
         val bt_tvc = findViewById<ImageView>(R.id.exo_tvc)     //38
-        val bt_new1 = findViewById<ImageView>(R.id.exo_new1)     //39
-        val bt_new2 = findViewById<ImageView>(R.id.exo_new2)     //40
-        val bt_new3 = findViewById<ImageView>(R.id.exo_new3)     //41
-        val bt_new4 = findViewById<ImageView>(R.id.exo_new4)     //42
-        val bt_new5 = findViewById<ImageView>(R.id.exo_new5)     //43
-        val bt_new6 = findViewById<ImageView>(R.id.exo_new6)     //44
-        val bt_new7 = findViewById<ImageView>(R.id.exo_new7)     //45
-        val bt_new8 = findViewById<ImageView>(R.id.exo_new8)     //46
-        val bt_new9 = findViewById<ImageView>(R.id.exo_new9)     //47
-        val bt_new10 = findViewById<ImageView>(R.id.exo_new10)     //48
+//        val bt_new1 = findViewById<ImageView>(R.id.exo_new1)     //39
+//        val bt_new2 = findViewById<ImageView>(R.id.exo_new2)     //40
+//        val bt_new3 = findViewById<ImageView>(R.id.exo_new3)     //41
+//        val bt_new4 = findViewById<ImageView>(R.id.exo_new4)     //42
+//        val bt_new5 = findViewById<ImageView>(R.id.exo_new5)     //43
+//        val bt_new6 = findViewById<ImageView>(R.id.exo_new6)     //44
+//        val bt_new7 = findViewById<ImageView>(R.id.exo_new7)     //45
+//        val bt_new8 = findViewById<ImageView>(R.id.exo_new8)     //46
+//        val bt_new9 = findViewById<ImageView>(R.id.exo_new9)     //47
+//        val bt_new10 = findViewById<ImageView>(R.id.exo_new10)     //48
 
-        val bt_plus = findViewById<ImageView>(R.id.exo_plus)
+//        val bt_plus = findViewById<ImageView>(R.id.exo_plus)
         val bt_kinomix = findViewById<ImageView>(R.id.exo_kinomix)
         val bt_rodnoekino = findViewById<ImageView>(R.id.exo_rodnoekino)
         val bt_muzskoekino = findViewById<ImageView>(R.id.exo_muzskoekino)
@@ -316,6 +314,52 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
 
         }
 
+        val ll_news = findViewById<LinearLayout>(R.id.news)
+        val seekBar = findViewById<SeekBar>(R.id.seekBar)
+        val visible = findViewById<ImageView>(R.id.exo_visible)
+        val visible_vol = findViewById<ImageView>(R.id.exo_visible_volume)
+        val volumes = findViewById<TextView>(R.id.volume)
+        var check_vis = true
+        var check_vol = true
+        visible.setOnClickListener {
+            check_vis = !check_vis
+            if (!check_vis){
+                //Picasso.get().load(str_logo[29]).into(bt_new7)
+                visible.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.vis))
+                //visible.setBackgroundResource(R.drawable.vis)
+                ll_news.visibility = View.GONE
+            }else{
+                //Picasso.get().load(str_logo[29]).into(bt_new7)
+                visible.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.invis))
+                //visible.setBackgroundResource(R.drawable.invis)
+                ll_news.visibility = View.VISIBLE
+            }
+        }
+
+        if (VolVis.getInt("VolVis", 1) == 0) {
+            visible_vol.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.vis))
+            seekBar.visibility = View.GONE
+        } else {
+            visible_vol.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.invis))
+            seekBar.visibility = View.VISIBLE
+        }
+
+        volumes.setOnClickListener {
+            val editVol = VolVis.edit()
+            check_vol = !check_vol
+            if (VolVis.getInt("VolVis", 1) == 1) {
+                editVol.putInt("VolVis", 0)
+                editVol.apply()
+                visible_vol.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.vis))
+                seekBar.visibility = View.GONE
+            } else {
+                editVol.putInt("VolVis", 1)
+                editVol.apply()
+                visible_vol.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.invis))
+                seekBar.visibility = View.VISIBLE
+            }
+        }
+
         val text_fav = findViewById<TextView>(R.id.textfav)
 
         var visfav = true
@@ -333,24 +377,24 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         }
 
 
-        val bt_plus_volum = findViewById<ImageView>(R.id.volum_plus)
-        val bt_minus_volum = findViewById<ImageView>(R.id.volum_minus)
+//        val bt_plus_volum = findViewById<ImageView>(R.id.volum_plus)
+//        val bt_minus_volum = findViewById<ImageView>(R.id.volum_minus)
+//
+//
+//        val audioManager: AudioManager =
+//            getSystemService(AUDIO_SERVICE) as AudioManager
+//
+//        bt_plus_volum.setOnClickListener {
+//            val plus = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + 1
+//            audioManager.setMediaVolume(plus)
+//        }
+//
+//        bt_minus_volum.setOnClickListener {
+//            val minus = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) - 1
+//            audioManager.setMediaVolume(minus)
+//        }
 
-
-        val audioManager: AudioManager =
-            getSystemService(AUDIO_SERVICE) as AudioManager
-
-
-        bt_plus_volum.setOnClickListener {
-            val plus = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + 1
-            audioManager.setMediaVolume(plus)
-        }
-
-        bt_minus_volum.setOnClickListener {
-            val minus = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) - 1
-            audioManager.setMediaVolume(minus)
-        }
-
+        initControls()
 
         val bt_fav = findViewById<ImageView>(R.id.exo_add_fv)
         var setChanelChoose = 2
@@ -1044,39 +1088,39 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             setChanelChoose = 38
         }
 
-        
 
 
-        bt_plus.setOnClickListener {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Внимание!")
-            builder.setMessage("Сейчас будет показана реклама длительностью ~25 сек.\n" +
-                    "После ее просмотра , будут добавленны каналы:\n" +
-                    "МУЖСКОЕ КИНО\n" +
-                    "РОДНОЕ КИНО\n" +
-                    "КИНОМИКС\n" +
-                    "КИНОУЖАС\n" +
-                    "КИНОСЕМЬЯ\n" +
-                    "КИНОПРЕМЬЕРА\n" +
-                    "КИНОКОМЕДИЯ \n" +
-                    "КИНОСВИДАНИЕ")
-           // builder.setIcon(android.R.drawable.ic_dialog_alert)
 
-            builder.setPositiveButton("Смотреть") { dialogInterface, which ->
-                rewardedAdLoader = RewardedAdLoader(this).apply {
-                    setAdLoadListener(this@WatchActivity)
-                }
-                rewardedAdLoader?.loadAd(AdRequestConfiguration.Builder(adUnitIdRew).build())
-
-            }
-            builder.setNeutralButton("Отмена") { dialogInterface, which ->
-
-            }
-            val alertDialog: AlertDialog = builder.create()
-
-            alertDialog.setCancelable(false)
-            alertDialog.show()
-        }
+//        bt_plus.setOnClickListener {
+//            val builder = AlertDialog.Builder(this)
+//            builder.setTitle("Внимание!")
+//            builder.setMessage("Сейчас будет показана реклама длительностью ~25 сек.\n" +
+//                    "После ее просмотра , будут добавленны каналы:\n" +
+//                    "МУЖСКОЕ КИНО\n" +
+//                    "РОДНОЕ КИНО\n" +
+//                    "КИНОМИКС\n" +
+//                    "КИНОУЖАС\n" +
+//                    "КИНОСЕМЬЯ\n" +
+//                    "КИНОПРЕМЬЕРА\n" +
+//                    "КИНОКОМЕДИЯ \n" +
+//                    "КИНОСВИДАНИЕ")
+//           // builder.setIcon(android.R.drawable.ic_dialog_alert)
+//
+//            builder.setPositiveButton("Смотреть") { dialogInterface, which ->
+//                rewardedAdLoader = RewardedAdLoader(this).apply {
+//                    setAdLoadListener(this@WatchActivity)
+//                }
+//                rewardedAdLoader?.loadAd(AdRequestConfiguration.Builder(adUnitIdRew).build())
+//
+//            }
+//            builder.setNeutralButton("Отмена") { dialogInterface, which ->
+//
+//            }
+//            val alertDialog: AlertDialog = builder.create()
+//
+//            alertDialog.setCancelable(false)
+//            alertDialog.show()
+//        }
 
 
 
@@ -1108,6 +1152,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
 
 
     }
+
 
     private fun checkUri(i: Int): Boolean {
         try {
@@ -1260,12 +1305,27 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         setChanel(videoSource)
     }
 
+    var ads = 0
     fun setChanel(Source: Uri) {
+        ads++
+        chceck_ads(ads)
         simpleExoPlayer.removeMediaItem(1)
         val mediaItem = MediaItem.fromUri(Source)
         simpleExoPlayer.setMediaItem(mediaItem)
         simpleExoPlayer.prepare()
         simpleExoPlayer.play()
+    }
+
+    fun chceck_ads(ads_check: Int){
+        //Toast(ads_check.toString())
+        if(ads_check == 10){
+            ads = 0
+            val loader = InterstitialAdLoader(this).apply {
+                setAdLoadListener(this@WatchActivity)
+            }
+            loader.loadAd(AdRequestConfiguration.Builder(adUnitId_chanell).build())
+            interstitialAd?.setAdEventListener(eventLogger)
+        }
     }
 
     override fun onStop() {
@@ -1474,13 +1534,42 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         simpleExoPlayer.pause()
     }
 
-    fun AudioManager.setMediaVolume(volumeIndex: Int) {
-        // Set media volume level
-        this.setStreamVolume(
-            AudioManager.STREAM_MUSIC, // Stream type
-            volumeIndex, // Volume index
-            AudioManager.FLAG_SHOW_UI// Flags
-        )
+//    fun AudioManager.setMediaVolume(volumeIndex: Int) {
+//        // Set media volume level
+//        this.setStreamVolume(
+//            AudioManager.STREAM_MUSIC, // Stream type
+//            volumeIndex, // Volume index
+//            AudioManager.FLAG_SHOW_UI// Flags
+//        )
+//    }
+
+    private var volumeSeekbar: SeekBar? = null
+    private var audioManager: AudioManager? = null
+    private fun initControls() {
+        try {
+            volumeSeekbar = findViewById<View>(R.id.seekBar) as SeekBar
+            audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
+            volumeSeekbar!!.setMax(
+                audioManager!!
+                    .getStreamMaxVolume(AudioManager.STREAM_MUSIC)
+            )
+            volumeSeekbar!!.setProgress(
+                audioManager!!
+                    .getStreamVolume(AudioManager.STREAM_MUSIC)
+            )
+            volumeSeekbar!!.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+                override fun onStopTrackingTouch(arg0: SeekBar) {}
+                override fun onStartTrackingTouch(arg0: SeekBar) {}
+                override fun onProgressChanged(arg0: SeekBar, progress: Int, arg2: Boolean) {
+                    audioManager!!.setStreamVolume(
+                        AudioManager.STREAM_MUSIC,
+                        progress, 0
+                    )
+                }
+            })
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
 

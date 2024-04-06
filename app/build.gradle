@@ -12,9 +12,9 @@ android {
     defaultConfig {
         applicationId "com.hellokhdev.sovary.myplayer"
         minSdkVersion 21
-        targetSdkVersion 32
-        versionCode 35
-        versionName "1.4.35"
+        targetSdkVersion 33
+        versionCode 37
+        versionName "1.5.7"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

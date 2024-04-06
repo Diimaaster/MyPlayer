@@ -9,6 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="new1">#FF000FFF</color>
     <color name="new2">#E0FFFF</color>
+    <color name="seek_bar_background">#ababab</color>
+    <color name="seek_bar_progress">#ffb600</color>
+    <color name="seek_bar_secondary_progress">#3399CC</color>
     <color name="new3">
         <shape xmlns:android="http://schemas.android.com/apk/res/android">
         <solid android:color="#1AFFFFFF" />
