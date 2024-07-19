@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         FullScreencall()
         MobileAds.initialize(this,
             InitializationListener { Log.d(YANDEX_MOBILE_ADS_TAG, "SDK initialized")
-              Log.d(YANDEX_MOBILE_ADS_TAG, MobileAds.libraryVersion) })
+              Log.d(YANDEX_MOBILE_ADS_TAG, MobileAds.libraryVersion+" last version") })
 
         mBannerAdView = findViewById (R.id.banner_ad_view);
         mBannerAdView.setAdUnitId(AdUnitId)

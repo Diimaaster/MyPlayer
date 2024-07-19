@@ -207,6 +207,7 @@ class WatchMP4Activity : AppCompatActivity(){
         playerView.player = simpleExoPlayer
         playerView.keepScreenOn = true
         simpleExoPlayer.addListener(object: Player.Listener{
+            @Deprecated("Deprecated in Java")
             override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int)
             {
                 if(playbackState == Player.STATE_BUFFERING)
@@ -338,6 +339,7 @@ class WatchMP4Activity : AppCompatActivity(){
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if(isLock) return
         if(resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)

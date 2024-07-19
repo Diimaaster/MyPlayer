@@ -69,7 +69,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
     var str_Uri = mutableListOf("")
     var str_logo = mutableListOf("")
     var str_stat = mutableListOf("")
-    val apiSample = "https://pomogu1c.ru/index.php/user/list?limit=20"
+    val apiSample = "https://pomogu1c.ru/index.php/user/list?limit=200"
 
 //-------
     private val adUnitId = "R-M-2278524-2" //demo-interstitial-yandex    R-M-2278524-2
@@ -1132,6 +1132,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         playerView.player = simpleExoPlayer
         playerView.keepScreenOn = true
         simpleExoPlayer.addListener(object : Player.Listener {
+            @Deprecated("Deprecated in Java")
             override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
                 if (playbackState == Player.STATE_BUFFERING) {
                     progressBar.visibility = View.VISIBLE
@@ -1266,6 +1267,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (isLock) return
         if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
@@ -1318,7 +1320,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
 
     fun chceck_ads(ads_check: Int){
         //Toast(ads_check.toString())
-        if(ads_check == 10){
+        if(ads_check == 12){
             ads = 0
             val loader = InterstitialAdLoader(this).apply {
                 setAdLoadListener(this@WatchActivity)
