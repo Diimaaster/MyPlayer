@@ -1320,7 +1320,14 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
 
     fun chceck_ads(ads_check: Int){
         //Toast(ads_check.toString())
-        if(ads_check == 12){
+        //
+        //if (ads_check == str_count_ads){
+        //
+        //
+        //
+        //
+        //}
+        if(ads_check == 18){
             ads = 0
             val loader = InterstitialAdLoader(this).apply {
                 setAdLoadListener(this@WatchActivity)

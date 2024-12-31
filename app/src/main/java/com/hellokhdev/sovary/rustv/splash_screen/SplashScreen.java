@@ -10,7 +10,7 @@ import com.hellokhdev.sovary.rustv.main.MainActivity;
 import com.newdev.beta.rustv.R;
 
 public class SplashScreen extends Activity {
-    private final int SPLASH_DISPLAY_LENGHT = 1500;
+    private final int SPLASH_DISPLAY_LENGHT = 1000;
 
 
     @Override

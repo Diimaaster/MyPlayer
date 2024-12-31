@@ -12,7 +12,7 @@
     <translate
         android:repeatMode="restart"
         android:repeatCount="0"
-        android:duration="3000"
+        android:duration="1000"
         android:fromYDelta="150%"
         android:toYDelta="0%" />
 

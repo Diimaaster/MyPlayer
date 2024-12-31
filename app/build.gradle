@@ -13,8 +13,8 @@ android {
         applicationId "com.hellokhdev.sovary.myplayer"
         minSdkVersion 21
         targetSdkVersion 33
-        versionCode 39
-        versionName "1.5.9"
+        versionCode 40
+        versionName "1.6.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -48,7 +48,7 @@ dependencies {
     //implementation 'com.google.firebase:firebase-database:20.3.0'
     testImplementation 'junit:junit:4.+'
     //noinspection MobileAdsSdkOutdatedVersion
-    implementation "com.yandex.android:mobileads:7.2.0"
+    implementation "com.yandex.android:mobileads:7.6.0"
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
     implementation 'org.jsoup:jsoup:1.15.4'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
