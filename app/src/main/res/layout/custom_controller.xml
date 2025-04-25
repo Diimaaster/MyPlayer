@@ -519,7 +519,8 @@
                 android:layout_weight="1"
                 android:contentDescription="СТС"
                 android:src="@drawable/logoctc"
-                android:theme="@style/ClickableView" />
+                android:theme="@style/ClickableView"
+                android:visibility="gone"/>
 
             <ImageView
                 android:id="@+id/exo_sts_love"
@@ -530,7 +531,8 @@
                 android:contentDescription="СТС лав"
                 android:layout_weight="1"
                 android:src="@drawable/logostslove"
-                android:theme="@style/ClickableView" />
+                android:theme="@style/ClickableView"
+                android:visibility="gone"/>
 
             <ImageView
                 android:id="@+id/exo_ren"

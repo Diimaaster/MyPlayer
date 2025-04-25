@@ -231,6 +231,15 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val videoSourceKinokomediya = Uri.parse("https://sc.id-tv.kz/Kinokomediya_hd.m3u8")
         val videoSourcetest = Uri.parse("https://edge04-alm.beetv.kz/bpk-token/2an@gs2dvquospucc13t31d12zhkbzre5ifegcddogaa/btv/SWM/FoxLife/FoxLife_1080p_5000kbps.m3u8") //TEST///////TEST////////TEST///////TEST///
 
+        ///////////////////////////////////////////////
+
+        bt_1st.visibility = GONE
+        bt_sts.visibility - GONE
+        bt_StsLove.visibility = GONE
+
+
+        ///////////////////////////////////////////////
+
         bt_fullscreen.setOnClickListener {
 
             getWindow().setFlags(
@@ -239,8 +248,8 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             );
 
             window.decorView.systemUiVisibility = (
-                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+                    SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            or SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
 
             if (!isFullScreen) {
                 bt_fullscreen.setImageDrawable(
@@ -327,21 +336,21 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
                 //Picasso.get().load(str_logo[29]).into(bt_new7)
                 visible.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.vis))
                 //visible.setBackgroundResource(R.drawable.vis)
-                ll_news.visibility = View.GONE
+                ll_news.visibility = GONE
             }else{
                 //Picasso.get().load(str_logo[29]).into(bt_new7)
                 visible.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.invis))
                 //visible.setBackgroundResource(R.drawable.invis)
-                ll_news.visibility = View.VISIBLE
+                ll_news.visibility = VISIBLE
             }
         }
 
         if (VolVis.getInt("VolVis", 1) == 0) {
             visible_vol.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.vis))
-            seekBar.visibility = View.GONE
+            seekBar.visibility = GONE
         } else {
             visible_vol.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.invis))
-            seekBar.visibility = View.VISIBLE
+            seekBar.visibility = VISIBLE
         }
 
         volumes.setOnClickListener {
@@ -351,12 +360,12 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
                 editVol.putInt("VolVis", 0)
                 editVol.apply()
                 visible_vol.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.vis))
-                seekBar.visibility = View.GONE
+                seekBar.visibility = GONE
             } else {
                 editVol.putInt("VolVis", 1)
                 editVol.apply()
                 visible_vol.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.invis))
-                seekBar.visibility = View.VISIBLE
+                seekBar.visibility = VISIBLE
             }
         }
 
@@ -368,10 +377,10 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
 
         text_fav.setOnClickListener {
             if (visfav) {
-                ll_fav.visibility = View.GONE
+                ll_fav.visibility = GONE
                 visfav = !visfav
             } else {
-                ll_fav.visibility = View.VISIBLE
+                ll_fav.visibility = VISIBLE
                 visfav = !visfav
             }
         }
@@ -403,67 +412,67 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val editFv = FvCh.edit()
 
         if (FvCh.getInt(1.toString(), 0) == 1) {
-            bt_ren_fv.visibility = View.VISIBLE
+            bt_ren_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(2.toString(), 0) == 1) {
-            bt_1st_fv.visibility = View.VISIBLE
+            bt_1st_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(3.toString(), 0) == 1) {
-            bt_r1_fv.visibility = View.VISIBLE
+            bt_r1_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(4.toString(), 0) == 1) {
-            bt_r24_fv.visibility = View.VISIBLE
+            bt_r24_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(5.toString(), 0) == 1) {
-            bt_sts_fv.visibility = View.VISIBLE
+            bt_sts_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(6.toString(), 0) == 1) {
-            bt_mir_fv.visibility = View.VISIBLE
+            bt_mir_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(7.toString(), 0) == 1) {
-            bt_mult_fv.visibility = View.VISIBLE
+            bt_mult_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(8.toString(), 0) == 1) {
-            bt_5CH_fv.visibility = View.VISIBLE
+            bt_5CH_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(9.toString(), 0) == 1) {
-            bt_rk_fv.visibility = View.VISIBLE
+            bt_rk_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(10.toString(), 0) == 1) {
-            bt_star_fv.visibility = View.VISIBLE
+            bt_star_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(16.toString(), 0) == 1) {
-            bt_NTV_fv.visibility = View.VISIBLE
+            bt_NTV_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(17.toString(), 0) == 1) {
-            bt_TV3_fv.visibility = View.VISIBLE
+            bt_TV3_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(18.toString(), 0) == 1) {
-            bt_Spas_fv.visibility = View.VISIBLE
+            bt_Spas_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(19.toString(), 0) == 1) {
-            bt_TNT_fv.visibility = View.VISIBLE
+            bt_TNT_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(20.toString(), 0) == 1) {
-            bt_IZ_fv.visibility = View.VISIBLE
+            bt_IZ_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(21.toString(), 0) == 1) {
-            bt_pyatniza_fv.visibility = View.VISIBLE
+            bt_pyatniza_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(23.toString(), 0) == 1) {
-            bt_vhs_fv.visibility = View.VISIBLE
+            bt_vhs_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(29.toString(), 0) == 1) {
-            bt_Dom_fv.visibility = View.VISIBLE
+            bt_Dom_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(35.toString(), 0) == 1) {
-            bt_Che_fv.visibility = View.VISIBLE
+            bt_Che_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(36.toString(), 0) == 1) {
-            bt_StsLove_fv.visibility = View.VISIBLE
+            bt_StsLove_fv.visibility = VISIBLE
         }
         if (FvCh.getInt(38.toString(), 0) == 1) {
-            bt_tvc_fv.visibility = View.VISIBLE
+            bt_tvc_fv.visibility = VISIBLE
         }
 
         bt_fav.setOnClickListener {
@@ -476,109 +485,109 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             }
 
             if (FvCh.getInt(1.toString(), 0) == 1) {
-                bt_ren_fv.visibility = View.VISIBLE
+                bt_ren_fv.visibility = VISIBLE
             } else {
-                bt_ren_fv.visibility = View.GONE
+                bt_ren_fv.visibility = GONE
             }
             if (FvCh.getInt(2.toString(), 0) == 1) {
-                bt_1st_fv.visibility = View.VISIBLE
+                bt_1st_fv.visibility = VISIBLE
             } else {
-                bt_1st_fv.visibility = View.GONE
+                bt_1st_fv.visibility = GONE
             }
             if (FvCh.getInt(3.toString(), 0) == 1) {
-                bt_r1_fv.visibility = View.VISIBLE
+                bt_r1_fv.visibility = VISIBLE
             } else {
-                bt_r1_fv.visibility = View.GONE
+                bt_r1_fv.visibility = GONE
             }
             if (FvCh.getInt(4.toString(), 0) == 1) {
-                bt_r24_fv.visibility = View.VISIBLE
+                bt_r24_fv.visibility = VISIBLE
             } else {
-                bt_r24_fv.visibility = View.GONE
+                bt_r24_fv.visibility = GONE
             }
             if (FvCh.getInt(5.toString(), 0) == 1) {
-                bt_sts_fv.visibility = View.VISIBLE
+                bt_sts_fv.visibility = VISIBLE
             } else {
-                bt_sts_fv.visibility = View.GONE
+                bt_sts_fv.visibility = GONE
             }
             if (FvCh.getInt(6.toString(), 0) == 1) {
-                bt_mir_fv.visibility = View.VISIBLE
+                bt_mir_fv.visibility = VISIBLE
             } else {
-                bt_mir_fv.visibility = View.GONE
+                bt_mir_fv.visibility = GONE
             }
             if (FvCh.getInt(7.toString(), 0) == 1) {
-                bt_mult_fv.visibility = View.VISIBLE
+                bt_mult_fv.visibility = VISIBLE
             } else {
-                bt_mult_fv.visibility = View.GONE
+                bt_mult_fv.visibility = GONE
             }
             if (FvCh.getInt(8.toString(), 0) == 1) {
-                bt_5CH_fv.visibility = View.VISIBLE
+                bt_5CH_fv.visibility = VISIBLE
             } else {
-                bt_5CH_fv.visibility = View.GONE
+                bt_5CH_fv.visibility = GONE
             }
             if (FvCh.getInt(9.toString(), 0) == 1) {
-                bt_rk_fv.visibility = View.VISIBLE
+                bt_rk_fv.visibility = VISIBLE
             } else {
-                bt_rk_fv.visibility = View.GONE
+                bt_rk_fv.visibility = GONE
             }
             if (FvCh.getInt(10.toString(), 0) == 1) {
-                bt_star_fv.visibility = View.VISIBLE
+                bt_star_fv.visibility = VISIBLE
             } else {
-                bt_star_fv.visibility = View.GONE
+                bt_star_fv.visibility = GONE
             }
             if (FvCh.getInt(16.toString(), 0) == 1) {
-                bt_NTV_fv.visibility = View.VISIBLE
+                bt_NTV_fv.visibility = VISIBLE
             } else {
-                bt_NTV_fv.visibility = View.GONE
+                bt_NTV_fv.visibility = GONE
             }
             if (FvCh.getInt(17.toString(), 0) == 1) {
-                bt_TV3_fv.visibility = View.VISIBLE
+                bt_TV3_fv.visibility = VISIBLE
             } else {
-                bt_TV3_fv.visibility = View.GONE
+                bt_TV3_fv.visibility = GONE
             }
             if (FvCh.getInt(18.toString(), 0) == 1) {
-                bt_Spas_fv.visibility = View.VISIBLE
+                bt_Spas_fv.visibility = VISIBLE
             } else {
-                bt_Spas_fv.visibility = View.GONE
+                bt_Spas_fv.visibility = GONE
             }
             if (FvCh.getInt(19.toString(), 0) == 1) {
-                bt_TNT_fv.visibility = View.VISIBLE
+                bt_TNT_fv.visibility = VISIBLE
             } else {
-                bt_TNT_fv.visibility = View.GONE
+                bt_TNT_fv.visibility = GONE
             }
             if (FvCh.getInt(20.toString(), 0) == 1) {
-                bt_IZ_fv.visibility = View.VISIBLE
+                bt_IZ_fv.visibility = VISIBLE
             } else {
-                bt_IZ_fv.visibility = View.GONE
+                bt_IZ_fv.visibility = GONE
             }
             if (FvCh.getInt(21.toString(), 0) == 1) {
-                bt_pyatniza_fv.visibility = View.VISIBLE
+                bt_pyatniza_fv.visibility = VISIBLE
             } else {
-                bt_pyatniza_fv.visibility = View.GONE
+                bt_pyatniza_fv.visibility = GONE
             }
             if (FvCh.getInt(23.toString(), 0) == 1) {
-                bt_vhs_fv.visibility = View.VISIBLE
+                bt_vhs_fv.visibility = VISIBLE
             } else {
-                bt_vhs_fv.visibility = View.GONE
+                bt_vhs_fv.visibility = GONE
             }
             if (FvCh.getInt(29.toString(), 0) == 1) {
-                bt_Dom_fv.visibility = View.VISIBLE
+                bt_Dom_fv.visibility = VISIBLE
             } else {
-                bt_Dom_fv.visibility = View.GONE
+                bt_Dom_fv.visibility = GONE
             }
             if (FvCh.getInt(35.toString(), 0) == 1) {
-                bt_Che_fv.visibility = View.VISIBLE
+                bt_Che_fv.visibility = VISIBLE
             } else {
-                bt_Che_fv.visibility = View.GONE
+                bt_Che_fv.visibility = GONE
             }
             if (FvCh.getInt(36.toString(), 0) == 1) {
-                bt_StsLove_fv.visibility = View.VISIBLE
+                bt_StsLove_fv.visibility = VISIBLE
             } else {
-                bt_StsLove_fv.visibility = View.GONE
+                bt_StsLove_fv.visibility = GONE
             }
             if (FvCh.getInt(38.toString(), 0) == 1) {
-                bt_tvc_fv.visibility = View.VISIBLE
+                bt_tvc_fv.visibility = VISIBLE
             } else {
-                bt_tvc_fv.visibility = View.GONE
+                bt_tvc_fv.visibility = GONE
             }
         }
 
@@ -1135,9 +1144,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
             @Deprecated("Deprecated in Java")
             override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
                 if (playbackState == Player.STATE_BUFFERING) {
-                    progressBar.visibility = View.VISIBLE
+                    progressBar.visibility = VISIBLE
                 } else if (playbackState == Player.STATE_READY) {
-                    progressBar.visibility = View.GONE
+                    progressBar.visibility = GONE
                 }
 
                 if (!simpleExoPlayer.playWhenReady) {
@@ -1190,8 +1199,8 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         override fun onRewarded(reward: Reward) {
             val add_ch = findViewById<LinearLayout>(R.id.add_ch)
             val bt_plus = findViewById<ImageView>(R.id.exo_plus)
-            add_ch.visibility = View.VISIBLE
-            bt_plus.visibility = View.GONE
+            add_ch.visibility = VISIBLE
+            bt_plus.visibility = GONE
         }
 
 
@@ -1259,11 +1268,11 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         val sec_mid = findViewById<LinearLayout>(R.id.sec_controlvid1)
         val sec_bottom = findViewById<LinearLayout>(R.id.sec_controlvid2)
         if (lock) {
-            sec_mid.visibility = View.INVISIBLE
-            sec_bottom.visibility = View.INVISIBLE
+            sec_mid.visibility = INVISIBLE
+            sec_bottom.visibility = INVISIBLE
         } else {
-            sec_mid.visibility = View.VISIBLE
-            sec_bottom.visibility = View.VISIBLE
+            sec_mid.visibility = VISIBLE
+            sec_bottom.visibility = VISIBLE
         }
     }
 
@@ -1285,8 +1294,8 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
 
         if (Build.VERSION.SDK_INT >= 19) {
             window.decorView.systemUiVisibility = (
-                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+                    SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            or SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
         }
     }
 
@@ -1400,34 +1409,34 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         Picasso.get().load(str_logo[32]).into(bt_new10)
 
         if (str_stat[23].toInt() == 1){
-            bt_new1.visibility = View.VISIBLE
+            bt_new1.visibility = VISIBLE
         }
         if (str_stat[24].toInt() == 1){
-            bt_new2.visibility = View.VISIBLE
+            bt_new2.visibility = VISIBLE
         }
         if (str_stat[25].toInt() == 1){
-            bt_new3.visibility = View.VISIBLE
+            bt_new3.visibility = VISIBLE
         }
         if (str_stat[26].toInt() == 1){
-            bt_new4.visibility = View.VISIBLE
+            bt_new4.visibility = VISIBLE
         }
         if (str_stat[27].toInt() == 1){
-            bt_new5.visibility = View.VISIBLE
+            bt_new5.visibility = VISIBLE
         }
         if (str_stat[28].toInt() == 1){
-            bt_new6.visibility = View.VISIBLE
+            bt_new6.visibility = VISIBLE
         }
         if (str_stat[29].toInt() == 1){
-            bt_new7.visibility = View.VISIBLE
+            bt_new7.visibility = VISIBLE
         }
         if (str_stat[30].toInt() == 1){
-            bt_new8.visibility = View.VISIBLE
+            bt_new8.visibility = VISIBLE
         }
         if (str_stat[31].toInt() == 1){
-            bt_new9.visibility = View.VISIBLE
+            bt_new9.visibility = VISIBLE
         }
         if (str_stat[32].toInt() == 1){
-            bt_new10.visibility = View.VISIBLE
+            bt_new10.visibility = VISIBLE
         }
 
         val videoSourceFirst = Uri.parse("https://edge4.1internet.tv/dash-live2/streams/1tv-dvr/1tvdash.mpd") // ПЕРВЫЙ КАНАЛ
