@@ -236,6 +236,9 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         bt_1st.visibility = GONE
         bt_sts.visibility - GONE
         bt_StsLove.visibility = GONE
+        bt_pyatniza.visibility = GONE
+        bt_TV3.visibility - GONE
+        bt_TNT.visibility = GONE
 
 
         ///////////////////////////////////////////////
