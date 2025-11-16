@@ -1339,7 +1339,7 @@ class WatchActivity : AppCompatActivity(), InterstitialAdLoadListener, RewardedA
         //
         //
         //}
-        if(ads_check == 18){
+        if(ads_check == 22){
             ads = 0
             val loader = InterstitialAdLoader(this).apply {
                 setAdLoadListener(this@WatchActivity)

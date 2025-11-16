@@ -586,6 +586,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
+                android:visibility="gone"
                 android:src="@drawable/logotv3"
                 android:theme="@style/ClickableView" />
             <ImageView
